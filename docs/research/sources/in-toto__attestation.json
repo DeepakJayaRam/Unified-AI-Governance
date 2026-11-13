@@ -1,0 +1,39 @@
+{
+  "repo": "in-toto/attestation",
+  "git_reference": "ref: refs/heads/main\tHEAD\n50bf01716982189898823e90586075f37cd9bb7d\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "50bf01716982189898823e90586075f37cd9bb7d",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/README.md",
+      "sha256": "af4afaeb45178ead52df28e3d867d64fddf1626ef4f2a0b256430a55c2375c2e",
+      "bytes": 3310,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/LICENSE",
+      "sha256": "b3a6ac899861c2c28a1abd5c7ea8733fefaed6938d730e099c42671386032aeb",
+      "bytes": 559,
+      "inspected_on": "2026-11-13"
+    },
+    "package.json": {
+      "url": "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/package.json",
+      "sha256": "851c9cf1d5459c310a2a90cbbd424494b5c74fedd78d9c075b10d4abe79a02c7",
+      "bytes": 149,
+      "inspected_on": "2026-11-13"
+    },
+    "spec/v1/statement.md": {
+      "url": "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/spec/v1/statement.md",
+      "sha256": "cbe684a18b812b8b613d9202eb43b2ea24477f91a2ad6ca5be935185a455ebea",
+      "bytes": 2492,
+      "inspected_on": "2026-11-13"
+    },
+    "spec/v1/envelope.md": {
+      "url": "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/spec/v1/envelope.md",
+      "sha256": "c02c65880ccc117bbdecc6c916d5108541c1a864de67f8f9082efbaf15265d11",
+      "bytes": 5660,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/in-toto/attestation/releases/tag/v1.2.0"
+}

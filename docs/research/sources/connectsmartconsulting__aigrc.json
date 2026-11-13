@@ -1,0 +1,27 @@
+{
+  "repo": "connectsmartconsulting/aigrc",
+  "git_reference": "ref: refs/heads/main\tHEAD\n27846f1e878e6df6845fe0c416bab668b6d941c1\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "27846f1e878e6df6845fe0c416bab668b6d941c1",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/connectsmartconsulting/aigrc/27846f1e878e6df6845fe0c416bab668b6d941c1/README.md",
+      "sha256": "871340cda00e16510126f25bcbfc66f7db4e025db7d9c1744cc81b88e34dab17",
+      "bytes": 12355,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/connectsmartconsulting/aigrc/27846f1e878e6df6845fe0c416bab668b6d941c1/LICENSE",
+      "sha256": "cd523a6616c85418e7da8690100f7938db6ccc4a487d7ef6c886b51e55ceb99c",
+      "bytes": 1086,
+      "inspected_on": "2026-11-13"
+    },
+    "pyproject.toml": {
+      "url": "https://raw.githubusercontent.com/connectsmartconsulting/aigrc/27846f1e878e6df6845fe0c416bab668b6d941c1/pyproject.toml",
+      "sha256": "a18cac635c26e9626a60ee96b871f0127d740646889736df0c2fdf0cefe14fdd",
+      "bytes": 1449,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/connectsmartconsulting/aigrc/releases/tag/v0.1.5"
+}

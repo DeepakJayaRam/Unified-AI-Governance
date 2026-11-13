@@ -1,0 +1,815 @@
+{
+  "inspected_at": "2026-11-13",
+  "repositories": [
+    {
+      "number": 1,
+      "repository": "cdxgen/cdxgen",
+      "inspected_at": "2026-11-13",
+      "commit": "0bf437ead5043f40e51ffae5f662eb47f8febba4",
+      "refs": [
+        "b9e3caa99517b3888c912e8e3497f4d2f97c8e19\trefs/tags/v9.8.1",
+        "62fcf72c16df4c7f179ac24109cecaee3559930d\trefs/tags/v9.8.10",
+        "1e60575006c0d3ec154938a1b7b3823bcc3bf7a6\trefs/tags/v9.8.2",
+        "e8ff51e1ff00a8889e5059d2761eb9c97295bda3\trefs/tags/v9.8.3",
+        "2e3bc38297ab388bc5a09ccd75d0848cc70ab1ac\trefs/tags/v9.8.4",
+        "2ebf7938367b451d7f84cf2426958630a15926b0\trefs/tags/v9.8.5",
+        "cf2d4428fe8d9776c72f799938a9ea4e1b76bd61\trefs/tags/v9.8.6",
+        "30f4ab8c20c1c1a06a88ef8025b182c181e4509c\trefs/tags/v9.8.7",
+        "35223f5d8f11052a799bb128b0030c2ec8443e25\trefs/tags/v9.8.8",
+        "3acd1e6fd5ec0c7e44ec4e06d7b5567f6eae6d3d\trefs/tags/v9.8.9",
+        "fe324c5d3e83cc00ab50a22ad98394da91e38fa1\trefs/tags/v9.9.0",
+        "0456929e93619073f5cd5109a8eece408e988a6b\trefs/tags/v9.9.1",
+        "1f7794b9ce15091b955faa04b2583f757802f09d\trefs/tags/v9.9.2",
+        "ee1660754e7aad54dc1eebb5989a45d93e3b1841\trefs/tags/v9.9.3",
+        "b397baee86e346e90034a644a5bb40ab39580ddb\trefs/tags/v9.9.4",
+        "e634a7ce0659199ad110e23d9796d9b6e1710c75\trefs/tags/v9.9.5",
+        "c2e5edd6977fc2da6801369fc7506cce93d1fcd3\trefs/tags/v9.9.6",
+        "78731ceb485970f10a4b1a7156ce083fcb36f063\trefs/tags/v9.9.7",
+        "0da91a54b106c2695047c957aa1e0d6d1a21e1ea\trefs/tags/v9.9.8",
+        "cea48045e3ed6ed1da1b7d8b20b0ab791f6a1ea2\trefs/tags/v9.9.9"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/README.md",
+          "status": 200,
+          "sha256": "4060d7d88b8b17da4a91b722c76a4966c980d28f6c2b9e0e980c8244b231c52e"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/LICENSE",
+          "status": 200,
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/pyproject.toml",
+          "status": 200,
+          "sha256": "a78533f5d4098a44c9f762e1921e23082a1eaa208386dc462b0a67dc6d7dcfb9"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/package.json",
+          "status": 200,
+          "sha256": "49c284aff14b16675d869893cb6aa6e12e74c3f52fd38fcf4047e46f29aabe41"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/bin/cdxgen.js",
+          "status": 200,
+          "sha256": "49301e7d28bd4046e557ce376e51a7e8810edd22a0e04f59c53cd0d5d8edc09b"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/lib/cli/options.js",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "repository": "GenAI-Security-Project/aibom-generator",
+      "inspected_at": "2026-11-13",
+      "commit": "45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e",
+      "refs": [
+        "45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/README.md",
+          "status": 200,
+          "sha256": "bc9e824a09f81116d6305862d242b35c08e9223cf4d8b934a0ebc27e89f7e39f"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/LICENSE",
+          "status": 200,
+          "sha256": "1b80e48550e922093b401e2b1deb68f5751aadad1bd7b79938c1ed158e9783af"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/pyproject.toml",
+          "status": 200,
+          "sha256": "7ae224dfc7b03ff39f3dd896e98d07d97f634f1b13e7a237e71d95341e2680ee"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/requirements.txt",
+          "status": 200,
+          "sha256": "6a6b0ad95f3e6bed6d2f54b69d353138f868efdb9fd3ef582475a90f7f30e581"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "repository": "opencomplai/opencomplai",
+      "inspected_at": "2026-11-13",
+      "commit": "455be2575d728dff6070f87f80489da5fb5c7b05",
+      "refs": [
+        "2e3e718249c81dc26ba81896f2917f6ac4995f42\trefs/tags/v0.15.0^{}",
+        "c7b3e21bcc2bbb0aa4061fdee25c0bae8d1bda75\trefs/tags/v0.2.0",
+        "eb8c44213ee0f032e4984910b0fcfbf0d7f51ffa\trefs/tags/v0.3.0",
+        "17a64720c984fd09e6f532a7106186966565028a\trefs/tags/v0.4.0",
+        "5d089f346a63bce5f4183f6b9603417c518cb259\trefs/tags/v0.4.0^{}",
+        "317326648abdbcfdf29b469fe42fd4f88a1b49a5\trefs/tags/v0.5.0",
+        "33cfdf666feafbcdeacbb38ae421fc5370210354\trefs/tags/v0.5.0^{}",
+        "77bd3417a9aaadb2e3d5d098a7f947ee77b7eda6\trefs/tags/v0.6.0",
+        "8521b79c254d742d663f6e300c73a805f9a267bd\trefs/tags/v0.7.0",
+        "b16e556e752e9e77bf088a642a006ecd3a78791f\trefs/tags/v0.7.0^{}",
+        "80d5c6d906dae29a15019c07ad8bb46d7231ab24\trefs/tags/v0.7.1",
+        "a76e36d9db222a5501b0749ebc14413b2cca8ecd\trefs/tags/v0.7.1^{}",
+        "c7e79f5f58d88a74189d8a194d826bee79ee3aa7\trefs/tags/v0.8.0",
+        "8dc27545b7d44a416ed02808cd0066668eac710e\trefs/tags/v0.8.0^{}",
+        "25fc816b33618b662a386dae9deb76ae1db58d9d\trefs/tags/v0.9.0",
+        "fbebeaf2aef5aafa1776cd08dd2f607a65799dfe\trefs/tags/v0.9.0^{}",
+        "67a7d12257bc861c15a24a611ea3bbb3b8251162\trefs/tags/v0.9.1",
+        "b28680d43dce03896351d305af512732f1d61077\trefs/tags/v0.9.1^{}",
+        "d57534bf4ef1252ed34a6f40fa625d3e445ee51d\trefs/tags/v0.9.2",
+        "81cadf6bd9060d65af6defec2a94aeb210ac3665\trefs/tags/v0.9.2^{}"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/README.md",
+          "status": 200,
+          "sha256": "0092af8a9475e052ee7fb37794263c7496f6a6a247e65921aa0d67ddc71cda69"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/LICENSE",
+          "status": 200,
+          "sha256": "d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/pyproject.toml",
+          "status": 200,
+          "sha256": "f181ed38acfc8e80e19192a707f2261e2e7f9e0140b7b0badd96d9607e16454e"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/package.json",
+          "status": 200,
+          "sha256": "08396ddca35044946045068eb13ad7a96593fdebba6778f39628ee7c30859b8f"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/setup.py",
+          "status": 200,
+          "sha256": "0ce32e008b1c661d35c13d21d8a5a1ab31596b1e60a44903e178b7a5e173035a"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/packages/cli/pyproject.toml",
+          "status": 200,
+          "sha256": "00695c82e54722d40a7f29bf897ee77d14f4b13179de4ee6ad05d8d97d529b7a"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/docs/src/getting-started/scanner.md",
+          "status": 200,
+          "sha256": "fa6c53807ec1702a24aa70268b2cb27f99fe50865958f370011ec94f9a3ae744"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/docs/src/guides/ci-integration.md",
+          "status": 200,
+          "sha256": "296f97806e5f1819a045b2a880e7e41f1be3230c4b8257ef4aef479fb34be28d"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "repository": "aiexponent/riskforge",
+      "inspected_at": "2026-11-13",
+      "commit": "d823d1a1435251d41e9edce8701214eb65361ab8",
+      "refs": [
+        "d823d1a1435251d41e9edce8701214eb65361ab8\tHEAD",
+        "4a81d7f56566136cbe35e34a585bbdd09f67f3d7\trefs/tags/v0.1.0",
+        "5a86eb77ab057b233e41af6c43376134adb3969d\trefs/tags/v0.1.1",
+        "57ea12b8885768c2f5dc6242a8b81d8f89384135\trefs/tags/v0.1.2",
+        "92b27359f5246bddc4e112f740651510137d359e\trefs/tags/v0.1.3",
+        "9ca6a73820ff637222728e7e39fc1e86bea350c9\trefs/tags/v0.1.4",
+        "13fcaa98923b55490884435d6fb8c430712832b3\trefs/tags/v1.0.0",
+        "4abc9888be889b0a7620b9e1849fe847b74e633c\trefs/tags/v1.0.0^{}",
+        "61f65c2bb369d36b79bdc9a85be85f877777fffd\trefs/tags/v1.1.0",
+        "78490e882ed37938aa89e0be755303dceaa1e22e\trefs/tags/v1.1.0^{}",
+        "516aa7ea1dd8332a295e6186a53c0a47c1670eb6\trefs/tags/v1.1.1",
+        "6ef7e03456f18699913af6b502f2beab0f1b56e5\trefs/tags/v1.1.1^{}",
+        "c3e69f7605705458305881f5ee89e2664af9522f\trefs/tags/v1.1.2",
+        "4ea54522b40ef65f11cb311ffffbe5ee933f78be\trefs/tags/v1.1.2^{}",
+        "12192485ecf3d2784dddcb659a1ea95238db4c43\trefs/tags/v1.1.3",
+        "597854466fcd1867ecc8284230eab9ef36bc2a1f\trefs/tags/v1.1.3^{}",
+        "cc8bc250aa334aa6a92f04bacd699f4b5518eb1b\trefs/tags/v2.0.0",
+        "f3bbf2df356f50721b8b9965d351fd2c6adba400\trefs/tags/v2.0.0^{}",
+        "941c2ed97f4bab733696e4b47ad4606e99ec4891\trefs/tags/v2.1.0",
+        "cbee07677b517f6e1d516643adbd05526508b19b\trefs/tags/v2.1.0^{}"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/README.md",
+          "status": 200,
+          "sha256": "5b5df6ac08327fd7b05cad124c18ec7ccefd8e36a5111f4868a8678d8f262bd4"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/LICENSE",
+          "status": 200,
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/pyproject.toml",
+          "status": 200,
+          "sha256": "c5a7c5fe194442afef454c2868964c6f570f6d659f5a02cacc0049b310928a5f"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/docs/cli-reference.md",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "repository": "AbdelStark/eu-ai-act-toolkit",
+      "inspected_at": "2026-11-13",
+      "commit": "fff58f6e890648947ba9f9a8caeb94bd566c4651",
+      "refs": [
+        "fff58f6e890648947ba9f9a8caeb94bd566c4651\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/README.md",
+          "status": 200,
+          "sha256": "6ad3a23be55158b5d41d30330874aafd9fecc6dea3a8cd77f7177133a8d10446"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/LICENSE",
+          "status": 200,
+          "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/pyproject.toml",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/package.json",
+          "status": 200,
+          "sha256": "a1fc93fb02c1762a086f491baab0652013296c28da6587b15c2bdfc85b4f881e"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/packages/sdk/package.json",
+          "status": 200,
+          "sha256": "0ab5a745bf9922c2063052b487161536632096ba4232505445614efa0794ea0c"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/packages/cli/package.json",
+          "status": 200,
+          "sha256": "e4e0d76c9d53299597e5440cfa84c01a728fe5b16de7ec7192dd1b748af0e584"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "repository": "Venturalitica/venturalitica-sdk",
+      "inspected_at": "2026-11-13",
+      "commit": "dc64f520a786b9f5dfd4cebfa900b2847c9f3061",
+      "refs": [
+        "dc64f520a786b9f5dfd4cebfa900b2847c9f3061\tHEAD",
+        "2f6af00129b698d21f1fdbb452bdcfbe16a55de8\trefs/tags/v0.3.0",
+        "f613a10ebaa2fbc0704b50030562f70dee4e0c6e\trefs/tags/v0.6.1",
+        "dd7f544492607176189bfc520a65dbc2174de9f6\trefs/tags/v0.6.1^{}",
+        "3e7ce32fe377e9170b1f363653a00c767ad4f705\trefs/tags/v0.6.10",
+        "cca3d0a9a205d6aee54cbfb556cad124da2b1377\trefs/tags/v0.6.2",
+        "4581c45f288e8f1abf31a7efa77a73585ddc864a\trefs/tags/v0.6.2^{}"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/README.md",
+          "status": 200,
+          "sha256": "62e77bcfe50ddf612e7d6c457bd2b96b3fc4df4dfe82a392015142fec7d0b6aa"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/LICENSE",
+          "status": 200,
+          "sha256": "da0944029f9cef24861e17ffb9c3abc950311d54809919d54a2b0c8a17adee57"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/pyproject.toml",
+          "status": 200,
+          "sha256": "765a13329eecce0ddd1b0ba16b3e2f2cbd71e346849b2bbbe0860d96981728ec"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "repository": "compl-ai/compl-ai",
+      "inspected_at": "2026-11-13",
+      "commit": "c359f0a61112f8316715ea1c6e140983f0c50a40",
+      "refs": [
+        "c359f0a61112f8316715ea1c6e140983f0c50a40\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/README.md",
+          "status": 200,
+          "sha256": "45a06c73cee4a122d790059af8edd8e26849c9882f9dc31ea74e5f674251d014"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/LICENSE",
+          "status": 200,
+          "sha256": "cc4d4de0920b0d3912203b5d9aa76728ac4a11087f55da9ea00576db7d1e34e2"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/pyproject.toml",
+          "status": 200,
+          "sha256": "d8991b39c1605bbb621d8ea172ef270c251de547cdddd262eacbb57c12864929"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "repository": "morganrcu/awesome-eu-ai-act",
+      "inspected_at": "2026-11-13",
+      "commit": "d46c0492aecea2e8b1e3496a1b8eb331c60193cb",
+      "refs": [
+        "d46c0492aecea2e8b1e3496a1b8eb331c60193cb\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/README.md",
+          "status": 200,
+          "sha256": "18e2fb32cd2edc71be1ce6f3d72202fe23a108d7bdf49c7c76e64309299d9ad2"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/LICENSE",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/pyproject.toml",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "repository": "Ankit-Uniyal/iso-42001-ai-governance-toolkit",
+      "inspected_at": "2026-11-13",
+      "commit": "803b62da4c66f6b6ab601c87cb298597a497eebd",
+      "refs": [
+        "803b62da4c66f6b6ab601c87cb298597a497eebd\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/README.md",
+          "status": 200,
+          "sha256": "aed4e6f4f70675c0d1bf4f70ce66dbdced3134620d306c14648ffc6ac6212b2e"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/LICENSE",
+          "status": 200,
+          "sha256": "468d7cc1b5e696a0ad397ac60826ca6dd81b008df5c10c7c0a4c910c9173aaeb"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/pyproject.toml",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/ai_assessment_checker.py",
+          "status": 200,
+          "sha256": "f5e3236e908758ff420555db23ef0b06bdf6b3db5546fd4d9d256bfc7b921951"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/aims_soa_tracker.py",
+          "status": 200,
+          "sha256": "e7497c2ac74ef893a34a244191de208461b1a448978adc6b18c433944131c140"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "repository": "Ankit-Uniyal/eu-ai-act-compliance-toolkit",
+      "inspected_at": "2026-11-13",
+      "commit": "8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7",
+      "refs": [
+        "8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/README.md",
+          "status": 200,
+          "sha256": "8b01d4f9073e8a27834f23b71eedc4c365d2d10911c17048f40bbd68022f65ca"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/LICENSE",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/pyproject.toml",
+          "status": 200,
+          "sha256": "ae58c1586a5bdcb1a1a18978ef36673c0b3a282a6da6a15cb60eb3e5a21125e9"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/CHANGELOG.md",
+          "status": 200,
+          "sha256": "f785c0c5e56d5e4260176b97caa09910a58915fefa977290776a5348ff2f2197"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/scripts/README.md",
+          "status": 200,
+          "sha256": "20b5e42231267d82e072a37b6a829b0449996baf66df794d2c0c21607cc89530"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "repository": "IBM/ai-atlas-nexus",
+      "inspected_at": "2026-11-13",
+      "commit": "58bb356a44fb7fdfd9a8a1db091dcd196b561dcd",
+      "refs": [
+        "c5a258ee70f8474052a85cf0007a1aa2ce8adbdd\trefs/tags/v0.0.2",
+        "395e644838b76863aad2484e63e7c917c5ec484d\trefs/tags/v0.0.3",
+        "b61c5f2c54ae834688edcc2ab12c396860badaa6\trefs/tags/v0.0.4",
+        "a938c40aed9def5dd3e96cf95455753dd24bdad0\trefs/tags/v0.0.5",
+        "f80d919c4eab985e63d7c646b96ea4879836a802\trefs/tags/v0.0.6",
+        "fe48e8d4be1a5b7c6d4ba94a3d35b02246a0ccc1\trefs/tags/v0.0.7",
+        "e4f0ace1b86a6bdff16798edd59b4c014512b128\trefs/tags/v1.0.0",
+        "048c4d6ade883c7fb0d14ba3bfec625533a795bf\trefs/tags/v1.0.1",
+        "cf63afa869736033a73c7b34e5d87f39b8e02ddf\trefs/tags/v1.0.2",
+        "453884f5f3cb1bb4f70a98ef1da3529112cff691\trefs/tags/v1.0.3",
+        "97fbe673b276dd07e783b1dbe90ea77b1c571d44\trefs/tags/v1.0.4",
+        "07a5d7438f591d0ca4fd5abbd2c978a983d59d90\trefs/tags/v1.1.0",
+        "99c29749cdc2cf6a66027e3c7aa445193fda60ba\trefs/tags/v1.1.1",
+        "07a5d7438f591d0ca4fd5abbd2c978a983d59d90\trefs/tags/v1.10.0",
+        "487e5d5400930a3f3fbc4a9c8a76fa45b0040dcf\trefs/tags/v1.2.0",
+        "0249a45777547a57cda329e8983fe86d42907f64\trefs/tags/v1.2.1",
+        "473de6a6d76db88a3e753877a6d8b420fbbee687\trefs/tags/v1.2.2",
+        "056b942a8359702a1c89b335f0669af07ad8961f\trefs/tags/v1.2.3",
+        "7eb02e8b5c3c68f5cb5429ae671ab7e3ff621f51\trefs/tags/v1.2.4",
+        "8661a813ca47432124cfc46ce0e5b09ec26b376c\trefs/tags/v1.2.5"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/README.md",
+          "status": 200,
+          "sha256": "c54094f30e3dcb31f32398cd9e214f610d832356a676a5e05acc432c9ccfd44d"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/LICENSE",
+          "status": 200,
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/pyproject.toml",
+          "status": 200,
+          "sha256": "b1ef11026b478218512620c0914618f51c25d02a046deeeeeefcd67090a1f24c"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "repository": "juliusgromyko/M3Framework",
+      "inspected_at": "2026-11-13",
+      "commit": "bcc539de5f3d65bf9f60db3a29c060ca48d30028",
+      "refs": [
+        "bcc539de5f3d65bf9f60db3a29c060ca48d30028\tHEAD"
+      ],
+      "error": null,
+      "files": [
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/README.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/LICENSE",
+          "status": 200,
+          "sha256": "e770aa9869edb4a088acfee8e7a7b8701e71a615b4b81651426a08d66ed09d4e"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/LICENSE.md",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/LICENSE.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/pyproject.toml",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/package.json",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/requirements.txt",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/setup.py",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/Dockerfile",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    }
+  ],
+  "web_and_registry": [
+    {
+      "url": "https://pypi.org/pypi/riskforge/json",
+      "status": 200,
+      "sha256": "d68910d80399f4d577c730d8f04f6dac936027a7bed94d2e344774b7d3a7ffda"
+    },
+    {
+      "url": "https://pypi.org/pypi/opencomplai-cli/json",
+      "status": 200,
+      "sha256": "15b75997b217412d37464416edb6a306cd0c9d0815e2cdce8f3b871b21d3ff4c"
+    },
+    {
+      "url": "https://pypi.org/pypi/venturalitica/json",
+      "status": 200,
+      "sha256": "7452a729bf40a2066d833ab3a30d96787bc4f2e3db67f7894e4227570b784dae"
+    },
+    {
+      "url": "https://pypi.org/pypi/ai-atlas-nexus/json",
+      "status": 200,
+      "sha256": "c1e47bc9264a642631b2c4b89efa7a189024604d493200206ae4636fd0642472"
+    },
+    {
+      "url": "https://registry.npmjs.org/@cdxgen%2fcdxgen/latest",
+      "status": 200,
+      "sha256": "7797aa6aa2470908058486e591b455d74a7f2a87498e74632a3a5e816a73a641"
+    },
+    {
+      "url": "https://registry.npmjs.org/@eu-ai-act%2fsdk/latest",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://registry.npmjs.org/@eu-ai-act%2fcli/latest",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://m3framework.org/",
+      "status": 200,
+      "sha256": "d5f17da778cd734a6fcadb858d822e322f5cc87ef2070d4248f00bbd88f4b521"
+    },
+    {
+      "url": "https://m3framework.org/license.html",
+      "status": 200,
+      "sha256": "7c5b31d839ae5023484c596cea87eaf23a96a1dac086a160ddc3f409e628f854"
+    },
+    {
+      "url": "https://airc.nist.gov/",
+      "status": 200,
+      "sha256": "7adb4408f2e0bffc8ed3d8d5cbb6eb9ba5150dded28bf1586b69b195f48d39cf"
+    },
+    {
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "status": 200,
+      "sha256": "4c0064e4639277fac32d21d9ba40fedb755d2a0a75d565d7e9734e66fef0a6e3"
+    },
+    {
+      "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
+      "status": 200,
+      "sha256": "610772442283026bce572d028254fbc401f352300956cbda117d5c8f214a59ec"
+    }
+  ]
+}

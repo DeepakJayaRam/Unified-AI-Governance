@@ -1,0 +1,39 @@
+{
+  "repo": "oscal-compass/compliance-trestle",
+  "git_reference": "ref: refs/heads/develop\tHEAD\n4e350353586ce68b84a52988753b6fa45cdf34cb\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "4e350353586ce68b84a52988753b6fa45cdf34cb",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/README.md",
+      "sha256": "b8b2581089593d8b713fe61034735b2449ed57ca7a862e397151e8714aa5eaa0",
+      "bytes": 11785,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/LICENSE",
+      "sha256": "c98ecc8ef79e7a1a14a0767e3321b681dd25f9307625724f2b299f5e75e99520",
+      "bytes": 11358,
+      "inspected_on": "2026-11-13"
+    },
+    "pyproject.toml": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/pyproject.toml",
+      "sha256": "28bb5fc0166378110ea24f385841d1e15df23dd352936d06b2af5073f0d092da",
+      "bytes": 12041,
+      "inspected_on": "2026-11-13"
+    },
+    "trestle/__init__.py": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/trestle/__init__.py",
+      "sha256": "744dd0feeb4aa03408a667f10cc5a8a764099e14ce8290ff13b454e4cfa6a624",
+      "bytes": 1048,
+      "inspected_on": "2026-11-13"
+    },
+    "trestle/oscal/catalog.py": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/trestle/oscal/catalog.py",
+      "sha256": "7e29c0b11f0eab5fd7bf4a76632567abf8e6ed968b1b7b0c6eee03305927f793",
+      "bytes": 7725,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/oscal-compass/compliance-trestle/releases/tag/v5.2.1"
+}

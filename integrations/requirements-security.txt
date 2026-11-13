@@ -1,0 +1,4 @@
+# Verified against PyPI and upstream, 2026-11-13.
+compliance-trestle==5.2.1
+cryptography==50.0.2
+httpx==0.28.1

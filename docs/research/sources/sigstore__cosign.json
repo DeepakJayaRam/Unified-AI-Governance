@@ -1,0 +1,21 @@
+{
+  "repo": "sigstore/cosign",
+  "git_reference": "ref: refs/heads/main\tHEAD\n6181e75677cc4719e845fa23d0ef8a936e883aa0\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "6181e75677cc4719e845fa23d0ef8a936e883aa0",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/sigstore/cosign/6181e75677cc4719e845fa23d0ef8a936e883aa0/README.md",
+      "sha256": "ff167bbc67a9ad2a043bc0581c5f5cfd9701cf826bc8ea15c18d01b496920983",
+      "bytes": 34472,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/sigstore/cosign/6181e75677cc4719e845fa23d0ef8a936e883aa0/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/sigstore/cosign/releases/tag/v3.1.4"
+}

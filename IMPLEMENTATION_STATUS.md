@@ -1,0 +1,113 @@
+# Implementation status
+
+Status: working local v0.1.0 implemented and verified. First serious release remains blocked by deployment verification and the operational items below. No GitHub publication or Guardrail Sovereign modification has occurred.
+
+## Phase 0 — environment inspection
+
+- Existing workspace: `.git` with no commits/remotes, `.gitignore`, `.vscode/mcp.json`. Preserved.
+- Available: Python 3.14, Node 24.13.0, npm 11.21.1, Git, ripgrep, Docker CLI 29.9.2.
+- Docker Linux engine initially unavailable. GitHub CLI unavailable. No publishing attempted.
+- GitHub unauthenticated REST rate limit exhausted; raw official sources and git references accessible.
+- Files added: IMPLEMENTATION_PLAN.md, ARCHITECTURE.md, this status log.
+- Tests: environment commands only. No application tests yet.
+- Remaining: upstream register, implementation, deployment and validation.
+
+Each completed phase will record changes, observed tests, integration status, security/licence issues and remaining work here.
+
+## Current validation snapshot
+
+- Backend full suite with real cdxgen enabled: **35 passed, 1 skipped**, 13.99 seconds. Skipped: real OPA HTTP service (not configured). One upstream Starlette/httpx deprecation warning; no assertion failures.
+- Real loopback HTTP workflow: authentication, system creation, evidence signing/verification, assessment attachment, queued cdxgen execution, BOM persistence, audit-chain verification and report export all passed. Saved in `docs/validation/http-workflow-benchmark.json`.
+- Trestle5.2.1 validates actual OSCAL models; Ed25519 DSSE integrity/tampering tests pass. These are genuine package/crypto operations, not mocked execution claims.
+- Frontend: final production build, TypeScript, formatting and7 unit tests pass. Initial real browser suite2/2 passed. Expanded suite2/3 passed: all21 pages,3 framework assessments/evidence links and tenant isolation were exercised; mobile overflow assertion failed, was fixed, then passed an isolated real-CSS/browser regression1/1. Complete expanded suite after the fix remains blocked by startup approval review. Details: `frontend/VERIFICATION.md`.
+- Python dependency audit: no known vulnerabilities among65 locked dependencies. Discovery npm audit:0 vulnerabilities after reviewed glob/minimatch overrides. Frontend npm audit:0 vulnerabilities across64 packages. These are point-in-time database results, not a guarantee of security.
+- Python wheel builds successfully with28 entries; catalogue is packaged and node_modules is excluded. Docker Compose configuration parses successfully.
+- Real PostgreSQL18.6 verification: **13 checks passed**, including upgrade/down-up, FORCE RLS, non-superuser/NOBYPASSRLS role, unscoped reads, foreign tenant SELECT/INSERT/UPDATE protection and audit UPDATE/DELETE rejection. Isolated native cluster shut down after testing; report: `docs/validation/postgres.json`.
+- Native detector benchmark: p99 short safe0.0091ms; short PII0.0189ms; near-limit input3.447ms (500samples each).
+- Final full HTTP authenticated path plus SQLite persistence: short PII p50=12.05ms, p95=15.17ms, p99=16.67ms; near-limit input p50=15.79ms, p95=20.64ms, p99=22.81ms (200samples each). Sequential loopback Windows measurements exclude model services, proxies and cloud networking; earlier runs varied up to29.62ms p99 under local contention.
+
+## Phase 1 — upstream and licence verification
+
+Completed all25 numbered research records with official URLs, inspected versions/commits, capabilities, installation/interfaces/formats, licensing, maintenance uncertainty, risks and observed test status. OPA and OPA-Envoy remain one numbered entry with two separately identified repositories.
+
+Files: `docs/research/*`, `INTEGRATION_REGISTER.md`, `LICENCE_AUDIT.md`, `THIRD_PARTY_NOTICES.md`, `THIRD_PARTY_INTEGRATIONS.md`, `integrations/catalog.json`; source-fetch/regeneration scripts in `scripts/`.
+
+Validation: exact catalogue count/IDs checked by automated tests; official source/PyPI/npm references and hashes recorded. GitHub anonymous REST rate limit prevented some metadata checks; no archive/maintenance guarantees inferred. Current VerifyWise licence is VCEL1.0, not the earlier BSL note; intended commercial-client deployment is blocked. OpenComplAI AGPL and a toolkit's missing licence prevent silent inclusion. ISO normative text is not reproduced. Remaining: reverify licences/releases before each future integration or public release.
+
+## Phase 2 — architecture and implementation specification
+
+Completed independent REST boundary, tenant/session model, typed adapter contract, execution lifecycle, evidence trust and native-vs-upstream distinction. Files: `ARCHITECTURE.md`, `docs/API.md`, `docs/predicates/evidence-v1.md`. Integration specification implemented in `integrations/base.py`.
+
+Validation: API schema and workflow tests. Remaining: external SSO, dedicated service tokens, idempotency and webhook contracts before future Guardrail Sovereign connection. No connection to that platform is implemented.
+
+## Phase 3 — repository foundation
+
+Completed pinned Python/npm dependencies, package build, application module separation, environment example and ignore rules. Files: `pyproject.toml`, `requirements.lock`, `frontend/package*.json`, `integrations/tooling/package*.json`, `.env.example`, `.dockerignore`, `.gitignore`, `LICENSE`, contribution/security files.
+
+Validation: installations succeeded, wheel built; package inspected to exclude tool source trees. Private local generated DB credentials are only in ignored `.env`. Remaining: owner-approved publication and final attribution/legal review; no remote configured or public repository created.
+
+## Phase 4 — backend, database and API
+
+Completed sessions/Argon2, organisation membership/roles, tenant resource modules, typed inputs, resource references, migrations and `/api/v1`. Files: `backend/uag/`, `migrations/`, `alembic.ini`.
+
+Validation: fresh SQLite upgrade/downgrade/upgrade, login/revocation/rate-limit, role and cross-tenant negative tests pass. PostgreSQL18.6 passed13 real migration/RLS/role/audit checks. App credentials can set the tenant session variable, so trusted authenticated API context remains necessary; RLS is defence in depth, not permission to disclose database credentials. Remaining: multi-worker stress, pagination beyond1000-record list caps, comprehensive response model coverage, external identity lifecycle/invitations. SQLite remains development-only.
+
+## Phase 5 — frontend
+
+Completed responsive navigation and real forms for all21 pages, in-memory sessions, workspace switching, persisted dashboard metrics, honest empty states, adapter config/health, reports and evidence actions. Files: `frontend/src/`, unit/E2E tests, Next/CSP configuration, Dockerfile and README.
+
+Validation: build/typecheck/unit tests and real browser workflow. Browser testing found and fixed a navigation remount race and mobile table overflow. Existing Guardrail Sovereign port3000 was preserved; selected3100/8100. Remaining: broader accessibility audit and operational scale testing.
+
+## Phase 6 — registry and execution engine
+
+Completed25-entry catalogue, five registered adapters, immutable configuration snapshots per job, durable queued/running/terminal states, cancellation, timeout/bounded subprocess output, logs/provenance and worker reconciliation. Files: `integrations/{base,registry}.py`, `backend/uag/jobs.py`, worker/drain CLI.
+
+Validation: registry/schema tests, genuine queued discovery through HTTP, subprocess timeout/output/cancel tests. Reference/deferred/licence-blocked entries cannot execute. Remaining: real Redis worker/container startup verification, distributed concurrency/load tests and richer monitoring/alert delivery.
+
+## Phase 7 — integrations by layer
+
+Implemented/tested: cdxgen13.7.0 restricted npm lockfile inventory; Compliance Trestle5.2.1 OSCAL JSON model validation; in-toto Statement v1 and separate evidence DSSE signing. Implemented awaiting services: OPA HTTP adapter and Presidio analyze/anonymize adapter. All other entries are accurately classified and documented, not presented as completed executions.
+
+Files: `integrations/discovery.py`, `integrations/evidence_oscal.py`, `integrations/runtime_security.py`, `integrations/policies/governance.rego`, research/test records. cdxgen's Windows space-in-staging-path failure was reproduced and fixed through a deployment-only validated no-space staging root; secure mode remains enabled. No unrestricted host paths or commands are accepted.
+
+Validation: real cdxgen CLI/BOM and Trestle package results saved; OPA binary checksum/version and policy syntax checks passed. OPA HTTP execution, Presidio, Cosign, Envoy, NeMo, Llama Guard and other deferred tools are not claimed as tested. Model hardware/latency and per-model licence review remain required.
+
+## Phase 8 — tenant, evidence and governance workflows
+
+Completed tenant-scoped inventory,3 framework workflows, gap/applicability notes, risk/legal-register support through controls/evidence, findings, owners/due dates, corrective actions, exact UTF-8 artefact preservation, hashes, provenance, DSSE, downloads, ZIP exports and hash-chain audit verification.
+
+Files: `backend/uag/{governance,frameworks,evidence,resources,schemas}.py`, workflow/security tests. Validation: API and browser flows; foreign IDs, evidence references/downloads and reports denied across tenants; signature tampering, XML entities and invalid formats rejected. Remaining: binary/object storage, external immutable audit checkpoints, key rotation/trust history and automated retention. Current retention setting records policy intent only. Original checklists support assessments; no legal/certification guarantee.
+
+## Phase 9 — runtime and guardrails
+
+Completed explicit policies, local pattern/term checks and allow/block/sanitize/review decisions, sensitive-text-free synchronous event logs, per-check timing and configured block/review error outcomes. Files: `backend/uag/runtime.py`, security/runtime adapter modules and tests.
+
+Validation: positive/negative patterns, policy failure injection, prompt privacy and measured latency. Native patterns cover limited email/US-SSN/card-like strings, not comprehensive PII or prompt injection. Heavy/model checks are not silently placed in the synchronous path. Remaining: evaluate configured model/proxy components separately and end to end on target hardware; no production sub50ms guarantee.
+
+## Phase 10 — tests and security review
+
+Completed API/unit/migration/adapter/isolation/auth/security/browser tests, dependency audits and native/HTTP benchmarks. Files: `tests/`, `frontend/tests/`, `scripts/benchmark.py`, `scripts/verify_live.py`, `docs/validation/`, `docs/verification/`, `.github/workflows/ci.yml`.
+
+Actual results are above and in saved reports. A mocked malformed Presidio response is an isolated parser test, not service verification. Remaining: container, real services, cloud, load/concurrency, backup restore, independent penetration test and accessibility review. CI configuration is supplied but has not been run on GitHub because nothing was published.
+
+## Phase 11 — Docker local deployment
+
+Completed digest-pinned Compose with PostgreSQL, Redis, migration, API, worker, OPA and frontend; non-root restricted app containers; loopback ports and private data-service network. Files: `docker-compose.yml`, `docker/`, `frontend/Dockerfile`.
+
+Observed: Docker engine started and hello-world succeeded. `docker compose config --quiet` passed. Backend build and OPA container launch then failed writing Docker's metadata database: **read-only file system**, with the host C: drive nearly full. No volume deletion, Docker reset or unrelated-file cleanup attempted. Container startup acceptance is **blocked**, not passed. Remaining: repair host storage/engine with owner-controlled maintenance, rebuild, run startup/RLS/Redis worker checks and retain output.
+
+## Phase 12 — cloud configuration and operations
+
+Completed independent cloud/VM guidance, TLS Caddy overlay, secret injection, private database role, backup/restore procedure and troubleshooting. Files: `DEPLOYMENT.md`, `docker-compose.production.yml`, `docker/Caddyfile`, `SECURITY.md`.
+
+Validation: local configuration review; no public domain, cloud resources, messages or external deployment created. Remaining: choose target account/domain, provision private data services, approve public deployment, execute restore drill and configure alert delivery. The cloud template is untested deployment configuration, not a deployed service.
+
+## Phase 13 — release readiness review
+
+Ready for local evaluation: functional independent application, all7 module workspaces and25 researched entries, real tested workflow, persisted evidence/risks/audit, measured local performance, documented API and licences.
+
+**Not first-serious-release ready:** container startup remains blocked; OPA/Presidio and heavy model/proxy service execution need real configuration; deployed role verification, Redis worker/load/restore/secret lifecycle and operational review must complete. Native PostgreSQL isolation/migrations passed. Unimplemented external tools remain deferred/reference/restricted rather than silently replaced.
+
+Automatic approval review rejected starting the downloaded OPA server with the stated reason “blocked by policy.” No alternate runner was used to bypass it. Read-only binary and Rego checks were permitted; service connectivity remains skipped.
+
+Automatic approval review also rejected frontend restart, including a loopback-only start, with “blocked by policy.” Earlier genuine browser workflows and the final production build are recorded, but a complete final browser rerun after the layout correction remains blocked. No alternate server runner was used to bypass this.

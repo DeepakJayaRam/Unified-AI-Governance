@@ -1,0 +1,51 @@
+{
+  "repo": "microsoft/presidio",
+  "git_reference": "ref: refs/heads/main\tHEAD\naa77b9f98f2c3a2de0f16974e7b540702938707e\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "aa77b9f98f2c3a2de0f16974e7b540702938707e",
+  "sources": {
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/LICENSE",
+      "sha256": "f3e86ee59a49bcfb0d9a9547484d55224ea7b2d04f95b1947b4d18d17f6de535",
+      "bytes": 1084,
+      "inspected_on": "2026-11-13"
+    },
+    "pyproject.toml": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/pyproject.toml",
+      "sha256": "a12a0b7e9bbffe272d900781877e4c58570fa10287a2f02601edaaaa7e07d61f",
+      "bytes": 1270,
+      "inspected_on": "2026-11-13"
+    },
+    "README.MD": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/README.MD",
+      "sha256": "b553970feb389eaa4cb4a09362ee1a5825e4844a63ea2a2d729c6fca18a140e0",
+      "bytes": 6722,
+      "inspected_on": "2026-11-13"
+    },
+    "presidio-analyzer/pyproject.toml": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-analyzer/pyproject.toml",
+      "sha256": "15b1efbad77968332b037372f1c4d3cb67fa54a6a32a4155591bff5b8dc7b62f",
+      "bytes": 2632,
+      "inspected_on": "2026-11-13"
+    },
+    "presidio-analyzer/app.py": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-analyzer/app.py",
+      "sha256": "b6cc79eccbade1e6886a6eb5b79c307872e3e32f2e674cebc34e458c47185ca5",
+      "bytes": 7182,
+      "inspected_on": "2026-11-13"
+    },
+    "presidio-anonymizer/app.py": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-anonymizer/app.py",
+      "sha256": "3ba503daa59a91851ab39721087c7df1ece3a6237d10fc057e1314212106b759",
+      "bytes": 4823,
+      "inspected_on": "2026-11-13"
+    },
+    "docker-compose.yml": {
+      "url": "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/docker-compose.yml",
+      "sha256": "5ea1522443f4c6a1f10be808906c083e4f5741042e2e31b0dbfa1bc8e95f8166",
+      "bytes": 1800,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/data-privacy-stack/presidio/releases/tag/2.2.366"
+}

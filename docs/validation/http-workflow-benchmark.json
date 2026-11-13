@@ -1,0 +1,59 @@
+{
+  "environment": "Windows Python 3.14, loopback HTTP, SQLite, one uvicorn process; synthetic records only",
+  "tests": {
+    "evidence_sign_verify": "passed",
+    "assessment_evidence_attachment": "passed",
+    "queued_cdxgen_scan": {
+      "status": "passed",
+      "provenance": {
+        "tool": "cdxgen",
+        "version": "13.7.0",
+        "elapsed_ms": 1776.41,
+        "input_sha256": "5bf45bb127301c1e76e67768862e59b81c4e9cb5b69568a7aca3dc6d179b1ad0",
+        "artifact_sha256": "6f94f6cea2feba5a71fd0aab8cb423ae5d5ae94a8d48b920a1cf428aca4b0fbf",
+        "execution_mode": "restricted npm lockfile; Node permissions; no child processes; no dependency installation",
+        "command": [
+          "node",
+          "--permission",
+          "--allow-fs-read=<tooling>",
+          "--allow-fs-read=<staging>",
+          "--allow-fs-write=<staging>",
+          "<tooling>\\node_modules\\@cdxgen\\cdxgen\\bin\\cdxgen-secure.js",
+          "-t",
+          "js",
+          "--no-install-deps",
+          "--no-babel",
+          "--no-recurse",
+          "--no-rust",
+          "--no-include-formulation",
+          "--no-cache",
+          "--spec-version",
+          "1.6",
+          "--output",
+          "<staging>\\bom.json",
+          "<staging>"
+        ],
+        "configuration": {
+          "timeout_seconds": 60
+        }
+      },
+      "component_count": 1
+    },
+    "audit_chain": "passed",
+    "report_export": "passed"
+  },
+  "benchmarks": {
+    "short_pii": {
+      "samples": 200,
+      "p50_ms": 12.046899999404559,
+      "p95_ms": 15.165300000262505,
+      "p99_ms": 16.673899999659625
+    },
+    "max_input": {
+      "samples": 200,
+      "p50_ms": 15.791200000421668,
+      "p95_ms": 20.643699999709497,
+      "p99_ms": 22.81349999975646
+    }
+  }
+}

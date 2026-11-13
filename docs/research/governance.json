@@ -1,0 +1,886 @@
+[
+  {
+    "number": 1,
+    "id": "cdxgen",
+    "name": "OWASP cdxgen",
+    "layer": 1,
+    "source_url": "https://github.com/cdxgen/cdxgen",
+    "classification": "CLI_INTEGRATION",
+    "version": "npm stable 13.7.0; inspected HEAD manifest 13.8.0 (not selected)",
+    "inspected_commit": "0bf437ead5043f40e51ffae5f662eb47f8febba4",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Generate CycloneDX inventory from source manifests and supported ecosystems",
+      "AI/ML inventory depends on discovered metadata; an SBOM is not proof of all AI usage"
+    ],
+    "languages": [
+      "JavaScript",
+      "TypeScript",
+      "Python helper metadata"
+    ],
+    "installation": "cd integrations/tooling && npm ci --ignore-scripts --omit=optional; Node >=24.15, tested 24.22.3; lockfile pins cdxgen13.7.0 and patched glob14.0.6/minimatch11.0.8 overrides",
+    "dependencies": [
+      "Node >=24",
+      "Ecosystem-specific tools for richer analysis",
+      "Optional platform plugins"
+    ],
+    "api": "Optional server mode documented; no network service selected",
+    "sdk": "JavaScript package exports verified in package.json",
+    "cli": "cdxgen and aibom binaries verified",
+    "deployment": "Official container documented; local restricted CLI selected",
+    "input_formats": [
+      "package manifests",
+      "lock files",
+      "source trees",
+      "supported container inputs"
+    ],
+    "output_formats": [
+      "CycloneDX JSON"
+    ],
+    "licence": "Apache-2.0; preserve licence/notices and dependency licences",
+    "maintenance": "Repository accessible. Stable npm and development HEAD differ; pin stable. Language coverage varies with installed toolchains.",
+    "integration_method": "Implemented restricted npm v3 lockfile CLI adapter. Node filesystem permissions deny child processes and addons; staged data only, no install scripts; background execution only.",
+    "security_risks": [
+      "Dependency scripts and external tool invocation",
+      "Source/manifest secrets in output",
+      "Resource exhaustion",
+      "Do not equate inventory with vulnerability detection"
+    ],
+    "test_status": "REAL_EXECUTION_PASSED: 11 adapter/security tests; cdxgen 13.7.0 generated schema-validated CycloneDX 1.6 from an explicit npm v3 fixture; see docs/verification/cdxgen-test.json",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/README.md",
+        "sha256": "4060d7d88b8b17da4a91b722c76a4966c980d28f6c2b9e0e980c8244b231c52e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/LICENSE",
+        "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/pyproject.toml",
+        "sha256": "a78533f5d4098a44c9f762e1921e23082a1eaa208386dc462b0a67dc6d7dcfb9"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/package.json",
+        "sha256": "49c284aff14b16675d869893cb6aa6e12e74c3f52fd38fcf4047e46f29aabe41"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/bin/cdxgen.js",
+        "sha256": "49301e7d28bd4046e557ce376e51a7e8810edd22a0e04f59c53cd0d5d8edc09b"
+      },
+      {
+        "url": "https://registry.npmjs.org/@cdxgen%2fcdxgen/latest",
+        "status": 200,
+        "sha256": "7797aa6aa2470908058486e591b455d74a7f2a87498e74632a3a5e816a73a641"
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "id": "owasp-aibom",
+    "name": "OWASP AIBOM Generator",
+    "layer": 1,
+    "source_url": "https://github.com/GenAI-Security-Project/aibom-generator",
+    "classification": "DEFERRED",
+    "version": "HEAD pyproject 1.0.2; PyPI name owasp-aibom-generator returned 404",
+    "inspected_commit": "45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Extract Hugging Face model metadata",
+      "Generate CycloneDX 1.6 JSON",
+      "AIBOM completeness scoring"
+    ],
+    "languages": [
+      "Python",
+      "HTML"
+    ],
+    "installation": "Upstream documents pip install -r requirements.txt or uv sync from source; python -m src.cli owner/model",
+    "dependencies": [
+      "Python >=3.11",
+      "cyclonedx-python-lib",
+      "huggingface_hub",
+      "torch",
+      "transformers",
+      "datasets"
+    ],
+    "api": "README declares API endpoints; precise interface not yet exercised",
+    "sdk": "Source Python modules, no independently verified SDK contract",
+    "cli": "src.cli and aibom entry point verified",
+    "deployment": "python -m src.main documented; no production deployment validated",
+    "input_formats": [
+      "Hugging Face model ID",
+      "optional metadata overrides"
+    ],
+    "output_formats": [
+      "CycloneDX 1.6 JSON",
+      "completeness metrics"
+    ],
+    "licence": "Apache-2.0 stated in licence and manifest; model/dataset licences remain separate",
+    "maintenance": "Repository accessible. Heavy dependencies and unpublished package name require isolated source build and runtime tests.",
+    "integration_method": "Await isolated service deployment, model egress allowlist and contract test; catalogue link available.",
+    "security_risks": [
+      "Model repository untrusted metadata",
+      "Remote inference option requires credentials",
+      "Large downloads",
+      "PII or confidential model IDs sent externally"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/README.md",
+        "sha256": "bc9e824a09f81116d6305862d242b35c08e9223cf4d8b934a0ebc27e89f7e39f"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/LICENSE",
+        "sha256": "1b80e48550e922093b401e2b1deb68f5751aadad1bd7b79938c1ed158e9783af"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/pyproject.toml",
+        "sha256": "7ae224dfc7b03ff39f3dd896e98d07d97f634f1b13e7a237e71d95341e2680ee"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/requirements.txt",
+        "sha256": "6a6b0ad95f3e6bed6d2f54b69d353138f868efdb9fd3ef582475a90f7f30e581"
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "id": "opencomplai",
+    "name": "OpenComplAI Scan",
+    "layer": 1,
+    "source_url": "https://github.com/opencomplai/opencomplai",
+    "classification": "DEFERRED",
+    "version": "opencomplai-cli 0.15.0 (PyPI 2026-11-08)",
+    "inspected_commit": "455be2575d728dff6070f87f80489da5fb5c7b05",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Deterministic code/manifest discovery and findings",
+      "Compliance manifest checks",
+      "EU AI Act evaluated; NIST projection and attestation-led framework packs are distinct",
+      "Scanner advisory mode documented; check exit codes have different semantics"
+    ],
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "installation": "Upstream: pip install opencomplai-cli==0.15.0; not bundled by this application",
+    "dependencies": [
+      "Python >=3.11",
+      "opencomplai-core",
+      "Typer",
+      "Rich",
+      "Pydantic"
+    ],
+    "api": "Separate gateway/services documented; not configured",
+    "sdk": "opencomplai Python SDK package exists",
+    "cli": "opencomplai scan --quick and scan --manifest ... --repo-root ... documented",
+    "deployment": "Upstream Compose exists under infra/compose; separate deployment only pending licence assessment",
+    "input_formats": [
+      "Repository files",
+      "system-manifest.json",
+      "scan baseline JSON"
+    ],
+    "output_formats": [
+      "scan-report.json",
+      "compliance-artifact.json",
+      "structured findings"
+    ],
+    "licence": "AGPL-3.0-only Community Edition; network-use/source obligations must be assessed before embedding or hosted deployment; commercial Enterprise licence offered",
+    "maintenance": "Accessible active source; stable CLI verified through PyPI. Documentation explicitly distinguishes discovery and compliance gates.",
+    "integration_method": "Deferred pending AGPL distribution/network obligation decision and isolated CLI tests. No source copied or package included.",
+    "security_risks": [
+      "Scan can read sensitive files; use .ocignore plus app staging allowlist",
+      "Optional push and model inference must remain disabled",
+      "Advisory findings are not compliance certification"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/README.md",
+        "sha256": "0092af8a9475e052ee7fb37794263c7496f6a6a247e65921aa0d67ddc71cda69"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/LICENSE",
+        "sha256": "d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/pyproject.toml",
+        "sha256": "f181ed38acfc8e80e19192a707f2261e2e7f9e0140b7b0badd96d9607e16454e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/package.json",
+        "sha256": "08396ddca35044946045068eb13ad7a96593fdebba6778f39628ee7c30859b8f"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/setup.py",
+        "sha256": "0ce32e008b1c661d35c13d21d8a5a1ab31596b1e60a44903e178b7a5e173035a"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/packages/cli/pyproject.toml",
+        "sha256": "00695c82e54722d40a7f29bf897ee77d14f4b13179de4ee6ad05d8d97d529b7a"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/docs/src/getting-started/scanner.md",
+        "sha256": "fa6c53807ec1702a24aa70268b2cb27f99fe50865958f370011ec94f9a3ae744"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/docs/src/guides/ci-integration.md",
+        "sha256": "296f97806e5f1819a045b2a880e7e41f1be3230c4b8257ef4aef479fb34be28d"
+      },
+      {
+        "url": "https://pypi.org/pypi/opencomplai-cli/json",
+        "status": 200,
+        "sha256": "15b75997b217412d37464416edb6a306cd0c9d0815e2cdce8f3b871b21d3ff4c"
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "id": "riskforge",
+    "name": "RiskForge by AI Exponent",
+    "layer": 2,
+    "source_url": "https://github.com/aiexponent/riskforge",
+    "classification": "DEFERRED",
+    "version": "riskforge 2.1.0 (PyPI 2026-11-07)",
+    "inspected_commit": "d823d1a1435251d41e9edce8701214eb65361ab8",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Guided Article 9 risk assessment",
+      "Risk Management File exports",
+      "Hash-chained audit trail and verification features",
+      "Human input drives assessment; no legal certification"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "pip install riskforge==2.1.0 in separate environment; PDF requires platform libraries described upstream",
+    "dependencies": [
+      "Python >=3.11",
+      "Typer <0.26",
+      "Pydantic 2",
+      "WeasyPrint 70",
+      "cryptography",
+      "PyYAML",
+      "jsonschema"
+    ],
+    "api": "No supported HTTP service verified",
+    "sdk": "Python modules and plugin entry points; no stable external SDK contract validated",
+    "cli": "riskforge CLI verified in manifest; init, assess and export workflows documented",
+    "deployment": "Local offline CLI; PDF system dependencies require separate packaging",
+    "input_formats": [
+      "System metadata",
+      "guided answers",
+      "YAML answers",
+      "imported evidence JSON"
+    ],
+    "output_formats": [
+      "Risk Management File JSON",
+      "Markdown",
+      "PDF"
+    ],
+    "licence": "Apache-2.0; preserve notices and review dependent libraries",
+    "maintenance": "Actual repo aiexponent/riskforge verified by PyPI project URLs. Website snippets can lag current package; dependency bounds matter.",
+    "integration_method": "Await isolated CLI installation and noninteractive workflow contract tests; native application assessment stores evidence meanwhile.",
+    "security_risks": [
+      "Local audit files contain sensitive risk information",
+      "Plugin code execution",
+      "PDF resource loading",
+      "Hash chains alone do not prevent privileged tampering"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/README.md",
+        "sha256": "5b5df6ac08327fd7b05cad124c18ec7ccefd8e36a5111f4868a8678d8f262bd4"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/LICENSE",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/pyproject.toml",
+        "sha256": "c5a7c5fe194442afef454c2868964c6f570f6d659f5a02cacc0049b310928a5f"
+      },
+      {
+        "url": "https://pypi.org/pypi/riskforge/json",
+        "status": 200,
+        "sha256": "d68910d80399f4d577c730d8f04f6dac936027a7bed94d2e344774b7d3a7ffda"
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "id": "eu-ai-act-toolkit",
+    "name": "EU AI Act Toolkit (AbdelStark)",
+    "layer": 2,
+    "source_url": "https://github.com/AbdelStark/eu-ai-act-toolkit",
+    "classification": "DEFERRED",
+    "version": "Source SDK and CLI 0.1.0; both npm package latest URLs returned 404",
+    "inspected_commit": "fff58f6e890648947ba9f9a8caeb94bd566c4651",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Deterministic TypeScript classification and checklists",
+      "Markdown templates with placeholders",
+      "CLI JSON reports",
+      "Static browser workspace"
+    ],
+    "languages": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "installation": "README proposes npm @eu-ai-act/sdk and npx @eu-ai-act/cli, but registry 404 observed; source build requires npm install then turbo build",
+    "dependencies": [
+      "Node >=20",
+      "TypeScript",
+      "Turborepo",
+      "SDK manifest has no runtime dependencies"
+    ],
+    "api": "No backend API; web app is client-side",
+    "sdk": "Source @eu-ai-act/sdk exists; registry installation not verified",
+    "cli": "Source @eu-ai-act/cli exists; registry installation not verified",
+    "deployment": "Static Next.js app and local CLI source; no container verified",
+    "input_formats": [
+      "Classification questionnaire",
+      "risk tier",
+      "template metadata"
+    ],
+    "output_formats": [
+      "Classification JSON",
+      "checklist JSON",
+      "Markdown templates"
+    ],
+    "licence": "MIT; retain copyright and licence if source is redistributed",
+    "maintenance": "Source accessible; advertised published package availability failed. README legal dates differ from 2026 EUR-Lex amendment; review content before reuse.",
+    "integration_method": "Reference link and native assessment workflow now; defer package adapter until source-built artifact and legal mappings validated.",
+    "security_risks": [
+      "Classification may omit legal exceptions",
+      "Stale regulatory dates",
+      "Do not automatically treat score as compliance"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/README.md",
+        "sha256": "6ad3a23be55158b5d41d30330874aafd9fecc6dea3a8cd77f7177133a8d10446"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/LICENSE",
+        "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/package.json",
+        "sha256": "a1fc93fb02c1762a086f491baab0652013296c28da6587b15c2bdfc85b4f881e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/packages/sdk/package.json",
+        "sha256": "0ab5a745bf9922c2063052b487161536632096ba4232505445614efa0794ea0c"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/packages/cli/package.json",
+        "sha256": "e4e0d76c9d53299597e5440cfa84c01a728fe5b16de7ec7192dd1b748af0e584"
+      },
+      {
+        "url": "https://registry.npmjs.org/@eu-ai-act%2fsdk/latest",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "url": "https://registry.npmjs.org/@eu-ai-act%2fcli/latest",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "id": "venturalitica",
+    "name": "Venturalitica SDK",
+    "layer": 2,
+    "source_url": "https://github.com/Venturalitica/venturalitica-sdk",
+    "classification": "DEFERRED",
+    "version": "venturalitica 0.8.2 (PyPI 2026-08-27)",
+    "inspected_commit": "dc64f520a786b9f5dfd4cebfa900b2847c9f3061",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Training-time data/fairness policy checks",
+      "Trace and model-BOM evidence",
+      "OSCAL policy and result workflows claimed upstream",
+      "Regulatory documentation drafts"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "pip install venturalitica==0.8.2; disable analytics with VENTURALITICA_NO_ANALYTICS=1 or DO_NOT_TRACK",
+    "dependencies": [
+      "Python >=3.11",
+      "numpy >=2.4",
+      "pandas",
+      "scikit-learn",
+      "compliance-trestle",
+      "cyclonedx-python-lib",
+      "posthog"
+    ],
+    "api": "No hosted API used; cloud described as forthcoming",
+    "sdk": "vl.enforce, vl.monitor, vl.retain documented",
+    "cli": "vl / venturalitica entry points verified",
+    "deployment": "Local SDK; optional dashboard and model extras",
+    "input_formats": [
+      "pandas DataFrame",
+      "OSCAL policy YAML",
+      "training artifacts"
+    ],
+    "output_formats": [
+      "Audit trace JSON",
+      "CycloneDX ML-BOM",
+      "OSCAL assessment-results claimed; not validated here"
+    ],
+    "licence": "Apache-2.0; model/cloud terms separate",
+    "maintenance": "Beta classifier in package manifest. Version verified; heavy scientific dependencies should be isolated from core.",
+    "integration_method": "Deferred to data-science worker after representative dataset and OSCAL format tests; never claim compatibility from README alone.",
+    "security_risks": [
+      "Telemetry enabled unless opted out",
+      "Optional cloud fallback for LLM generation",
+      "Potential sensitive dataset/evidence traces",
+      "Heavy CPU/GPU processing"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/README.md",
+        "sha256": "62e77bcfe50ddf612e7d6c457bd2b96b3fc4df4dfe82a392015142fec7d0b6aa"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/LICENSE",
+        "sha256": "da0944029f9cef24861e17ffb9c3abc950311d54809919d54a2b0c8a17adee57"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/pyproject.toml",
+        "sha256": "765a13329eecce0ddd1b0ba16b3e2f2cbd71e346849b2bbbe0860d96981728ec"
+      },
+      {
+        "url": "https://pypi.org/pypi/venturalitica/json",
+        "status": 200,
+        "sha256": "7452a729bf40a2066d833ab3a30d96787bc4f2e3db67f7894e4227570b784dae"
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "id": "compl-ai",
+    "name": "COMPL-AI",
+    "layer": 2,
+    "source_url": "https://github.com/compl-ai/compl-ai",
+    "classification": "DEFERRED",
+    "version": "HEAD pyproject 2.0.0; no tagged stable release found by git ls-remote",
+    "inspected_commit": "c359f0a61112f8316715ea1c6e140983f0c50a40",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "LLM technical benchmark suite built on Inspect AI",
+      "Provider API and local model evaluations",
+      "Sample-level evaluation logs",
+      "v1 and v2 scores not directly comparable"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "Upstream: source clone then uv sync, use complai eval provider/model; pin inspected commit when trialled",
+    "dependencies": [
+      "Python >=3.11,<3.14",
+      "Inspect AI",
+      "PyTorch",
+      "datasets",
+      "spaCy",
+      "multiple Git-sourced packages",
+      "provider credentials or local model hardware"
+    ],
+    "api": "Provider APIs consumed, not an application governance API",
+    "sdk": "Inspect AI task plugins",
+    "cli": "complai eval/list/samples/predict documented",
+    "deployment": "Separate evaluation environment; agentic tasks may use sandboxes",
+    "input_formats": [
+      "Model/provider ID",
+      "task YAML/JSON",
+      "datasets"
+    ],
+    "output_formats": [
+      "Inspect evaluation logs",
+      "JSONL samples",
+      "predicted score JSON"
+    ],
+    "licence": "Apache-2.0 main project; benchmark datasets, models and third-party tasks have separate licences",
+    "maintenance": "Accessible; framework mapping update in progress per README. Python 3.14 host incompatible with current declared bound.",
+    "integration_method": "Asynchronous isolated evaluation only; awaiting Python <=3.13 environment and model/provider configuration.",
+    "security_risks": [
+      "Cost and remote data transfer",
+      "GPU/CPU and sandbox requirements",
+      "Untrusted benchmark content",
+      "Benchmark score is not legal conformity"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/README.md",
+        "sha256": "45a06c73cee4a122d790059af8edd8e26849c9882f9dc31ea74e5f674251d014"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/LICENSE",
+        "sha256": "cc4d4de0920b0d3912203b5d9aa76728ac4a11087f55da9ea00576db7d1e34e2"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/pyproject.toml",
+        "sha256": "d8991b39c1605bbb621d8ea172ef270c251de547cdddd262eacbb57c12864929"
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "id": "awesome-eu-ai-act",
+    "name": "Awesome EU AI Act",
+    "layer": 2,
+    "source_url": "https://github.com/morganrcu/awesome-eu-ai-act",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "Commit inspected; no versioned executable release",
+    "inspected_commit": "d46c0492aecea2e8b1e3496a1b8eb331c60193cb",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Curated links to EU AI Act resources, tools and frameworks"
+    ],
+    "languages": [
+      "Markdown"
+    ],
+    "installation": "No installation; visit or pin reference URL",
+    "dependencies": [],
+    "api": "None",
+    "sdk": "None",
+    "cli": "None",
+    "deployment": "Static repository reference",
+    "input_formats": [],
+    "output_formats": [
+      "Human-readable reference links"
+    ],
+    "licence": "README dedicates work under CC0-1.0; linked projects retain their own terms",
+    "maintenance": "Repository accessible. Curated third-party claims require independent verification.",
+    "integration_method": "Reference catalogue only; not executable and never shown as connected.",
+    "security_risks": [
+      "Link rot",
+      "Non-authoritative legal summaries",
+      "Linked tools may have incompatible licences"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/README.md",
+        "sha256": "18e2fb32cd2edc71be1ce6f3d72202fe23a108d7bdf49c7c76e64309299d9ad2"
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "id": "iso-42001-toolkit",
+    "name": "ISO/IEC 42001 AI Governance Toolkit (Ankit Uniyal)",
+    "layer": 3,
+    "source_url": "https://github.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "Commit inspected; assessment checker 1.1.0, SoA tracker 1.0.0 in source; no project release tag",
+    "inspected_commit": "803b62da4c66f6b6ab601c87cb298597a497eebd",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "AIMS templates and registers",
+      "Gap-assessment guidance and cross-framework references",
+      "CSV assessment-age checker",
+      "JSON SoA progress tracker with CSV export"
+    ],
+    "languages": [
+      "Markdown",
+      "Python"
+    ],
+    "installation": "Reference documents need no install. Optional upstream scripts use Python standard library; scripts not bundled.",
+    "dependencies": [
+      "Python standard library for optional scripts",
+      "Licensed ISO standard for authoritative requirements"
+    ],
+    "api": "None verified",
+    "sdk": "None verified",
+    "cli": "15-SCRIPTS/ai_assessment_checker.py and aims_soa_tracker.py inspected",
+    "deployment": "Documents and local optional scripts; no service",
+    "input_formats": [
+      "CSV system assessment dates",
+      "SoA JSON state",
+      "human-entered governance records"
+    ],
+    "output_formats": [
+      "Text assessment report",
+      "SoA JSON",
+      "CSV"
+    ],
+    "licence": "MIT for toolkit repository. This does not grant rights to reproduce ISO/IEC standard text or claim certification.",
+    "maintenance": "Source accessible. README indexes current files; feature counts are upstream claims, not independently audited ISO completeness.",
+    "integration_method": "Reference catalogue; native AIMS register stores user decisions and original short prompts, without copying ISO clauses.",
+    "security_risks": [
+      "Sensitive registers",
+      "Template/standard rights distinction",
+      "Do not claim full standard coverage or certification"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/README.md",
+        "sha256": "aed4e6f4f70675c0d1bf4f70ce66dbdced3134620d306c14648ffc6ac6212b2e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/LICENSE",
+        "sha256": "468d7cc1b5e696a0ad397ac60826ca6dd81b008df5c10c7c0a4c910c9173aaeb"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/ai_assessment_checker.py",
+        "sha256": "f5e3236e908758ff420555db23ef0b06bdf6b3db5546fd4d9d256bfc7b921951"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/aims_soa_tracker.py",
+        "sha256": "e7497c2ac74ef893a34a244191de208461b1a448978adc6b18c433944131c140"
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "id": "eu-ai-act-compliance-toolkit",
+    "name": "EU AI Act Compliance Toolkit (Ankit Uniyal)",
+    "layer": 3,
+    "source_url": "https://github.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit",
+    "classification": "DEFERRED",
+    "version": "README heading 3.5.0; footer 3.4.0; pyproject classifier 2.1.0; README script 2.2; commit is authoritative identifier",
+    "inspected_commit": "8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Governance templates and scorecards",
+      "Risk-tier classifier source",
+      "CSV inventory processing with JSON/text/CSV reports"
+    ],
+    "languages": [
+      "Markdown",
+      "Python"
+    ],
+    "installation": "Do not install or copy until a licence grant is located. Upstream documents python scripts/risk_classifier.py.",
+    "dependencies": [
+      "Python >=3.9",
+      "No package dependencies declared"
+    ],
+    "api": "None verified",
+    "sdk": "None verified",
+    "cli": "eu-ai-risk-classify entry point in pyproject and source script documented",
+    "deployment": "Documents and local script; no service",
+    "input_formats": [
+      "CSV AI inventory"
+    ],
+    "output_formats": [
+      "Text",
+      "JSON",
+      "CSV",
+      "Markdown templates"
+    ],
+    "licence": "UNVERIFIED: LICENSE, LICENSE.md and LICENSE.txt return 404; GitHub root file listing shows no licence. pyproject says See repository LICENSE. Public source alone is not a reuse grant.",
+    "maintenance": "Source accessible but conflicting versions and missing licence prevent safe incorporation.",
+    "integration_method": "External reference link only. Defer script/template redistribution and adapter installation until licence resolved.",
+    "security_risks": [
+      "Missing licence",
+      "Legal classification needs professional review",
+      "Conflicting versions",
+      "Never treat generated clearance certificate as legal approval"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/README.md",
+        "sha256": "8b01d4f9073e8a27834f23b71eedc4c365d2d10911c17048f40bbd68022f65ca"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/pyproject.toml",
+        "sha256": "ae58c1586a5bdcb1a1a18978ef36673c0b3a282a6da6a15cb60eb3e5a21125e9"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/CHANGELOG.md",
+        "sha256": "f785c0c5e56d5e4260176b97caa09910a58915fefa977290776a5348ff2f2197"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/scripts/README.md",
+        "sha256": "20b5e42231267d82e072a37b6a829b0449996baf66df794d2c0c21607cc89530"
+      }
+    ]
+  },
+  {
+    "number": 11,
+    "id": "ai-atlas-nexus",
+    "name": "IBM AI Atlas Nexus (formerly Risk Atlas Nexus)",
+    "layer": 4,
+    "source_url": "https://github.com/IBM/ai-atlas-nexus",
+    "classification": "DEFERRED",
+    "version": "ai-atlas-nexus 1.2.5 (PyPI 2026-08-31)",
+    "inspected_commit": "58bb356a44fb7fdfd9a8a1db091dcd196b561dcd",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Risk and governance knowledge graph",
+      "Cross-taxonomy querying",
+      "Risk identification using optional LLM inference",
+      "JSON/YAML graph queries"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "pip install ai-atlas-nexus==1.2.5 in isolated compatible environment; extras for chosen inference provider",
+    "dependencies": [
+      "LinkML",
+      "SSSOM",
+      "txtai",
+      "datasets",
+      "mellea",
+      "pyoxigraph",
+      "pyshacl",
+      "optional Ollama/vLLM/Watsonx"
+    ],
+    "api": "Consumes model APIs; no standalone HTTP API selected",
+    "sdk": "Python AI Atlas Nexus APIs",
+    "cli": "ran and ran-extension entry points verified; ran query emits JSON/YAML",
+    "deployment": "Local package plus optional separate inference service",
+    "input_formats": [
+      "Knowledge graph records",
+      "AI system/task descriptions",
+      "query filters"
+    ],
+    "output_formats": [
+      "JSON",
+      "YAML",
+      "risk/task identification records"
+    ],
+    "licence": "Apache-2.0 main repository; imported taxonomy and model terms require per-artifact review",
+    "maintenance": "README Python target is stale; HEAD manifest >=3.11,<=3.14.7 while PyPI 1.2.5 declares <3.14.4. Validate exact environment before install.",
+    "integration_method": "Deferred package/query worker until dependency lock, taxonomy provenance and representative query test; NIST reference linked now.",
+    "security_risks": [
+      "Optional automatic model download",
+      "External provider credentials/data",
+      "Large model dependencies",
+      "Mappings do not establish equivalent compliance"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/README.md",
+        "sha256": "c54094f30e3dcb31f32398cd9e214f610d832356a676a5e05acc432c9ccfd44d"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/pyproject.toml",
+        "sha256": "b1ef11026b478218512620c0914618f51c25d02a046deeeeeefcd67090a1f24c"
+      },
+      {
+        "url": "https://pypi.org/pypi/ai-atlas-nexus/json",
+        "status": 200,
+        "sha256": "c1e47bc9264a642631b2c4b89efa7a189024604d493200206ae4636fd0642472"
+      }
+    ]
+  },
+  {
+    "number": 12,
+    "id": "nist-airc",
+    "name": "NIST AI Resource Center / AI RMF",
+    "layer": 4,
+    "source_url": "https://airc.nist.gov",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "AI RMF 1.0 (2023) reference; website states revision in progress",
+    "inspected_commit": null,
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Authoritative AI RMF Govern, Map, Measure, Manage guidance",
+      "Playbook and crosswalk resources"
+    ],
+    "languages": [
+      "Web documents",
+      "PDF"
+    ],
+    "installation": "No executable installation; use official resources",
+    "dependencies": [],
+    "api": "No integration API verified",
+    "sdk": "None",
+    "cli": "None",
+    "deployment": "Public reference website",
+    "input_formats": [],
+    "output_formats": [
+      "HTML",
+      "PDF",
+      "published crosswalk documents"
+    ],
+    "licence": "US government reference material subject to NIST site terms; third-party material and trademarks retain their rights",
+    "maintenance": "Official site accessible 2026-11-13; AI RMF 1.0 revision notice observed.",
+    "integration_method": "Authoritative reference links and explicit framework identifiers in native records; no executable integration claim.",
+    "security_risks": [
+      "Reference updates require mapping review",
+      "Crosswalk does not imply certification"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://airc.nist.gov/",
+        "status": 200,
+        "sha256": "7adb4408f2e0bffc8ed3d8d5cbb6eb9ba5150dded28bf1586b69b195f48d39cf"
+      }
+    ]
+  },
+  {
+    "number": 13,
+    "id": "m3-framework",
+    "name": "M3 Framework",
+    "layer": 4,
+    "source_url": "https://m3framework.org",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "Official website and repository commit inspected; no executable stable release identified",
+    "inspected_commit": "bcc539de5f3d65bf9f60db3a29c060ca48d30028",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Mount, Monitor, Manage methodology",
+      "SME governance guidance",
+      "Mappings and templates for multiple frameworks"
+    ],
+    "languages": [
+      "Documentation",
+      "CSV/JSON/YAML artifacts described by licence"
+    ],
+    "installation": "No install required for reference use; visit official site and repository",
+    "dependencies": [],
+    "api": "No application API verified",
+    "sdk": "No SDK verified",
+    "cli": "No CLI verified",
+    "deployment": "Static website and reference repository",
+    "input_formats": [],
+    "output_formats": [
+      "Methodology text",
+      "reference mappings",
+      "templates"
+    ],
+    "licence": "CC-BY-4.0 standard text; Apache-2.0 code/data. Attribute Julius Gromyko and indicate changes. Trademarks reserved; no official-partner or M3-Certified claim.",
+    "maintenance": "Official site and explicit 2026 licence grant verified. No executable interface demonstrated.",
+    "integration_method": "Reference catalogue only. May evaluate separately versioned template import later with attribution.",
+    "security_risks": [
+      "Trademark/endorsement claims",
+      "Mapping completeness",
+      "Do not treat framework use as ISO certification"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/LICENSE",
+        "sha256": "e770aa9869edb4a088acfee8e7a7b8701e71a615b4b81651426a08d66ed09d4e"
+      },
+      {
+        "url": "https://m3framework.org/",
+        "status": 200,
+        "sha256": "d5f17da778cd734a6fcadb858d822e322f5cc87ef2070d4248f00bbd88f4b521"
+      },
+      {
+        "url": "https://m3framework.org/license.html",
+        "status": 200,
+        "sha256": "7c5b31d839ae5023484c596cea87eaf23a96a1dac086a160ddc3f409e628f854"
+      }
+    ]
+  }
+]

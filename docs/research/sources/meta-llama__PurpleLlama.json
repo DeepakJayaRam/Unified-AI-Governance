@@ -1,0 +1,33 @@
+{
+  "repo": "meta-llama/PurpleLlama",
+  "git_reference": "ref: refs/heads/main\tHEAD\n7e163b68c0af2ced1fae19ddbd471a8c36341519\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "7e163b68c0af2ced1fae19ddbd471a8c36341519",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/README.md",
+      "sha256": "ba4b067ebb5131715c2bf6e1f87d63a7b9268c4d357e6139202ab994a1dab77d",
+      "bytes": 7980,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/LICENSE",
+      "sha256": "8cc15535a8a34b41888f644b339a1a9eb428af793a4f5e24df58a3e5b1487d74",
+      "bytes": 7669,
+      "inspected_on": "2026-11-13"
+    },
+    "Llama-Guard3/README.md": {
+      "url": "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/Llama-Guard3/README.md",
+      "sha256": "25d1a260c231356b100c81a90c3cac0639b37facf817497baf8bfc1cfc47fc72",
+      "bytes": 497,
+      "inspected_on": "2026-11-13"
+    },
+    "Prompt-Guard/README.md": {
+      "url": "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/Prompt-Guard/README.md",
+      "sha256": "6bfed253f008c462c1920e6ff700ac85a0a7664ff0bf694eac3095d948e1a6a7",
+      "bytes": 2536,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/meta-llama/PurpleLlama/releases"
+}

@@ -1,0 +1,1593 @@
+[
+  {
+    "number": 1,
+    "id": "cdxgen",
+    "name": "OWASP cdxgen",
+    "layer": 1,
+    "source_url": "https://github.com/cdxgen/cdxgen",
+    "classification": "CLI_INTEGRATION",
+    "version": "npm stable 13.7.0; inspected HEAD manifest 13.8.0 (not selected)",
+    "inspected_commit": "0bf437ead5043f40e51ffae5f662eb47f8febba4",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Generate CycloneDX inventory from source manifests and supported ecosystems",
+      "AI/ML inventory depends on discovered metadata; an SBOM is not proof of all AI usage"
+    ],
+    "languages": [
+      "JavaScript",
+      "TypeScript",
+      "Python helper metadata"
+    ],
+    "installation": "cd integrations/tooling && npm ci --ignore-scripts --omit=optional; Node >=24.15, tested 24.22.3; lockfile pins cdxgen13.7.0 and patched glob14.0.6/minimatch11.0.8 overrides",
+    "dependencies": [
+      "Node >=24",
+      "Ecosystem-specific tools for richer analysis",
+      "Optional platform plugins"
+    ],
+    "api": "Optional server mode documented; no network service selected",
+    "sdk": "JavaScript package exports verified in package.json",
+    "cli": "cdxgen and aibom binaries verified",
+    "deployment": "Official container documented; local restricted CLI selected",
+    "input_formats": [
+      "package manifests",
+      "lock files",
+      "source trees",
+      "supported container inputs"
+    ],
+    "output_formats": [
+      "CycloneDX JSON"
+    ],
+    "licence": "Apache-2.0; preserve licence/notices and dependency licences",
+    "maintenance": "Repository accessible. Stable npm and development HEAD differ; pin stable. Language coverage varies with installed toolchains.",
+    "integration_method": "Implemented restricted npm v3 lockfile CLI adapter. Node filesystem permissions deny child processes and addons; staged data only, no install scripts; background execution only.",
+    "security_risks": [
+      "Dependency scripts and external tool invocation",
+      "Source/manifest secrets in output",
+      "Resource exhaustion",
+      "Do not equate inventory with vulnerability detection"
+    ],
+    "test_status": "REAL_EXECUTION_PASSED: 11 adapter/security tests; cdxgen 13.7.0 generated schema-validated CycloneDX 1.6 from an explicit npm v3 fixture; see docs/verification/cdxgen-test.json",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/README.md",
+        "sha256": "4060d7d88b8b17da4a91b722c76a4966c980d28f6c2b9e0e980c8244b231c52e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/LICENSE",
+        "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/pyproject.toml",
+        "sha256": "a78533f5d4098a44c9f762e1921e23082a1eaa208386dc462b0a67dc6d7dcfb9"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/package.json",
+        "sha256": "49c284aff14b16675d869893cb6aa6e12e74c3f52fd38fcf4047e46f29aabe41"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/cdxgen/cdxgen/0bf437ead5043f40e51ffae5f662eb47f8febba4/bin/cdxgen.js",
+        "sha256": "49301e7d28bd4046e557ce376e51a7e8810edd22a0e04f59c53cd0d5d8edc09b"
+      },
+      {
+        "url": "https://registry.npmjs.org/@cdxgen%2fcdxgen/latest",
+        "status": 200,
+        "sha256": "7797aa6aa2470908058486e591b455d74a7f2a87498e74632a3a5e816a73a641"
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "id": "owasp-aibom",
+    "name": "OWASP AIBOM Generator",
+    "layer": 1,
+    "source_url": "https://github.com/GenAI-Security-Project/aibom-generator",
+    "classification": "DEFERRED",
+    "version": "HEAD pyproject 1.0.2; PyPI name owasp-aibom-generator returned 404",
+    "inspected_commit": "45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Extract Hugging Face model metadata",
+      "Generate CycloneDX 1.6 JSON",
+      "AIBOM completeness scoring"
+    ],
+    "languages": [
+      "Python",
+      "HTML"
+    ],
+    "installation": "Upstream documents pip install -r requirements.txt or uv sync from source; python -m src.cli owner/model",
+    "dependencies": [
+      "Python >=3.11",
+      "cyclonedx-python-lib",
+      "huggingface_hub",
+      "torch",
+      "transformers",
+      "datasets"
+    ],
+    "api": "README declares API endpoints; precise interface not yet exercised",
+    "sdk": "Source Python modules, no independently verified SDK contract",
+    "cli": "src.cli and aibom entry point verified",
+    "deployment": "python -m src.main documented; no production deployment validated",
+    "input_formats": [
+      "Hugging Face model ID",
+      "optional metadata overrides"
+    ],
+    "output_formats": [
+      "CycloneDX 1.6 JSON",
+      "completeness metrics"
+    ],
+    "licence": "Apache-2.0 stated in licence and manifest; model/dataset licences remain separate",
+    "maintenance": "Repository accessible. Heavy dependencies and unpublished package name require isolated source build and runtime tests.",
+    "integration_method": "Await isolated service deployment, model egress allowlist and contract test; catalogue link available.",
+    "security_risks": [
+      "Model repository untrusted metadata",
+      "Remote inference option requires credentials",
+      "Large downloads",
+      "PII or confidential model IDs sent externally"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/README.md",
+        "sha256": "bc9e824a09f81116d6305862d242b35c08e9223cf4d8b934a0ebc27e89f7e39f"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/LICENSE",
+        "sha256": "1b80e48550e922093b401e2b1deb68f5751aadad1bd7b79938c1ed158e9783af"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/pyproject.toml",
+        "sha256": "7ae224dfc7b03ff39f3dd896e98d07d97f634f1b13e7a237e71d95341e2680ee"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/requirements.txt",
+        "sha256": "6a6b0ad95f3e6bed6d2f54b69d353138f868efdb9fd3ef582475a90f7f30e581"
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "id": "opencomplai",
+    "name": "OpenComplAI Scan",
+    "layer": 1,
+    "source_url": "https://github.com/opencomplai/opencomplai",
+    "classification": "DEFERRED",
+    "version": "opencomplai-cli 0.15.0 (PyPI 2026-11-08)",
+    "inspected_commit": "455be2575d728dff6070f87f80489da5fb5c7b05",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Deterministic code/manifest discovery and findings",
+      "Compliance manifest checks",
+      "EU AI Act evaluated; NIST projection and attestation-led framework packs are distinct",
+      "Scanner advisory mode documented; check exit codes have different semantics"
+    ],
+    "languages": [
+      "Python",
+      "TypeScript"
+    ],
+    "installation": "Upstream: pip install opencomplai-cli==0.15.0; not bundled by this application",
+    "dependencies": [
+      "Python >=3.11",
+      "opencomplai-core",
+      "Typer",
+      "Rich",
+      "Pydantic"
+    ],
+    "api": "Separate gateway/services documented; not configured",
+    "sdk": "opencomplai Python SDK package exists",
+    "cli": "opencomplai scan --quick and scan --manifest ... --repo-root ... documented",
+    "deployment": "Upstream Compose exists under infra/compose; separate deployment only pending licence assessment",
+    "input_formats": [
+      "Repository files",
+      "system-manifest.json",
+      "scan baseline JSON"
+    ],
+    "output_formats": [
+      "scan-report.json",
+      "compliance-artifact.json",
+      "structured findings"
+    ],
+    "licence": "AGPL-3.0-only Community Edition; network-use/source obligations must be assessed before embedding or hosted deployment; commercial Enterprise licence offered",
+    "maintenance": "Accessible active source; stable CLI verified through PyPI. Documentation explicitly distinguishes discovery and compliance gates.",
+    "integration_method": "Deferred pending AGPL distribution/network obligation decision and isolated CLI tests. No source copied or package included.",
+    "security_risks": [
+      "Scan can read sensitive files; use .ocignore plus app staging allowlist",
+      "Optional push and model inference must remain disabled",
+      "Advisory findings are not compliance certification"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/README.md",
+        "sha256": "0092af8a9475e052ee7fb37794263c7496f6a6a247e65921aa0d67ddc71cda69"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/LICENSE",
+        "sha256": "d8a6cc31abc16b6748c7a21f21611f5a1ec33f67d22ca23d7da1c19b95496bee"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/pyproject.toml",
+        "sha256": "f181ed38acfc8e80e19192a707f2261e2e7f9e0140b7b0badd96d9607e16454e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/package.json",
+        "sha256": "08396ddca35044946045068eb13ad7a96593fdebba6778f39628ee7c30859b8f"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/setup.py",
+        "sha256": "0ce32e008b1c661d35c13d21d8a5a1ab31596b1e60a44903e178b7a5e173035a"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/packages/cli/pyproject.toml",
+        "sha256": "00695c82e54722d40a7f29bf897ee77d14f4b13179de4ee6ad05d8d97d529b7a"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/docs/src/getting-started/scanner.md",
+        "sha256": "fa6c53807ec1702a24aa70268b2cb27f99fe50865958f370011ec94f9a3ae744"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/opencomplai/opencomplai/455be2575d728dff6070f87f80489da5fb5c7b05/docs/src/guides/ci-integration.md",
+        "sha256": "296f97806e5f1819a045b2a880e7e41f1be3230c4b8257ef4aef479fb34be28d"
+      },
+      {
+        "url": "https://pypi.org/pypi/opencomplai-cli/json",
+        "status": 200,
+        "sha256": "15b75997b217412d37464416edb6a306cd0c9d0815e2cdce8f3b871b21d3ff4c"
+      }
+    ]
+  },
+  {
+    "number": 4,
+    "id": "riskforge",
+    "name": "RiskForge by AI Exponent",
+    "layer": 2,
+    "source_url": "https://github.com/aiexponent/riskforge",
+    "classification": "DEFERRED",
+    "version": "riskforge 2.1.0 (PyPI 2026-11-07)",
+    "inspected_commit": "d823d1a1435251d41e9edce8701214eb65361ab8",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Guided Article 9 risk assessment",
+      "Risk Management File exports",
+      "Hash-chained audit trail and verification features",
+      "Human input drives assessment; no legal certification"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "pip install riskforge==2.1.0 in separate environment; PDF requires platform libraries described upstream",
+    "dependencies": [
+      "Python >=3.11",
+      "Typer <0.26",
+      "Pydantic 2",
+      "WeasyPrint 70",
+      "cryptography",
+      "PyYAML",
+      "jsonschema"
+    ],
+    "api": "No supported HTTP service verified",
+    "sdk": "Python modules and plugin entry points; no stable external SDK contract validated",
+    "cli": "riskforge CLI verified in manifest; init, assess and export workflows documented",
+    "deployment": "Local offline CLI; PDF system dependencies require separate packaging",
+    "input_formats": [
+      "System metadata",
+      "guided answers",
+      "YAML answers",
+      "imported evidence JSON"
+    ],
+    "output_formats": [
+      "Risk Management File JSON",
+      "Markdown",
+      "PDF"
+    ],
+    "licence": "Apache-2.0; preserve notices and review dependent libraries",
+    "maintenance": "Actual repo aiexponent/riskforge verified by PyPI project URLs. Website snippets can lag current package; dependency bounds matter.",
+    "integration_method": "Await isolated CLI installation and noninteractive workflow contract tests; native application assessment stores evidence meanwhile.",
+    "security_risks": [
+      "Local audit files contain sensitive risk information",
+      "Plugin code execution",
+      "PDF resource loading",
+      "Hash chains alone do not prevent privileged tampering"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/README.md",
+        "sha256": "5b5df6ac08327fd7b05cad124c18ec7ccefd8e36a5111f4868a8678d8f262bd4"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/LICENSE",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/aiexponent/riskforge/d823d1a1435251d41e9edce8701214eb65361ab8/pyproject.toml",
+        "sha256": "c5a7c5fe194442afef454c2868964c6f570f6d659f5a02cacc0049b310928a5f"
+      },
+      {
+        "url": "https://pypi.org/pypi/riskforge/json",
+        "status": 200,
+        "sha256": "d68910d80399f4d577c730d8f04f6dac936027a7bed94d2e344774b7d3a7ffda"
+      }
+    ]
+  },
+  {
+    "number": 5,
+    "id": "eu-ai-act-toolkit",
+    "name": "EU AI Act Toolkit (AbdelStark)",
+    "layer": 2,
+    "source_url": "https://github.com/AbdelStark/eu-ai-act-toolkit",
+    "classification": "DEFERRED",
+    "version": "Source SDK and CLI 0.1.0; both npm package latest URLs returned 404",
+    "inspected_commit": "fff58f6e890648947ba9f9a8caeb94bd566c4651",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Deterministic TypeScript classification and checklists",
+      "Markdown templates with placeholders",
+      "CLI JSON reports",
+      "Static browser workspace"
+    ],
+    "languages": [
+      "TypeScript",
+      "JavaScript"
+    ],
+    "installation": "README proposes npm @eu-ai-act/sdk and npx @eu-ai-act/cli, but registry 404 observed; source build requires npm install then turbo build",
+    "dependencies": [
+      "Node >=20",
+      "TypeScript",
+      "Turborepo",
+      "SDK manifest has no runtime dependencies"
+    ],
+    "api": "No backend API; web app is client-side",
+    "sdk": "Source @eu-ai-act/sdk exists; registry installation not verified",
+    "cli": "Source @eu-ai-act/cli exists; registry installation not verified",
+    "deployment": "Static Next.js app and local CLI source; no container verified",
+    "input_formats": [
+      "Classification questionnaire",
+      "risk tier",
+      "template metadata"
+    ],
+    "output_formats": [
+      "Classification JSON",
+      "checklist JSON",
+      "Markdown templates"
+    ],
+    "licence": "MIT; retain copyright and licence if source is redistributed",
+    "maintenance": "Source accessible; advertised published package availability failed. README legal dates differ from 2026 EUR-Lex amendment; review content before reuse.",
+    "integration_method": "Reference link and native assessment workflow now; defer package adapter until source-built artifact and legal mappings validated.",
+    "security_risks": [
+      "Classification may omit legal exceptions",
+      "Stale regulatory dates",
+      "Do not automatically treat score as compliance"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/README.md",
+        "sha256": "6ad3a23be55158b5d41d30330874aafd9fecc6dea3a8cd77f7177133a8d10446"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/LICENSE",
+        "sha256": "1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/package.json",
+        "sha256": "a1fc93fb02c1762a086f491baab0652013296c28da6587b15c2bdfc85b4f881e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/packages/sdk/package.json",
+        "sha256": "0ab5a745bf9922c2063052b487161536632096ba4232505445614efa0794ea0c"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/AbdelStark/eu-ai-act-toolkit/fff58f6e890648947ba9f9a8caeb94bd566c4651/packages/cli/package.json",
+        "sha256": "e4e0d76c9d53299597e5440cfa84c01a728fe5b16de7ec7192dd1b748af0e584"
+      },
+      {
+        "url": "https://registry.npmjs.org/@eu-ai-act%2fsdk/latest",
+        "error": "HTTP Error 404: Not Found"
+      },
+      {
+        "url": "https://registry.npmjs.org/@eu-ai-act%2fcli/latest",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  {
+    "number": 6,
+    "id": "venturalitica",
+    "name": "Venturalitica SDK",
+    "layer": 2,
+    "source_url": "https://github.com/Venturalitica/venturalitica-sdk",
+    "classification": "DEFERRED",
+    "version": "venturalitica 0.8.2 (PyPI 2026-08-27)",
+    "inspected_commit": "dc64f520a786b9f5dfd4cebfa900b2847c9f3061",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Training-time data/fairness policy checks",
+      "Trace and model-BOM evidence",
+      "OSCAL policy and result workflows claimed upstream",
+      "Regulatory documentation drafts"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "pip install venturalitica==0.8.2; disable analytics with VENTURALITICA_NO_ANALYTICS=1 or DO_NOT_TRACK",
+    "dependencies": [
+      "Python >=3.11",
+      "numpy >=2.4",
+      "pandas",
+      "scikit-learn",
+      "compliance-trestle",
+      "cyclonedx-python-lib",
+      "posthog"
+    ],
+    "api": "No hosted API used; cloud described as forthcoming",
+    "sdk": "vl.enforce, vl.monitor, vl.retain documented",
+    "cli": "vl / venturalitica entry points verified",
+    "deployment": "Local SDK; optional dashboard and model extras",
+    "input_formats": [
+      "pandas DataFrame",
+      "OSCAL policy YAML",
+      "training artifacts"
+    ],
+    "output_formats": [
+      "Audit trace JSON",
+      "CycloneDX ML-BOM",
+      "OSCAL assessment-results claimed; not validated here"
+    ],
+    "licence": "Apache-2.0; model/cloud terms separate",
+    "maintenance": "Beta classifier in package manifest. Version verified; heavy scientific dependencies should be isolated from core.",
+    "integration_method": "Deferred to data-science worker after representative dataset and OSCAL format tests; never claim compatibility from README alone.",
+    "security_risks": [
+      "Telemetry enabled unless opted out",
+      "Optional cloud fallback for LLM generation",
+      "Potential sensitive dataset/evidence traces",
+      "Heavy CPU/GPU processing"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/README.md",
+        "sha256": "62e77bcfe50ddf612e7d6c457bd2b96b3fc4df4dfe82a392015142fec7d0b6aa"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/LICENSE",
+        "sha256": "da0944029f9cef24861e17ffb9c3abc950311d54809919d54a2b0c8a17adee57"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Venturalitica/venturalitica-sdk/dc64f520a786b9f5dfd4cebfa900b2847c9f3061/pyproject.toml",
+        "sha256": "765a13329eecce0ddd1b0ba16b3e2f2cbd71e346849b2bbbe0860d96981728ec"
+      },
+      {
+        "url": "https://pypi.org/pypi/venturalitica/json",
+        "status": 200,
+        "sha256": "7452a729bf40a2066d833ab3a30d96787bc4f2e3db67f7894e4227570b784dae"
+      }
+    ]
+  },
+  {
+    "number": 7,
+    "id": "compl-ai",
+    "name": "COMPL-AI",
+    "layer": 2,
+    "source_url": "https://github.com/compl-ai/compl-ai",
+    "classification": "DEFERRED",
+    "version": "HEAD pyproject 2.0.0; no tagged stable release found by git ls-remote",
+    "inspected_commit": "c359f0a61112f8316715ea1c6e140983f0c50a40",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "LLM technical benchmark suite built on Inspect AI",
+      "Provider API and local model evaluations",
+      "Sample-level evaluation logs",
+      "v1 and v2 scores not directly comparable"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "Upstream: source clone then uv sync, use complai eval provider/model; pin inspected commit when trialled",
+    "dependencies": [
+      "Python >=3.11,<3.14",
+      "Inspect AI",
+      "PyTorch",
+      "datasets",
+      "spaCy",
+      "multiple Git-sourced packages",
+      "provider credentials or local model hardware"
+    ],
+    "api": "Provider APIs consumed, not an application governance API",
+    "sdk": "Inspect AI task plugins",
+    "cli": "complai eval/list/samples/predict documented",
+    "deployment": "Separate evaluation environment; agentic tasks may use sandboxes",
+    "input_formats": [
+      "Model/provider ID",
+      "task YAML/JSON",
+      "datasets"
+    ],
+    "output_formats": [
+      "Inspect evaluation logs",
+      "JSONL samples",
+      "predicted score JSON"
+    ],
+    "licence": "Apache-2.0 main project; benchmark datasets, models and third-party tasks have separate licences",
+    "maintenance": "Accessible; framework mapping update in progress per README. Python 3.14 host incompatible with current declared bound.",
+    "integration_method": "Asynchronous isolated evaluation only; awaiting Python <=3.13 environment and model/provider configuration.",
+    "security_risks": [
+      "Cost and remote data transfer",
+      "GPU/CPU and sandbox requirements",
+      "Untrusted benchmark content",
+      "Benchmark score is not legal conformity"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/README.md",
+        "sha256": "45a06c73cee4a122d790059af8edd8e26849c9882f9dc31ea74e5f674251d014"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/LICENSE",
+        "sha256": "cc4d4de0920b0d3912203b5d9aa76728ac4a11087f55da9ea00576db7d1e34e2"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/pyproject.toml",
+        "sha256": "d8991b39c1605bbb621d8ea172ef270c251de547cdddd262eacbb57c12864929"
+      }
+    ]
+  },
+  {
+    "number": 8,
+    "id": "awesome-eu-ai-act",
+    "name": "Awesome EU AI Act",
+    "layer": 2,
+    "source_url": "https://github.com/morganrcu/awesome-eu-ai-act",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "Commit inspected; no versioned executable release",
+    "inspected_commit": "d46c0492aecea2e8b1e3496a1b8eb331c60193cb",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Curated links to EU AI Act resources, tools and frameworks"
+    ],
+    "languages": [
+      "Markdown"
+    ],
+    "installation": "No installation; visit or pin reference URL",
+    "dependencies": [],
+    "api": "None",
+    "sdk": "None",
+    "cli": "None",
+    "deployment": "Static repository reference",
+    "input_formats": [],
+    "output_formats": [
+      "Human-readable reference links"
+    ],
+    "licence": "README dedicates work under CC0-1.0; linked projects retain their own terms",
+    "maintenance": "Repository accessible. Curated third-party claims require independent verification.",
+    "integration_method": "Reference catalogue only; not executable and never shown as connected.",
+    "security_risks": [
+      "Link rot",
+      "Non-authoritative legal summaries",
+      "Linked tools may have incompatible licences"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/README.md",
+        "sha256": "18e2fb32cd2edc71be1ce6f3d72202fe23a108d7bdf49c7c76e64309299d9ad2"
+      }
+    ]
+  },
+  {
+    "number": 9,
+    "id": "iso-42001-toolkit",
+    "name": "ISO/IEC 42001 AI Governance Toolkit (Ankit Uniyal)",
+    "layer": 3,
+    "source_url": "https://github.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "Commit inspected; assessment checker 1.1.0, SoA tracker 1.0.0 in source; no project release tag",
+    "inspected_commit": "803b62da4c66f6b6ab601c87cb298597a497eebd",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "AIMS templates and registers",
+      "Gap-assessment guidance and cross-framework references",
+      "CSV assessment-age checker",
+      "JSON SoA progress tracker with CSV export"
+    ],
+    "languages": [
+      "Markdown",
+      "Python"
+    ],
+    "installation": "Reference documents need no install. Optional upstream scripts use Python standard library; scripts not bundled.",
+    "dependencies": [
+      "Python standard library for optional scripts",
+      "Licensed ISO standard for authoritative requirements"
+    ],
+    "api": "None verified",
+    "sdk": "None verified",
+    "cli": "15-SCRIPTS/ai_assessment_checker.py and aims_soa_tracker.py inspected",
+    "deployment": "Documents and local optional scripts; no service",
+    "input_formats": [
+      "CSV system assessment dates",
+      "SoA JSON state",
+      "human-entered governance records"
+    ],
+    "output_formats": [
+      "Text assessment report",
+      "SoA JSON",
+      "CSV"
+    ],
+    "licence": "MIT for toolkit repository. This does not grant rights to reproduce ISO/IEC standard text or claim certification.",
+    "maintenance": "Source accessible. README indexes current files; feature counts are upstream claims, not independently audited ISO completeness.",
+    "integration_method": "Reference catalogue; native AIMS register stores user decisions and original short prompts, without copying ISO clauses.",
+    "security_risks": [
+      "Sensitive registers",
+      "Template/standard rights distinction",
+      "Do not claim full standard coverage or certification"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/README.md",
+        "sha256": "aed4e6f4f70675c0d1bf4f70ce66dbdced3134620d306c14648ffc6ac6212b2e"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/LICENSE",
+        "sha256": "468d7cc1b5e696a0ad397ac60826ca6dd81b008df5c10c7c0a4c910c9173aaeb"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/ai_assessment_checker.py",
+        "sha256": "f5e3236e908758ff420555db23ef0b06bdf6b3db5546fd4d9d256bfc7b921951"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/aims_soa_tracker.py",
+        "sha256": "e7497c2ac74ef893a34a244191de208461b1a448978adc6b18c433944131c140"
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "id": "eu-ai-act-compliance-toolkit",
+    "name": "EU AI Act Compliance Toolkit (Ankit Uniyal)",
+    "layer": 3,
+    "source_url": "https://github.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit",
+    "classification": "DEFERRED",
+    "version": "README heading 3.5.0; footer 3.4.0; pyproject classifier 2.1.0; README script 2.2; commit is authoritative identifier",
+    "inspected_commit": "8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Governance templates and scorecards",
+      "Risk-tier classifier source",
+      "CSV inventory processing with JSON/text/CSV reports"
+    ],
+    "languages": [
+      "Markdown",
+      "Python"
+    ],
+    "installation": "Do not install or copy until a licence grant is located. Upstream documents python scripts/risk_classifier.py.",
+    "dependencies": [
+      "Python >=3.9",
+      "No package dependencies declared"
+    ],
+    "api": "None verified",
+    "sdk": "None verified",
+    "cli": "eu-ai-risk-classify entry point in pyproject and source script documented",
+    "deployment": "Documents and local script; no service",
+    "input_formats": [
+      "CSV AI inventory"
+    ],
+    "output_formats": [
+      "Text",
+      "JSON",
+      "CSV",
+      "Markdown templates"
+    ],
+    "licence": "UNVERIFIED: LICENSE, LICENSE.md and LICENSE.txt return 404; GitHub root file listing shows no licence. pyproject says See repository LICENSE. Public source alone is not a reuse grant.",
+    "maintenance": "Source accessible but conflicting versions and missing licence prevent safe incorporation.",
+    "integration_method": "External reference link only. Defer script/template redistribution and adapter installation until licence resolved.",
+    "security_risks": [
+      "Missing licence",
+      "Legal classification needs professional review",
+      "Conflicting versions",
+      "Never treat generated clearance certificate as legal approval"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/README.md",
+        "sha256": "8b01d4f9073e8a27834f23b71eedc4c365d2d10911c17048f40bbd68022f65ca"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/pyproject.toml",
+        "sha256": "ae58c1586a5bdcb1a1a18978ef36673c0b3a282a6da6a15cb60eb3e5a21125e9"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/CHANGELOG.md",
+        "sha256": "f785c0c5e56d5e4260176b97caa09910a58915fefa977290776a5348ff2f2197"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/scripts/README.md",
+        "sha256": "20b5e42231267d82e072a37b6a829b0449996baf66df794d2c0c21607cc89530"
+      }
+    ]
+  },
+  {
+    "number": 11,
+    "id": "ai-atlas-nexus",
+    "name": "IBM AI Atlas Nexus (formerly Risk Atlas Nexus)",
+    "layer": 4,
+    "source_url": "https://github.com/IBM/ai-atlas-nexus",
+    "classification": "DEFERRED",
+    "version": "ai-atlas-nexus 1.2.5 (PyPI 2026-08-31)",
+    "inspected_commit": "58bb356a44fb7fdfd9a8a1db091dcd196b561dcd",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Risk and governance knowledge graph",
+      "Cross-taxonomy querying",
+      "Risk identification using optional LLM inference",
+      "JSON/YAML graph queries"
+    ],
+    "languages": [
+      "Python"
+    ],
+    "installation": "pip install ai-atlas-nexus==1.2.5 in isolated compatible environment; extras for chosen inference provider",
+    "dependencies": [
+      "LinkML",
+      "SSSOM",
+      "txtai",
+      "datasets",
+      "mellea",
+      "pyoxigraph",
+      "pyshacl",
+      "optional Ollama/vLLM/Watsonx"
+    ],
+    "api": "Consumes model APIs; no standalone HTTP API selected",
+    "sdk": "Python AI Atlas Nexus APIs",
+    "cli": "ran and ran-extension entry points verified; ran query emits JSON/YAML",
+    "deployment": "Local package plus optional separate inference service",
+    "input_formats": [
+      "Knowledge graph records",
+      "AI system/task descriptions",
+      "query filters"
+    ],
+    "output_formats": [
+      "JSON",
+      "YAML",
+      "risk/task identification records"
+    ],
+    "licence": "Apache-2.0 main repository; imported taxonomy and model terms require per-artifact review",
+    "maintenance": "README Python target is stale; HEAD manifest >=3.11,<=3.14.7 while PyPI 1.2.5 declares <3.14.4. Validate exact environment before install.",
+    "integration_method": "Deferred package/query worker until dependency lock, taxonomy provenance and representative query test; NIST reference linked now.",
+    "security_risks": [
+      "Optional automatic model download",
+      "External provider credentials/data",
+      "Large model dependencies",
+      "Mappings do not establish equivalent compliance"
+    ],
+    "test_status": "SOURCE_VERIFIED_NOT_EXECUTED",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/README.md",
+        "sha256": "c54094f30e3dcb31f32398cd9e214f610d832356a676a5e05acc432c9ccfd44d"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/IBM/ai-atlas-nexus/58bb356a44fb7fdfd9a8a1db091dcd196b561dcd/pyproject.toml",
+        "sha256": "b1ef11026b478218512620c0914618f51c25d02a046deeeeeefcd67090a1f24c"
+      },
+      {
+        "url": "https://pypi.org/pypi/ai-atlas-nexus/json",
+        "status": 200,
+        "sha256": "c1e47bc9264a642631b2c4b89efa7a189024604d493200206ae4636fd0642472"
+      }
+    ]
+  },
+  {
+    "number": 12,
+    "id": "nist-airc",
+    "name": "NIST AI Resource Center / AI RMF",
+    "layer": 4,
+    "source_url": "https://airc.nist.gov",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "AI RMF 1.0 (2023) reference; website states revision in progress",
+    "inspected_commit": null,
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Authoritative AI RMF Govern, Map, Measure, Manage guidance",
+      "Playbook and crosswalk resources"
+    ],
+    "languages": [
+      "Web documents",
+      "PDF"
+    ],
+    "installation": "No executable installation; use official resources",
+    "dependencies": [],
+    "api": "No integration API verified",
+    "sdk": "None",
+    "cli": "None",
+    "deployment": "Public reference website",
+    "input_formats": [],
+    "output_formats": [
+      "HTML",
+      "PDF",
+      "published crosswalk documents"
+    ],
+    "licence": "US government reference material subject to NIST site terms; third-party material and trademarks retain their rights",
+    "maintenance": "Official site accessible 2026-11-13; AI RMF 1.0 revision notice observed.",
+    "integration_method": "Authoritative reference links and explicit framework identifiers in native records; no executable integration claim.",
+    "security_risks": [
+      "Reference updates require mapping review",
+      "Crosswalk does not imply certification"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://airc.nist.gov/",
+        "status": 200,
+        "sha256": "7adb4408f2e0bffc8ed3d8d5cbb6eb9ba5150dded28bf1586b69b195f48d39cf"
+      }
+    ]
+  },
+  {
+    "number": 13,
+    "id": "m3-framework",
+    "name": "M3 Framework",
+    "layer": 4,
+    "source_url": "https://m3framework.org",
+    "classification": "REFERENCE_RESOURCE",
+    "version": "Official website and repository commit inspected; no executable stable release identified",
+    "inspected_commit": "bcc539de5f3d65bf9f60db3a29c060ca48d30028",
+    "verified_at": "2026-11-13",
+    "capabilities": [
+      "Mount, Monitor, Manage methodology",
+      "SME governance guidance",
+      "Mappings and templates for multiple frameworks"
+    ],
+    "languages": [
+      "Documentation",
+      "CSV/JSON/YAML artifacts described by licence"
+    ],
+    "installation": "No install required for reference use; visit official site and repository",
+    "dependencies": [],
+    "api": "No application API verified",
+    "sdk": "No SDK verified",
+    "cli": "No CLI verified",
+    "deployment": "Static website and reference repository",
+    "input_formats": [],
+    "output_formats": [
+      "Methodology text",
+      "reference mappings",
+      "templates"
+    ],
+    "licence": "CC-BY-4.0 standard text; Apache-2.0 code/data. Attribute Julius Gromyko and indicate changes. Trademarks reserved; no official-partner or M3-Certified claim.",
+    "maintenance": "Official site and explicit 2026 licence grant verified. No executable interface demonstrated.",
+    "integration_method": "Reference catalogue only. May evaluate separately versioned template import later with attribution.",
+    "security_risks": [
+      "Trademark/endorsement claims",
+      "Mapping completeness",
+      "Do not treat framework use as ISO certification"
+    ],
+    "test_status": "REFERENCE_VERIFIED_NOT_EXECUTABLE",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/juliusgromyko/M3Framework/bcc539de5f3d65bf9f60db3a29c060ca48d30028/LICENSE",
+        "sha256": "e770aa9869edb4a088acfee8e7a7b8701e71a615b4b81651426a08d66ed09d4e"
+      },
+      {
+        "url": "https://m3framework.org/",
+        "status": 200,
+        "sha256": "d5f17da778cd734a6fcadb858d822e322f5cc87ef2070d4248f00bbd88f4b521"
+      },
+      {
+        "url": "https://m3framework.org/license.html",
+        "status": 200,
+        "sha256": "7c5b31d839ae5023484c596cea87eaf23a96a1dac086a160ddc3f409e628f854"
+      }
+    ]
+  },
+  {
+    "id": "oscal-compass",
+    "number": 14,
+    "slug": "oscal-compass",
+    "layer": 5,
+    "name": "OSCAL Compass",
+    "source_url": "https://github.com/oscal-compass/community",
+    "official_source_url": "https://github.com/oscal-compass/community",
+    "verified_project_name": "OSCAL Compass",
+    "sources": [
+      "https://raw.githubusercontent.com/oscal-compass/community/main/README.md",
+      "https://raw.githubusercontent.com/oscal-compass/community/5998fc360fb91d14e730bd198ffc16906135b7ee/LICENSE"
+    ],
+    "inspected_revision": "5998fc360fb91d14e730bd198ffc16906135b7ee",
+    "latest_release": "No independent umbrella release",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Markdown documentation; languages vary per component"
+    ],
+    "capabilities": [
+      "Umbrella community for Trestle, Agile Authoring and Compliance to Policy; separate project release cycles"
+    ],
+    "installation": "No umbrella package. Select an independently licensed component; entry 15 covers Trestle.",
+    "dependencies": [
+      "Component-specific"
+    ],
+    "api": "No umbrella API",
+    "sdk": "Component-specific",
+    "cli": "No umbrella CLI",
+    "deployment": "Component-specific; community documentation is not a deployed service",
+    "input_formats": [
+      "Reference documentation"
+    ],
+    "output_formats": [
+      "Reference documentation"
+    ],
+    "licence": "Community README identifies Apache-2.0; components require individual review. No upstream code bundled.",
+    "maintenance_status": "Community README accessible and current; project-wide archive/maintenance metadata unavailable through rate-limited GitHub REST.",
+    "classification": "REFERENCE_RESOURCE",
+    "recommended_integration": "Link reference material and use separately verified Compliance Trestle.",
+    "security_risks": [
+      "Do not treat umbrella documentation as executable or claim all components are installed."
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "compliance-trestle",
+    "number": 15,
+    "slug": "compliance-trestle",
+    "layer": 5,
+    "name": "Compliance Trestle",
+    "source_url": "https://github.com/oscal-compass/compliance-trestle",
+    "official_source_url": "https://github.com/oscal-compass/compliance-trestle",
+    "verified_project_name": "Compliance Trestle",
+    "sources": [
+      "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/README.md",
+      "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/LICENSE",
+      "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/pyproject.toml",
+      "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/trestle/__init__.py",
+      "https://raw.githubusercontent.com/oscal-compass/compliance-trestle/4e350353586ce68b84a52988753b6fa45cdf34cb/trestle/oscal/catalog.py"
+    ],
+    "inspected_revision": "4e350353586ce68b84a52988753b6fa45cdf34cb",
+    "latest_release": "https://github.com/oscal-compass/compliance-trestle/releases/tag/v5.2.1",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Python"
+    ],
+    "capabilities": [
+      "OSCAL Python object models",
+      "JSON/YAML validation and editing",
+      "Compliance authoring workflows",
+      "Detached JSON signing tools upstream"
+    ],
+    "installation": "pip install compliance-trestle==5.2.1 in an isolated environment; Python >=3.11.",
+    "dependencies": [
+      "Pydantic 2",
+      "cryptography",
+      "ruamel.yaml",
+      "See pinned upstream pyproject.toml for full dependency list"
+    ],
+    "api": "Python API, not an upstream hosted REST service",
+    "sdk": "trestle.oscal generated Pydantic models",
+    "cli": "trestle (entry point trestle.cli:run)",
+    "deployment": "Python package on Linux/macOS/Windows; CLI CI workflows",
+    "input_formats": [
+      "OSCAL JSON",
+      "OSCAL YAML",
+      "Authoring Markdown/CSV for specific workflows"
+    ],
+    "output_formats": [
+      "OSCAL JSON",
+      "OSCAL YAML",
+      "Authoring artefacts"
+    ],
+    "licence": "Apache-2.0; preserve licence and notices when distributing package. No product-specific commercial prohibition identified.",
+    "maintenance_status": "v5 actively developed; upstream states v4 maintenance through 2026-12-31 and v3 deprecated. v5 supports OSCAL 1.2.1; Python 3.14 listed.",
+    "classification": "PACKAGE_DEPENDENCY",
+    "recommended_integration": "Use pinned Python object models for explicit catalogue/assessment format validation, preserve original document. XML support is not native.",
+    "security_risks": [
+      "Reject oversized/deep input and external references; validation proves schema conformance only, not control effectiveness."
+    ],
+    "integration_test_status": "EXECUTED: compliance-trestle5.2.1 accepted a valid OSCAL1.2.1 catalogue and rejected missing metadata/unknown fields via upstream models; raw JSON/hash preserved. Other supported model types are available but not individually fixture-tested.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "cosign",
+    "number": 16,
+    "slug": "cosign",
+    "layer": 5,
+    "name": "Sigstore Cosign",
+    "source_url": "https://github.com/sigstore/cosign",
+    "official_source_url": "https://github.com/sigstore/cosign",
+    "verified_project_name": "Sigstore Cosign",
+    "sources": [
+      "https://raw.githubusercontent.com/sigstore/cosign/6181e75677cc4719e845fa23d0ef8a936e883aa0/README.md",
+      "https://raw.githubusercontent.com/sigstore/cosign/6181e75677cc4719e845fa23d0ef8a936e883aa0/LICENSE"
+    ],
+    "inspected_revision": "6181e75677cc4719e845fa23d0ef8a936e883aa0",
+    "latest_release": "https://github.com/sigstore/cosign/releases/tag/v3.1.4",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Go"
+    ],
+    "capabilities": [
+      "Sign and verify blobs and OCI images",
+      "DSSE in-toto attestations",
+      "Keyless OIDC or private key/KMS signing"
+    ],
+    "installation": "Install verified Cosign v3.1.4 official release binary for the target platform; validate release checksums/signatures before enabling.",
+    "dependencies": [
+      "Standalone Go binary; selected workflow may require OIDC/Fulcio/Rekor/TUF, OCI registry or KMS"
+    ],
+    "api": "No standalone Cosign hosted REST API; communicates with Sigstore and registries",
+    "sdk": "Go packages exist; CLI is recommended process boundary",
+    "cli": "cosign sign-blob / verify-blob / attest / verify-attestation",
+    "deployment": "Official release binaries and container packaging; isolated worker with read-only input and mounted secret/KMS access",
+    "input_formats": [
+      "Blob bytes",
+      "OCI image digest",
+      "Predicate JSON",
+      "Public key or expected certificate identity"
+    ],
+    "output_formats": [
+      "Signatures",
+      "Sigstore bundles",
+      "DSSE attestations",
+      "Verification results"
+    ],
+    "licence": "Apache-2.0; preserve notices. Public transparency log terms and identity publication require deliberate operator choice.",
+    "maintenance_status": "v3.1.4 latest release resolved; README says most recent release and last v2 release actively supported.",
+    "classification": "CLI_INTEGRATION",
+    "recommended_integration": "Controlled CLI with explicit server-side signing configuration. Start with local key blob signing/verification; never trigger public transparency publication implicitly.",
+    "security_risks": [
+      "Private key exposure",
+      "Public and permanent transparency metadata",
+      "Trust-root freshness",
+      "Image tags are mutable; use digests"
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "in-toto",
+    "number": 17,
+    "slug": "in-toto",
+    "layer": 5,
+    "name": "in-toto Attestation Framework",
+    "source_url": "https://github.com/in-toto/attestation",
+    "official_source_url": "https://github.com/in-toto/attestation",
+    "verified_project_name": "in-toto Attestation Framework",
+    "sources": [
+      "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/README.md",
+      "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/LICENSE",
+      "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/package.json",
+      "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/spec/v1/statement.md",
+      "https://raw.githubusercontent.com/in-toto/attestation/50bf01716982189898823e90586075f37cd9bb7d/spec/v1/envelope.md"
+    ],
+    "inspected_revision": "50bf01716982189898823e90586075f37cd9bb7d",
+    "latest_release": "https://github.com/in-toto/attestation/releases/tag/v1.2.0",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Protocol Buffers",
+      "Go",
+      "Python",
+      "Rust",
+      "Java",
+      "Markdown"
+    ],
+    "capabilities": [
+      "Versioned statement/envelope/predicate specification",
+      "Protobuf bindings for multiple languages"
+    ],
+    "installation": "Specification does not require a service. Implement Statement v1 with a documented application predicate; optional language bindings are separate.",
+    "dependencies": [
+      "JSON serializer; cryptographic signer required separately for authenticity"
+    ],
+    "api": "Specification, no hosted API",
+    "sdk": "Go/Python/Rust/Java bindings documented; Python package in-toto-attestation 0.9.3 inspected on PyPI",
+    "cli": "No attestation CLI established by this specification repository",
+    "deployment": "No standalone service required",
+    "input_formats": [
+      "Subject name and cryptographic digest",
+      "Predicate URI and predicate object"
+    ],
+    "output_formats": [
+      "https://in-toto.io/Statement/v1 JSON",
+      "Optional DSSE envelope when actually signed"
+    ],
+    "licence": "Apache-2.0. Other predicate specifications may have separate licences.",
+    "maintenance_status": "Specification latest release v1.2.0; inspected v1 statement/envelope documents. README warns tooling is still under development.",
+    "classification": "NATIVE_ADAPTER",
+    "recommended_integration": "Generate and structurally validate Statement v1 for evidence digest; mark unsigned until an actual signer signs and a verifier succeeds.",
+    "security_risks": [
+      "Unsigned statements do not establish identity or authenticity",
+      "Do not relabel custom predicates as SLSA provenance",
+      "Subject digest must bind exact bytes"
+    ],
+    "integration_test_status": "EXECUTED: application-owned Statement v1 and Ed25519 DSSE signing/verification; tampered payload, digest, subject identity and unavailable key rejected. This is not a Cosign or Sigstore interoperability claim.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "aigrc",
+    "number": 18,
+    "slug": "aigrc",
+    "layer": 6,
+    "name": "aigrc",
+    "source_url": "https://github.com/connectsmartconsulting/aigrc",
+    "official_source_url": "https://github.com/connectsmartconsulting/aigrc",
+    "verified_project_name": "aigrc",
+    "sources": [
+      "https://raw.githubusercontent.com/connectsmartconsulting/aigrc/27846f1e878e6df6845fe0c416bab668b6d941c1/README.md",
+      "https://raw.githubusercontent.com/connectsmartconsulting/aigrc/27846f1e878e6df6845fe0c416bab668b6d941c1/LICENSE",
+      "https://raw.githubusercontent.com/connectsmartconsulting/aigrc/27846f1e878e6df6845fe0c416bab668b6d941c1/pyproject.toml"
+    ],
+    "inspected_revision": "27846f1e878e6df6845fe0c416bab668b6d941c1",
+    "latest_release": "https://github.com/connectsmartconsulting/aigrc/releases/tag/v0.1.5",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Python"
+    ],
+    "capabilities": [
+      "Adversarial prompt-injection and PII-leakage endpoint checks",
+      "JSON/SARIF/Markdown/HTML evidence reports",
+      "Offline mock target mode"
+    ],
+    "installation": "Official README uses git clone then pip install -e .; package version 0.1.5 in pyproject. PyPI aigrc returned HTTP404; do not install a same-name unverified package.",
+    "dependencies": [
+      "Python >=3.10",
+      "typer",
+      "httpx",
+      "PyYAML",
+      "rich",
+      "Pydantic",
+      "Real provider credentials for openai target"
+    ],
+    "api": "Target openai://model-name supported by documented CLI; general target URL support not verified",
+    "sdk": "Python source package; no stable public SDK contract established",
+    "cli": "aigrc version; aigrc list; aigrc check prompt-injection / pii-leakage",
+    "deployment": "Python CLI in isolated worker; no production server established",
+    "input_formats": [
+      "Target URI and selected check"
+    ],
+    "output_formats": [
+      "JSON",
+      "SARIF 2.1.0",
+      "Markdown",
+      "HTML"
+    ],
+    "licence": "MIT for repository code; proprietary methodology/services explicitly excluded from MIT code grant.",
+    "maintenance_status": "v0.1.5; Python project classifier Alpha. Two live check types; future roadmap entries must not be represented as implemented.",
+    "classification": "DEFERRED",
+    "recommended_integration": "Defer execution until real authorized model endpoint and dependency-isolated pinned installation exist; allow report import. Offline examples are mocks.",
+    "security_risks": [
+      "Model prompts can contain adversarial content",
+      "Provider cost and data disclosure",
+      "Upstream mappings are claims, not legal compliance verification"
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "opa",
+    "number": 19,
+    "slug": "opa",
+    "layer": 6,
+    "name": "Open Policy Agent + OPA-Envoy Plugin",
+    "source_url": "https://github.com/open-policy-agent/opa",
+    "official_source_url": "https://github.com/open-policy-agent/opa",
+    "verified_project_name": "Open Policy Agent + OPA-Envoy Plugin",
+    "sources": [
+      "https://raw.githubusercontent.com/open-policy-agent/opa/c53079d691070ea0a14cdcfee829ec7055ae601f/README.md",
+      "https://raw.githubusercontent.com/open-policy-agent/opa/c53079d691070ea0a14cdcfee829ec7055ae601f/LICENSE",
+      "https://raw.githubusercontent.com/open-policy-agent/opa/c53079d691070ea0a14cdcfee829ec7055ae601f/docs/docs/rest-api.md",
+      "https://raw.githubusercontent.com/open-policy-agent/opa/c53079d691070ea0a14cdcfee829ec7055ae601f/docs/docs/policy-language.md"
+    ],
+    "inspected_revision": "c53079d691070ea0a14cdcfee829ec7055ae601f",
+    "latest_release": "https://github.com/open-policy-agent/opa/releases/tag/v1.22.4",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Go",
+      "Rego"
+    ],
+    "capabilities": [
+      "Rego policy evaluation over structured data",
+      "HTTP policy decision API",
+      "OPA-Envoy gRPC ext_authz enforcement"
+    ],
+    "installation": "OPA v1.22.4 official binary/container; OPA-Envoy plugin v1.22.3-envoy is a distinct binary/image. Inspect compatibility before combining.",
+    "dependencies": [
+      "Standalone Go binary; Envoy and gRPC only for proxy enforcement"
+    ],
+    "api": "OPA REST POST /v1/data/{path} with {input:...}; GET /health. Plugin gRPC Envoy External Authorization API.",
+    "sdk": "Go library/Wasm options documented upstream; this app uses HTTP",
+    "cli": "opa eval; opa run --server",
+    "deployment": "Standalone service or OPA-Envoy sidecar; plugin README recommends policy bundles and health probes",
+    "input_formats": [
+      "Rego",
+      "JSON input/data",
+      "Policy bundles",
+      "Envoy ext_authz CheckRequest"
+    ],
+    "output_formats": [
+      "JSON decision results",
+      "Envoy authorization decisions",
+      "Metrics/decision logs if enabled"
+    ],
+    "licence": "Apache-2.0 for both OPA and OPA-Envoy; preserve notices.",
+    "maintenance_status": "Both repositories accessible with separate versioned releases. OPA1 Rego semantics require version-aware policies.",
+    "classification": "API_SERVICE",
+    "recommended_integration": "Tenant-scoped input with server-managed policy namespace and explicit allow/block/review on errors. Test OPA itself separately from the untested Envoy proxy path.",
+    "security_risks": [
+      "Untrusted Rego can consume CPU or access network through built-ins; tenant-authored Rego is not accepted",
+      "Decision logs can disclose prompts",
+      "Unprotected data/policy APIs permit control-plane tampering"
+    ],
+    "integration_test_status": "PARTIAL: official v1.22.4 Windows binary SHA256 verified; version and pinned Rego check exited0. HTTP adapter service test skipped. Docker image pulled but container startup failed (daemon filesystem read-only); background service launch rejected by automatic policy. OPA-Envoy untested.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "secondary_sources": [
+      {
+        "url": "https://github.com/open-policy-agent/opa-envoy-plugin",
+        "inspected_revision": "f60542a9b76754b78fe8d373160dc1a3044376ec",
+        "latest_release": "https://github.com/open-policy-agent/opa-envoy-plugin/releases/tag/v1.22.3-envoy",
+        "licence": "Apache-2.0",
+        "sources": [
+          "https://raw.githubusercontent.com/open-policy-agent/opa-envoy-plugin/f60542a9b76754b78fe8d373160dc1a3044376ec/README.md",
+          "https://raw.githubusercontent.com/open-policy-agent/opa-envoy-plugin/f60542a9b76754b78fe8d373160dc1a3044376ec/LICENSE"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "envoy",
+    "number": 20,
+    "slug": "envoy",
+    "layer": 6,
+    "name": "Envoy Proxy",
+    "source_url": "https://github.com/envoyproxy/envoy",
+    "official_source_url": "https://github.com/envoyproxy/envoy",
+    "verified_project_name": "Envoy Proxy",
+    "sources": [
+      "https://raw.githubusercontent.com/envoyproxy/envoy/35005437106e90105a9d8b76fdfa9e7152ed4287/README.md",
+      "https://raw.githubusercontent.com/envoyproxy/envoy/35005437106e90105a9d8b76fdfa9e7152ed4287/LICENSE"
+    ],
+    "inspected_revision": "35005437106e90105a9d8b76fdfa9e7152ed4287",
+    "latest_release": "https://github.com/envoyproxy/envoy/releases/tag/v1.40.2",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "C++",
+      "Protocol Buffers",
+      "Python/build tooling"
+    ],
+    "capabilities": [
+      "L7 proxy",
+      "External authorization filters",
+      "TLS and traffic telemetry"
+    ],
+    "installation": "Pin official Envoy v1.40.2 image/release matching deployment platform; supply reviewed static or xDS configuration.",
+    "dependencies": [
+      "C++ binary; Linux/container runtime; TLS certificates; OPA-Envoy if selected"
+    ],
+    "api": "xDS and administrative API; ext_authz filter calls a separate authorization service",
+    "sdk": "Protocol buffer control-plane APIs, not Python governance SDK",
+    "cli": "envoy executable and config validation mode",
+    "deployment": "Official containers; local Docker daemon unavailable during initial inspection",
+    "input_formats": [
+      "YAML/JSON bootstrap configuration",
+      "HTTP/gRPC traffic",
+      "xDS protobuf"
+    ],
+    "output_formats": [
+      "Proxied traffic",
+      "Access logs and metrics",
+      "Authorization error responses"
+    ],
+    "licence": "Apache-2.0; preserve notices and audit image dependencies.",
+    "maintenance_status": "v1.40.2 latest release resolved; supported platform/security policy is upstream-specific.",
+    "classification": "CONTAINER_SERVICE",
+    "recommended_integration": "Optional separately deployed ingress with OPA-Envoy ext_authz; keep proxy admin port private and explicitly configure failure_mode_allow.",
+    "security_risks": [
+      "Exposed admin interface",
+      "Misconfigured TLS",
+      "Fail-open authorization",
+      "Logging sensitive bodies"
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "ai-verify",
+    "number": 21,
+    "slug": "ai-verify",
+    "layer": 6,
+    "name": "AI Verify Toolkit",
+    "source_url": "https://github.com/IMDA-BTG/aiverify",
+    "official_source_url": "https://github.com/IMDA-BTG/aiverify",
+    "verified_project_name": "AI Verify Toolkit",
+    "sources": [
+      "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/README.md",
+      "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/LICENSE",
+      "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/package.json",
+      "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/aiverify-test-engine/README.md"
+    ],
+    "inspected_revision": "3f58c3eb6cdff0c02617b4e1910ca30dad080f12",
+    "latest_release": "https://github.com/aiverify-foundation/aiverify/releases/tag/v2.2.2",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Python",
+      "TypeScript/JavaScript"
+    ],
+    "capabilities": [
+      "Modular tests for supervised classification/regression systems",
+      "Tabular/image model evaluation",
+      "Test-engine plugin interfaces"
+    ],
+    "installation": "Repository redirects to aiverify-foundation/aiverify, latest v2.2.2. Official engine install: pip install aiverify-test-engine; select and pin specific plugin separately.",
+    "dependencies": [
+      "Python test engine",
+      "Model/data dependencies including pandas/scikit-learn",
+      "Optional TensorFlow/PyTorch/GBM",
+      "Web app dependencies"
+    ],
+    "api": "Engine/plugin interfaces documented; stable external API endpoint contract not verified in this research",
+    "sdk": "aiverify_test_engine Python interfaces",
+    "cli": "Plugin-specific execution; no unified CLI assumed",
+    "deployment": "Separate evaluation worker/application requiring approved test data and model formats",
+    "input_formats": [
+      "CSV",
+      "Pandas pickle/joblib and model files are supported upstream but not safe for untrusted upload",
+      "Image datasets for selected plugins"
+    ],
+    "output_formats": [
+      "Plugin-specific metrics and reports"
+    ],
+    "licence": "Apache-2.0 for repository; stock plugins/dependencies require additional review.",
+    "maintenance_status": "v2.2.2 resolved at canonical Foundation repository; v2 engine modularization verified.",
+    "classification": "DEFERRED",
+    "recommended_integration": "Defer automatic execution until a specific plugin, model and dataset contract is selected. Import JSON evidence meanwhile; never deserialize user pickle/joblib on API host.",
+    "security_risks": [
+      "Arbitrary code execution from pickle/joblib/model plugins",
+      "Sensitive training/test data",
+      "Metrics do not prove bias-free or safe operation"
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "verifywise",
+    "number": 22,
+    "slug": "verifywise",
+    "layer": 6,
+    "name": "VerifyWise",
+    "source_url": "https://github.com/bluewave-labs/verifywise",
+    "official_source_url": "https://github.com/bluewave-labs/verifywise",
+    "verified_project_name": "VerifyWise",
+    "sources": [
+      "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/README.md",
+      "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/LICENSE.md",
+      "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/package.json",
+      "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/LICENSING-FAQ.md"
+    ],
+    "inspected_revision": "5f2e6c36dc8fbf03fec8277039d633bc62a750ee",
+    "latest_release": "https://github.com/verifywise-ai/verifywise/releases/tag/v2.6.7",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "TypeScript/JavaScript",
+      "Python"
+    ],
+    "capabilities": [
+      "AI governance platform with inventory/risk/evidence workflows",
+      "Framework workspaces and evaluation server"
+    ],
+    "installation": "Do not install, redistribute or host for commercial client use in this application. Source redirects to verifywise-ai/verifywise.",
+    "dependencies": [
+      "React frontend",
+      "Node backend",
+      "PostgreSQL",
+      "Redis",
+      "Python >=3.12 EvalServer"
+    ],
+    "api": "Application backend exists; no API integrated because intended deployment is licence restricted",
+    "sdk": "No stable standalone SDK verified",
+    "cli": "npm/Docker installation scripts; not a scan CLI",
+    "deployment": "Upstream supports Docker/Kubernetes; not deployed by this project",
+    "input_formats": [
+      "Governance records and evaluation configuration"
+    ],
+    "output_formats": [
+      "Reports and governance records"
+    ],
+    "licence": "CURRENT HEAD: VerifyWise Community & Evaluation License (VCEL) 1.0, October 2026, replaces BSL1.1 for new releases. Commercial organizational production use, hosting and redistribution require separate written authorization. Companies may evaluate for 60 days; qualifying personal/education/government/noncommercial uses have distinct grants. Existing releases retain their release licence. No commercial permission assumed.",
+    "maintenance_status": "Latest redirect v2.6.7; current licence and licensing FAQ inspected at exact commit. Release-specific terms must be rechecked before any deployment.",
+    "classification": "BLOCKED_BY_LICENCE",
+    "recommended_integration": "Catalogue reference with licence-restricted status; no executable adapter, bundled code or client hosting until documented commercial authorization.",
+    "security_risks": [
+      "Commercial licence restriction",
+      "Misleading old BSL1.1 assumptions",
+      "Multi-service sensitive data and credentials"
+    ],
+    "integration_test_status": "BLOCKED_BY_LICENCE: source/licence inspected only; no install, deployment or execution.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "presidio",
+    "number": 23,
+    "slug": "presidio",
+    "layer": 7,
+    "name": "Presidio (originally Microsoft Presidio)",
+    "source_url": "https://github.com/microsoft/presidio",
+    "official_source_url": "https://github.com/microsoft/presidio",
+    "verified_project_name": "Presidio (originally Microsoft Presidio)",
+    "sources": [
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/LICENSE",
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/pyproject.toml",
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/README.MD",
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-analyzer/pyproject.toml",
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-analyzer/app.py",
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-anonymizer/app.py",
+      "https://raw.githubusercontent.com/microsoft/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/docker-compose.yml"
+    ],
+    "inspected_revision": "aa77b9f98f2c3a2de0f16974e7b540702938707e",
+    "latest_release": "https://github.com/data-privacy-stack/presidio/releases/tag/2.2.366",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Python"
+    ],
+    "capabilities": [
+      "Entity/PII detection with configured recognizers and NLP engine",
+      "Anonymization operators",
+      "Optional image redaction and model integrations"
+    ],
+    "installation": "Source redirects to data-privacy-stack/presidio. pip install presidio-analyzer==2.2.366 presidio-anonymizer==2.2.366; configure NLP models separately. HTTP apps require server dependencies.",
+    "dependencies": [
+      "Python >=3.11,<3.15",
+      "spaCy/model packages for default NLP",
+      "Pydantic",
+      "Recognizer dependencies",
+      "Optional GPU for chosen models; deterministic recognizers can use CPU"
+    ],
+    "api": "Analyzer POST /analyze and GET /health; anonymizer POST /anonymize and GET /health verified in app.py",
+    "sdk": "presidio_analyzer.AnalyzerEngine and presidio_anonymizer.AnonymizerEngine",
+    "cli": "No universal standalone scan CLI assumed",
+    "deployment": "Separately deployed HTTP services or isolated packages; upstream Dockerfiles exist",
+    "input_formats": [
+      "Text, language and entity settings",
+      "Recognizer spans and anonymizer settings"
+    ],
+    "output_formats": [
+      "Entity type, start/end offsets and confidence",
+      "Anonymized text and items"
+    ],
+    "licence": "MIT for Presidio code; NLP model licences and external service terms need separate review.",
+    "maintenance_status": "2.2.366 on PyPI and latest release. Python3.14 supported by package metadata; default NLP model availability still environment-specific.",
+    "classification": "API_SERVICE",
+    "recommended_integration": "Server-allowlisted analyzer/anonymizer HTTP endpoints; discard prompt text from logs. Distinguish recognizer coverage from comprehensive PII protection.",
+    "security_risks": [
+      "Text transfer to service",
+      "False negatives/positives",
+      "Model supply chain",
+      "PII in logs",
+      "Latency varies by model/text length and requires measurement"
+    ],
+    "integration_test_status": "AWAITING_CONFIGURATION: HTTP adapter implemented from verified app.py contract; missing service/error-action and configuration rejection tests pass. No Presidio service/model installed or end-to-end PII coverage/latency measured.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "nemo-guardrails",
+    "number": 24,
+    "slug": "nemo-guardrails",
+    "layer": 7,
+    "name": "NVIDIA NeMo Guardrails",
+    "source_url": "https://github.com/NVIDIA/NeMo-Guardrails",
+    "official_source_url": "https://github.com/NVIDIA/NeMo-Guardrails",
+    "verified_project_name": "NVIDIA NeMo Guardrails",
+    "sources": [
+      "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/README.md",
+      "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/LICENSE.md",
+      "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/pyproject.toml",
+      "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/package.json"
+    ],
+    "inspected_revision": "200cd26fa771b4205c2339a1a13a1d7e2623e756",
+    "latest_release": "https://github.com/NVIDIA-NeMo/Guardrails/releases/tag/v0.24.1",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Python",
+      "Colang"
+    ],
+    "capabilities": [
+      "Input/dialog/retrieval/execution/output rails",
+      "Configurable Colang flows",
+      "Model-based safety and community integrations"
+    ],
+    "installation": "Canonical repo NVIDIA-NeMo/Guardrails. Stable PyPI nemoguardrails==0.24.1 requires Python >=3.10,<3.14. Inspected HEAD is 0.25.0-rc1; do not install prerelease by default.",
+    "dependencies": [
+      "Model/provider access",
+      "onnxruntime/fastembed",
+      "Pydantic",
+      "Optional Presidio/transformers/server dependencies",
+      "GPU depends on selected model; remote LLMs add network latency"
+    ],
+    "api": "POST /v1/chat/completions with config_id and messages documented",
+    "sdk": "LLMRails, RailsConfig; generate and generate_async",
+    "cli": "nemoguardrails chat / server / actions-server / evaluate",
+    "deployment": "Separate Python3.12/3.13 service/container; incompatible with host Python3.14 stable package",
+    "input_formats": [
+      "Messages",
+      "Colang",
+      "YAML configuration",
+      "Python actions"
+    ],
+    "output_formats": [
+      "Guarded completions and evaluation outputs"
+    ],
+    "licence": "Apache-2.0 code; model/provider and optional integration licences separate.",
+    "maintenance_status": "Stable0.24.1; HEAD release candidate inspected. Do not conflate stable and HEAD compatibility.",
+    "classification": "API_SERVICE",
+    "recommended_integration": "Allowlisted separately managed service; expensive model checks async/review path until measured. Do not accept arbitrary Python actions or configs from tenant input.",
+    "security_risks": [
+      "Configuration Python code execution",
+      "Model latency/cost",
+      "Prompt disclosure to provider",
+      "No rails configured means requests forwarded without guardrails"
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  },
+  {
+    "id": "purple-llama",
+    "number": 25,
+    "slug": "purple-llama",
+    "layer": 7,
+    "name": "Meta Purple Llama / Llama Guard",
+    "source_url": "https://github.com/meta-llama/PurpleLlama",
+    "official_source_url": "https://github.com/meta-llama/PurpleLlama",
+    "verified_project_name": "Meta Purple Llama / Llama Guard",
+    "sources": [
+      "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/README.md",
+      "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/LICENSE",
+      "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/Llama-Guard3/README.md",
+      "https://raw.githubusercontent.com/meta-llama/PurpleLlama/7e163b68c0af2ced1fae19ddbd471a8c36341519/Prompt-Guard/README.md"
+    ],
+    "inspected_revision": "7e163b68c0af2ced1fae19ddbd471a8c36341519",
+    "latest_release": "https://github.com/meta-llama/PurpleLlama/releases",
+    "verified_on": "2026-11-13",
+    "languages": [
+      "Python",
+      "Model artefacts"
+    ],
+    "capabilities": [
+      "Umbrella safety models and evaluations",
+      "Llama Guard content safety classification",
+      "Prompt Guard input attack classification",
+      "Code Shield and CyberSecEval are distinct components"
+    ],
+    "installation": "Select exact model first, accept its current licence, download authorized weights and pin model revision. Transformers-based inference documented; no universal PurpleLlama service installer.",
+    "dependencies": [
+      "PyTorch/Transformers and model weights",
+      "Llama Guard3 variants 1B,8B,11B vision; quantized1B exists",
+      "RAM/VRAM/context limits depend on selected precision and serving runtime; no minimum hardware certified here"
+    ],
+    "api": "No single hosted PurpleLlama API; serving API depends on operator deployment",
+    "sdk": "Transformers inference examples; component-specific Python tooling",
+    "cli": "Component-specific eval CLIs; no umbrella CLI assumed",
+    "deployment": "Local/GPU inference or separately managed model endpoint; no weights downloaded and no commercial model terms accepted in this build",
+    "input_formats": [
+      "Conversations/text",
+      "Images for vision-specific model",
+      "Code for distinct Code Shield component"
+    ],
+    "output_formats": [
+      "Safety labels/categories or classifier scores",
+      "Component-specific evaluation results"
+    ],
+    "licence": "Mixed licences: MIT evals/benchmarks/Code Shield; Llama models use model-specific Llama Community licences, not MIT. Current root LICENSE is Llama3.2 Community Agreement with attribution, acceptable-use and >700M monthly active user terms. README model/link inconsistencies mean recheck exact model repository licence before use.",
+    "maintenance_status": "No umbrella release returned; exact HEAD recorded. README recommends PromptGuard2 over old PromptGuard. Exact model performance not tested.",
+    "classification": "DEFERRED",
+    "recommended_integration": "Defer model execution pending selected model, licence acceptance, hardware and benchmark. Keep heavyweight classifiers outside synchronous blocking until p95/p99 justify inclusion.",
+    "security_risks": [
+      "Model licence restrictions",
+      "Unsafe/incorrect classification",
+      "Prompt exposure",
+      "Large model memory/latency",
+      "Prompt Guard and content-safety Llama Guard have different purposes"
+    ],
+    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+  }
+]

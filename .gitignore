@@ -1,0 +1,51 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node.js
+node_modules/
+.next/
+out/
+dist/
+coverage/
+
+# Build files
+build/
+*.log
+tmp/
+temp/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Databases and backups
+*.sqlite
+*.sqlite3
+*.db
+backups/
+
+# Generated packaging and browser validation output
+*.egg-info/
+frontend/test-results/
+frontend/playwright-report/

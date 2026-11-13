@@ -1,0 +1,100 @@
+{
+  "info": {
+    "name": "presidio-analyzer",
+    "version": "2.2.366",
+    "license": null,
+    "license_expression": "MIT",
+    "requires_python": "<3.15,>=3.11",
+    "requires_dist": [
+      "accelerate<2.0.0,>=0.20.0; extra == \"transformers\"",
+      "azure-ai-textanalytics<6.0.0,>=5.4.0; extra == \"azure-ai-language\"",
+      "azure-core<2.0.0,>=1.39.0; extra == \"azure-ai-language\"",
+      "azure-health-deidentification<2.0.0,>=1.1.0b1; extra == \"ahds\"",
+      "azure-identity<2.0.0,>=1.18.0; extra == \"langextract\"",
+      "azure-identity<2.0.0,>=1.25.3; extra == \"ahds\"",
+      "click<9.0.0,>=8.1.0",
+      "flask<4.0.0,>=1.1; extra == \"server\"",
+      "gliner<1.0.0,>=0.2.29; extra == \"gliner\"",
+      "gunicorn<26.0.0,>=20.0.0; platform_system != \"Windows\" and extra == \"server\"",
+      "huggingface_hub<2.0.0,>=0.20.0; extra == \"transformers\"",
+      "huggingface_hub; extra == \"gliner\"",
+      "jinja2<4.0.0,>=3.0.0; extra == \"langextract\"",
+      "langextract<2.0.0,>=1.0.0; extra == \"langextract\"",
+      "more-itertools<12.0.0,>=10.0.0; extra == \"langextract\"",
+      "numpy<2.5.0,>=1.19.0",
+      "onnxruntime>=1.19; extra == \"gliner\"",
+      "openai<3.0.0,>=1.50.0; extra == \"langextract\"",
+      "phonenumbers<10.0.0,>=9.0.28",
+      "preshed<3.0.14",
+      "pydantic<3.0.0,>=2.12.5",
+      "pyyaml<7.0.0,>=6.0.3",
+      "regex>=2023.0.0",
+      "spacy!=3.7.0,!=3.8.14,<4.0.0,>=3.4.4; python_version >= \"3.14\"",
+      "spacy!=3.7.0,<4.0.0,>=3.4.4; python_version < \"3.14\"",
+      "stanza<2.0.0,>=1.11.1; extra == \"stanza\"",
+      "tldextract<6.0.0,>=5.3.1",
+      "transformers<6.0.0,>=4.28.0; extra == \"transformers\"",
+      "transformers<5.17.0,>=4.51.3; extra == \"gliner\"",
+      "waitress<4.0.0,>=2.0.0; platform_system == \"Windows\" and extra == \"server\""
+    ],
+    "project_urls": {
+      "Homepage": "https://github.com/data-privacy-stack/presidio"
+    },
+    "classifiers": [
+      "License :: OSI Approved :: MIT License",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14"
+    ]
+  },
+  "urls": [
+    {
+      "comment_text": null,
+      "core-metadata": {
+        "sha256": "e522cfacdbe79fb96e415c60f9b5cf6ee866a65bd476d2156328e47ae3ac5fa1"
+      },
+      "digests": {
+        "blake2b_256": "ac151963007bc880b48c733b4bb3802e7001a3f831d117b5f6f82ca46f2e9b10",
+        "md5": "88183a9e2400d188a551a9c98bebd1c5",
+        "sha256": "ae5f29b92d3751521ecc6e5d59b93167381488692c371f9816af72681d3592a9"
+      },
+      "downloads": -1,
+      "filename": "presidio_analyzer-2.2.366-py3-none-any.whl",
+      "has_sig": false,
+      "md5_digest": "88183a9e2400d188a551a9c98bebd1c5",
+      "packagetype": "bdist_wheel",
+      "python_version": "py3",
+      "requires_python": "<3.15,>=3.11",
+      "size": 295229,
+      "upload_time": "2026-10-27T09:06:32",
+      "upload_time_iso_8601": "2026-10-27T09:06:32.888561Z",
+      "url": "https://files.pythonhosted.org/packages/ac/15/1963007bc880b48c733b4bb3802e7001a3f831d117b5f6f82ca46f2e9b10/presidio_analyzer-2.2.366-py3-none-any.whl",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    {
+      "comment_text": null,
+      "core-metadata": false,
+      "digests": {
+        "blake2b_256": "40825e7511329ed66898b45a83fcff0e4bb7baecde1df42f16c8c144014e5e87",
+        "md5": "afb068a28d523f1f16918ac6ba4492e4",
+        "sha256": "0a83b224765cc3e796cd51aff60c62c75d8be60e8ed21aa08099da78ffbd62bf"
+      },
+      "downloads": -1,
+      "filename": "presidio_analyzer-2.2.366.tar.gz",
+      "has_sig": false,
+      "md5_digest": "afb068a28d523f1f16918ac6ba4492e4",
+      "packagetype": "sdist",
+      "python_version": "source",
+      "requires_python": "<3.15,>=3.11",
+      "size": 170833,
+      "upload_time": "2026-10-27T09:06:34",
+      "upload_time_iso_8601": "2026-10-27T09:06:34.524120Z",
+      "url": "https://files.pythonhosted.org/packages/40/82/5e7511329ed66898b45a83fcff0e4bb7baecde1df42f16c8c144014e5e87/presidio_analyzer-2.2.366.tar.gz",
+      "yanked": false,
+      "yanked_reason": null
+    }
+  ]
+}

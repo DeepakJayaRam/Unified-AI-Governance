@@ -1,0 +1,26 @@
+# Compose 2.24.4+ supports !reset. Supply a real DOMAIN and externally reachable TLS ingress.
+services:
+  api:
+    ports: !reset []
+    environment:
+      ENVIRONMENT: production
+      CORS_ORIGINS: https://${DOMAIN:?Set DOMAIN}
+  frontend:
+    ports: !reset []
+    build:
+      args:
+        NEXT_PUBLIC_API_URL: https://${DOMAIN:?Set DOMAIN}/api/v1
+  ingress:
+    image: caddy@sha256:78bd35025c7ba85961dd149ae670315129954e77abe2383ac47c89106b35ade9
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [edge]
+    depends_on: [api, frontend]
+volumes:
+  caddy_data:
+  caddy_config:

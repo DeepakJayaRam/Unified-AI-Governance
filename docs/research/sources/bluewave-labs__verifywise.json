@@ -1,0 +1,33 @@
+{
+  "repo": "bluewave-labs/verifywise",
+  "git_reference": "ref: refs/heads/develop\tHEAD\n5f2e6c36dc8fbf03fec8277039d633bc62a750ee\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "5f2e6c36dc8fbf03fec8277039d633bc62a750ee",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/README.md",
+      "sha256": "e6f0fe58cabfbf20c5f12b30b6bce043d86aebee2a7878cb40c52019bae1be63",
+      "bytes": 18553,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE.md": {
+      "url": "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/LICENSE.md",
+      "sha256": "bcd998d7c7794dda5eb2088f3bb8ada9a903ef616ac1836119198cd5ec6392c4",
+      "bytes": 30424,
+      "inspected_on": "2026-11-13"
+    },
+    "package.json": {
+      "url": "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/package.json",
+      "sha256": "a0a8f463044a010b7f0bdd0b0e681e37526ce61136838a83492b69722257cc8c",
+      "bytes": 642,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSING-FAQ.md": {
+      "url": "https://raw.githubusercontent.com/bluewave-labs/verifywise/5f2e6c36dc8fbf03fec8277039d633bc62a750ee/LICENSING-FAQ.md",
+      "sha256": "254397d4280c40c8823d555246e35eb0e781150f96789e59677f82477fb26232",
+      "bytes": 3597,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/verifywise-ai/verifywise/releases/tag/v2.6.7"
+}

@@ -1,0 +1,21 @@
+{
+  "repo": "envoyproxy/envoy",
+  "git_reference": "ref: refs/heads/main\tHEAD\n35005437106e90105a9d8b76fdfa9e7152ed4287\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "35005437106e90105a9d8b76fdfa9e7152ed4287",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/envoyproxy/envoy/35005437106e90105a9d8b76fdfa9e7152ed4287/README.md",
+      "sha256": "cda1913c7bced31f3dad6045ebb07b965593887a3c961340bd7d4f6c1360058a",
+      "bytes": 6375,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/envoyproxy/envoy/35005437106e90105a9d8b76fdfa9e7152ed4287/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/envoyproxy/envoy/releases/tag/v1.40.2"
+}

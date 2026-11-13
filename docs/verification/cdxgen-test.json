@@ -1,0 +1,457 @@
+{
+  "verified_at": "2026-11-13",
+  "fixture_kind": "Synthetic adapter test input, not client inventory or production monitoring",
+  "command": "UAG_NODE_EXECUTABLE=<supported Node> .venv/Scripts/python.exe scripts/verify_cdxgen.py",
+  "environment": {
+    "os": "nt",
+    "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+    "node": "24.22.3",
+    "cdxgen": "13.7.0"
+  },
+  "input": {
+    "package_json": {
+      "name": "uag-test-fixture",
+      "version": "1.0.0",
+      "dependencies": {
+        "openai": "6.8.1"
+      }
+    },
+    "package_lock": {
+      "name": "uag-test-fixture",
+      "version": "1.0.0",
+      "lockfileVersion": 3,
+      "packages": {
+        "": {
+          "name": "uag-test-fixture",
+          "version": "1.0.0",
+          "dependencies": {
+            "openai": "6.8.1"
+          }
+        },
+        "node_modules/openai": {
+          "version": "6.8.1",
+          "license": "Apache-2.0"
+        }
+      }
+    }
+  },
+  "observed": {
+    "status": "succeeded",
+    "raw_output": {
+      "bom": {
+        "bomFormat": "CycloneDX",
+        "specVersion": "1.6",
+        "serialNumber": "urn:uuid:e27b4d9a-6825-4e75-8a10-c486d42fd0fa",
+        "version": 1,
+        "metadata": {
+          "timestamp": "2026-11-13T06:05:47Z",
+          "tools": {
+            "components": [
+              {
+                "group": "@cdxgen",
+                "name": "cdxgen",
+                "version": "13.7.0",
+                "purl": "pkg:npm/%40cdxgen/cdxgen@13.7.0",
+                "type": "application",
+                "bom-ref": "pkg:npm/@cdxgen/cdxgen@13.7.0",
+                "publisher": "OWASP Foundation",
+                "authors": [
+                  {
+                    "name": "OWASP Foundation"
+                  }
+                ]
+              }
+            ]
+          },
+          "authors": [
+            {
+              "name": "OWASP Foundation"
+            }
+          ],
+          "lifecycles": [
+            {
+              "phase": "pre-build"
+            }
+          ],
+          "component": {
+            "name": "uag-test-fixture",
+            "group": "",
+            "version": "1.0.0",
+            "purl": "pkg:npm/uag-test-fixture@1.0.0",
+            "bom-ref": "pkg:npm/uag-test-fixture@1.0.0",
+            "properties": [],
+            "type": "application"
+          },
+          "properties": [
+            {
+              "name": "cdx:bom:componentSrcFiles",
+              "value": "package-lock.json"
+            },
+            {
+              "name": "cdx:bom:componentTypes",
+              "value": "npm"
+            }
+          ]
+        },
+        "components": [
+          {
+            "group": "",
+            "name": "openai",
+            "version": "6.8.1",
+            "licenses": [
+              {
+                "license": {
+                  "id": "Apache-2.0",
+                  "url": "https://opensource.org/licenses/Apache-2.0",
+                  "properties": [
+                    {
+                      "name": "cdx:license:category",
+                      "value": "Permissive"
+                    },
+                    {
+                      "name": "cdx:license:foss",
+                      "value": "true"
+                    },
+                    {
+                      "name": "cdx:license:osiApproved",
+                      "value": "true"
+                    },
+                    {
+                      "name": "cdx:license:fsfLibre",
+                      "value": "true"
+                    },
+                    {
+                      "name": "cdx:license:deprecated",
+                      "value": "false"
+                    }
+                  ]
+                }
+              }
+            ],
+            "purl": "pkg:npm/openai@6.8.1",
+            "type": "library",
+            "bom-ref": "pkg:npm/openai@6.8.1",
+            "properties": [
+              {
+                "name": "cdx:license:category",
+                "value": "Permissive"
+              },
+              {
+                "name": "internal:SrcFile",
+                "value": "package-lock.json"
+              }
+            ],
+            "evidence": {
+              "identity": [
+                {
+                  "field": "purl",
+                  "confidence": 1,
+                  "methods": [
+                    {
+                      "technique": "manifest-analysis",
+                      "confidence": 1,
+                      "value": "package-lock.json"
+                    }
+                  ],
+                  "concludedValue": "package-lock.json"
+                }
+              ]
+            },
+            "tags": [
+              "ml"
+            ]
+          }
+        ],
+        "dependencies": [
+          {
+            "ref": "pkg:npm/openai@6.8.1",
+            "dependsOn": []
+          },
+          {
+            "ref": "pkg:npm/uag-test-fixture@1.0.0",
+            "dependsOn": [
+              "pkg:npm/openai@6.8.1"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "bom-ref": "metadata-annotations",
+            "subjects": [
+              "pkg:npm/uag-test-fixture@1.0.0"
+            ],
+            "annotator": {
+              "component": {
+                "group": "@cdxgen",
+                "name": "cdxgen",
+                "version": "13.7.0",
+                "purl": "pkg:npm/%40cdxgen/cdxgen@13.7.0",
+                "type": "application",
+                "bom-ref": "pkg:npm/@cdxgen/cdxgen@13.7.0",
+                "publisher": "OWASP Foundation",
+                "authors": [
+                  {
+                    "name": "OWASP Foundation"
+                  }
+                ]
+              }
+            },
+            "timestamp": "2026-11-13T06:05:47Z",
+            "text": "This Software Bill-of-Materials (SBOM) document was created on Friday, November 13, 2026 with cdxgen. The data was captured during the pre-build lifecycle phase without building the application. The document describes an application named 'uag-test-fixture' with version '1.0.0'."
+          }
+        ]
+      },
+      "bom_text": "{\"bomFormat\":\"CycloneDX\",\"specVersion\":\"1.6\",\"serialNumber\":\"urn:uuid:e27b4d9a-6825-4e75-8a10-c486d42fd0fa\",\"version\":1,\"metadata\":{\"timestamp\":\"2026-11-13T06:05:47Z\",\"tools\":{\"components\":[{\"group\":\"@cdxgen\",\"name\":\"cdxgen\",\"version\":\"13.7.0\",\"purl\":\"pkg:npm/%40cdxgen/cdxgen@13.7.0\",\"type\":\"application\",\"bom-ref\":\"pkg:npm/@cdxgen/cdxgen@13.7.0\",\"publisher\":\"OWASP Foundation\",\"authors\":[{\"name\":\"OWASP Foundation\"}]}]},\"authors\":[{\"name\":\"OWASP Foundation\"}],\"lifecycles\":[{\"phase\":\"pre-build\"}],\"component\":{\"name\":\"uag-test-fixture\",\"group\":\"\",\"version\":\"1.0.0\",\"purl\":\"pkg:npm/uag-test-fixture@1.0.0\",\"bom-ref\":\"pkg:npm/uag-test-fixture@1.0.0\",\"properties\":[],\"type\":\"application\"},\"properties\":[{\"name\":\"cdx:bom:componentSrcFiles\",\"value\":\"package-lock.json\"},{\"name\":\"cdx:bom:componentTypes\",\"value\":\"npm\"}]},\"components\":[{\"group\":\"\",\"name\":\"openai\",\"version\":\"6.8.1\",\"licenses\":[{\"license\":{\"id\":\"Apache-2.0\",\"url\":\"https://opensource.org/licenses/Apache-2.0\",\"properties\":[{\"name\":\"cdx:license:category\",\"value\":\"Permissive\"},{\"name\":\"cdx:license:foss\",\"value\":\"true\"},{\"name\":\"cdx:license:osiApproved\",\"value\":\"true\"},{\"name\":\"cdx:license:fsfLibre\",\"value\":\"true\"},{\"name\":\"cdx:license:deprecated\",\"value\":\"false\"}]}}],\"purl\":\"pkg:npm/openai@6.8.1\",\"type\":\"library\",\"bom-ref\":\"pkg:npm/openai@6.8.1\",\"properties\":[{\"name\":\"cdx:license:category\",\"value\":\"Permissive\"},{\"name\":\"internal:SrcFile\",\"value\":\"package-lock.json\"}],\"evidence\":{\"identity\":[{\"field\":\"purl\",\"confidence\":1,\"methods\":[{\"technique\":\"manifest-analysis\",\"confidence\":1,\"value\":\"package-lock.json\"}],\"concludedValue\":\"package-lock.json\"}]},\"tags\":[\"ml\"]}],\"dependencies\":[{\"ref\":\"pkg:npm/openai@6.8.1\",\"dependsOn\":[]},{\"ref\":\"pkg:npm/uag-test-fixture@1.0.0\",\"dependsOn\":[\"pkg:npm/openai@6.8.1\"]}],\"annotations\":[{\"bom-ref\":\"metadata-annotations\",\"subjects\":[\"pkg:npm/uag-test-fixture@1.0.0\"],\"annotator\":{\"component\":{\"group\":\"@cdxgen\",\"name\":\"cdxgen\",\"version\":\"13.7.0\",\"purl\":\"pkg:npm/%40cdxgen/cdxgen@13.7.0\",\"type\":\"application\",\"bom-ref\":\"pkg:npm/@cdxgen/cdxgen@13.7.0\",\"publisher\":\"OWASP Foundation\",\"authors\":[{\"name\":\"OWASP Foundation\"}]}},\"timestamp\":\"2026-11-13T06:05:47Z\",\"text\":\"This Software Bill-of-Materials (SBOM) document was created on Friday, November 13, 2026 with cdxgen. The data was captured during the pre-build lifecycle phase without building the application. The document describes an application named 'uag-test-fixture' with version '1.0.0'.\"}]}",
+      "stdout": "",
+      "stderr": ""
+    },
+    "normalized": {
+      "format": "CycloneDX",
+      "spec_version": "1.6",
+      "bom": {
+        "bomFormat": "CycloneDX",
+        "specVersion": "1.6",
+        "serialNumber": "urn:uuid:e27b4d9a-6825-4e75-8a10-c486d42fd0fa",
+        "version": 1,
+        "metadata": {
+          "timestamp": "2026-11-13T06:05:47Z",
+          "tools": {
+            "components": [
+              {
+                "group": "@cdxgen",
+                "name": "cdxgen",
+                "version": "13.7.0",
+                "purl": "pkg:npm/%40cdxgen/cdxgen@13.7.0",
+                "type": "application",
+                "bom-ref": "pkg:npm/@cdxgen/cdxgen@13.7.0",
+                "publisher": "OWASP Foundation",
+                "authors": [
+                  {
+                    "name": "OWASP Foundation"
+                  }
+                ]
+              }
+            ]
+          },
+          "authors": [
+            {
+              "name": "OWASP Foundation"
+            }
+          ],
+          "lifecycles": [
+            {
+              "phase": "pre-build"
+            }
+          ],
+          "component": {
+            "name": "uag-test-fixture",
+            "group": "",
+            "version": "1.0.0",
+            "purl": "pkg:npm/uag-test-fixture@1.0.0",
+            "bom-ref": "pkg:npm/uag-test-fixture@1.0.0",
+            "properties": [],
+            "type": "application"
+          },
+          "properties": [
+            {
+              "name": "cdx:bom:componentSrcFiles",
+              "value": "package-lock.json"
+            },
+            {
+              "name": "cdx:bom:componentTypes",
+              "value": "npm"
+            }
+          ]
+        },
+        "components": [
+          {
+            "group": "",
+            "name": "openai",
+            "version": "6.8.1",
+            "licenses": [
+              {
+                "license": {
+                  "id": "Apache-2.0",
+                  "url": "https://opensource.org/licenses/Apache-2.0",
+                  "properties": [
+                    {
+                      "name": "cdx:license:category",
+                      "value": "Permissive"
+                    },
+                    {
+                      "name": "cdx:license:foss",
+                      "value": "true"
+                    },
+                    {
+                      "name": "cdx:license:osiApproved",
+                      "value": "true"
+                    },
+                    {
+                      "name": "cdx:license:fsfLibre",
+                      "value": "true"
+                    },
+                    {
+                      "name": "cdx:license:deprecated",
+                      "value": "false"
+                    }
+                  ]
+                }
+              }
+            ],
+            "purl": "pkg:npm/openai@6.8.1",
+            "type": "library",
+            "bom-ref": "pkg:npm/openai@6.8.1",
+            "properties": [
+              {
+                "name": "cdx:license:category",
+                "value": "Permissive"
+              },
+              {
+                "name": "internal:SrcFile",
+                "value": "package-lock.json"
+              }
+            ],
+            "evidence": {
+              "identity": [
+                {
+                  "field": "purl",
+                  "confidence": 1,
+                  "methods": [
+                    {
+                      "technique": "manifest-analysis",
+                      "confidence": 1,
+                      "value": "package-lock.json"
+                    }
+                  ],
+                  "concludedValue": "package-lock.json"
+                }
+              ]
+            },
+            "tags": [
+              "ml"
+            ]
+          }
+        ],
+        "dependencies": [
+          {
+            "ref": "pkg:npm/openai@6.8.1",
+            "dependsOn": []
+          },
+          {
+            "ref": "pkg:npm/uag-test-fixture@1.0.0",
+            "dependsOn": [
+              "pkg:npm/openai@6.8.1"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "bom-ref": "metadata-annotations",
+            "subjects": [
+              "pkg:npm/uag-test-fixture@1.0.0"
+            ],
+            "annotator": {
+              "component": {
+                "group": "@cdxgen",
+                "name": "cdxgen",
+                "version": "13.7.0",
+                "purl": "pkg:npm/%40cdxgen/cdxgen@13.7.0",
+                "type": "application",
+                "bom-ref": "pkg:npm/@cdxgen/cdxgen@13.7.0",
+                "publisher": "OWASP Foundation",
+                "authors": [
+                  {
+                    "name": "OWASP Foundation"
+                  }
+                ]
+              }
+            },
+            "timestamp": "2026-11-13T06:05:47Z",
+            "text": "This Software Bill-of-Materials (SBOM) document was created on Friday, November 13, 2026 with cdxgen. The data was captured during the pre-build lifecycle phase without building the application. The document describes an application named 'uag-test-fixture' with version '1.0.0'."
+          }
+        ]
+      },
+      "components": [
+        {
+          "type": "library",
+          "group": "",
+          "name": "openai",
+          "version": "6.8.1",
+          "purl": "pkg:npm/openai@6.8.1",
+          "licenses": [
+            {
+              "license": {
+                "id": "Apache-2.0",
+                "url": "https://opensource.org/licenses/Apache-2.0",
+                "properties": [
+                  {
+                    "name": "cdx:license:category",
+                    "value": "Permissive"
+                  },
+                  {
+                    "name": "cdx:license:foss",
+                    "value": "true"
+                  },
+                  {
+                    "name": "cdx:license:osiApproved",
+                    "value": "true"
+                  },
+                  {
+                    "name": "cdx:license:fsfLibre",
+                    "value": "true"
+                  },
+                  {
+                    "name": "cdx:license:deprecated",
+                    "value": "false"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "component_count": 1,
+      "findings": [],
+      "limitations": [
+        "Lockfile inventory only; no installed tree or source usage analysis",
+        "Not a vulnerability scan, full AI discovery or legal licence determination"
+      ]
+    },
+    "provenance": {
+      "tool": "cdxgen",
+      "version": "13.7.0",
+      "elapsed_ms": 2061.19,
+      "input_sha256": "d25648412554542d948a0f6f7a8a918ed8ac95fe86b9e334a85d4daadf4d8d85",
+      "artifact_sha256": "d8ea66507425e762627b23caf8adb296ec7d04c05308742da7f9091b05bed67a",
+      "execution_mode": "restricted npm lockfile; Node permissions; no child processes; no dependency installation",
+      "command": [
+        "node",
+        "--permission",
+        "--allow-fs-read=<tooling>",
+        "--allow-fs-read=<staging>",
+        "--allow-fs-write=<staging>",
+        "<tooling>\\node_modules\\@cdxgen\\cdxgen\\bin\\cdxgen-secure.js",
+        "-t",
+        "js",
+        "--no-install-deps",
+        "--no-babel",
+        "--no-recurse",
+        "--no-rust",
+        "--no-include-formulation",
+        "--no-cache",
+        "--spec-version",
+        "1.6",
+        "--output",
+        "<staging>\\bom.json",
+        "<staging>"
+      ],
+      "configuration": {
+        "timeout_seconds": 60
+      }
+    },
+    "logs": [
+      "cdxgen finished with 1 inventory components; validation enabled"
+    ],
+    "error": null
+  }
+}

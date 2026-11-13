@@ -1,0 +1,33 @@
+{
+  "repo": "NVIDIA/NeMo-Guardrails",
+  "git_reference": "ref: refs/heads/develop\tHEAD\n200cd26fa771b4205c2339a1a13a1d7e2623e756\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "200cd26fa771b4205c2339a1a13a1d7e2623e756",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/README.md",
+      "sha256": "ddd4cfac791843143c11b7ed90b6e33168bc7893206326e686c0a106d66c70e8",
+      "bytes": 22486,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE.md": {
+      "url": "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/LICENSE.md",
+      "sha256": "7c137905972e6199e4120716851edf334e211008c0ef3693eb269578b8a2ac2a",
+      "bytes": 654,
+      "inspected_on": "2026-11-13"
+    },
+    "pyproject.toml": {
+      "url": "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/pyproject.toml",
+      "sha256": "031b0f0eeb143a112554e7de7fd0ddb180e047d85b5c6f3e117e852c400f5c98",
+      "bytes": 6682,
+      "inspected_on": "2026-11-13"
+    },
+    "package.json": {
+      "url": "https://raw.githubusercontent.com/NVIDIA/NeMo-Guardrails/200cd26fa771b4205c2339a1a13a1d7e2623e756/package.json",
+      "sha256": "0bcd60c890f7fe778e76bb1a8e4d2da4c06b2c3b640744316e2f49a2128fdd05",
+      "bytes": 492,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/NVIDIA-NeMo/Guardrails/releases/tag/v0.24.1"
+}

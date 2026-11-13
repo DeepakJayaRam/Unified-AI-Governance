@@ -1,0 +1,33 @@
+{
+  "repo": "IMDA-BTG/aiverify",
+  "git_reference": "ref: refs/heads/main\tHEAD\n3f58c3eb6cdff0c02617b4e1910ca30dad080f12\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "3f58c3eb6cdff0c02617b4e1910ca30dad080f12",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/README.md",
+      "sha256": "ea1fc32bf00ace98885f433646c074fbfe1df124ce86a656e8b158d64d380588",
+      "bytes": 5569,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/LICENSE",
+      "sha256": "63a6b58f3c9a72b8009e9ae74533c7aadca133f21a95d63aa014dae446bb9d2d",
+      "bytes": 11350,
+      "inspected_on": "2026-11-13"
+    },
+    "package.json": {
+      "url": "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/package.json",
+      "sha256": "72f5963ae59d307585d78082f61723ce7346c45918893037359accdb83192383",
+      "bytes": 254,
+      "inspected_on": "2026-11-13"
+    },
+    "aiverify-test-engine/README.md": {
+      "url": "https://raw.githubusercontent.com/IMDA-BTG/aiverify/3f58c3eb6cdff0c02617b4e1910ca30dad080f12/aiverify-test-engine/README.md",
+      "sha256": "ab0407aa471ca74780ef70a6cb000d8b4851144c1afcfc28840c07753bbeb9af",
+      "bytes": 3503,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/aiverify-foundation/aiverify/releases/tag/v2.2.2"
+}

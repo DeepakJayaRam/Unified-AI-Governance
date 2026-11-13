@@ -1,0 +1,19 @@
+{
+  "repo": "oscal-compass/community",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/community/main/README.md",
+      "sha256": "301c1b6c44f631ffedabbd530663ad5a316bc85f20034d284bbb1b361354cb71",
+      "bytes": 8265,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/oscal-compass/community/5998fc360fb91d14e730bd198ffc16906135b7ee/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "inspected_commit": "5998fc360fb91d14e730bd198ffc16906135b7ee",
+  "git_reference": "5998fc360fb91d14e730bd198ffc16906135b7ee\tHEAD\n"
+}

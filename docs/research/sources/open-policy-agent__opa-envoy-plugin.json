@@ -1,0 +1,21 @@
+{
+  "repo": "open-policy-agent/opa-envoy-plugin",
+  "git_reference": "ref: refs/heads/main\tHEAD\nf60542a9b76754b78fe8d373160dc1a3044376ec\tHEAD\n",
+  "git_error": "",
+  "inspected_commit": "f60542a9b76754b78fe8d373160dc1a3044376ec",
+  "sources": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/open-policy-agent/opa-envoy-plugin/f60542a9b76754b78fe8d373160dc1a3044376ec/README.md",
+      "sha256": "f2c2a3d9b44cf8cf5b8b332e15d55c231dbe0a68d4e66bb003953c141f39370b",
+      "bytes": 7920,
+      "inspected_on": "2026-11-13"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/open-policy-agent/opa-envoy-plugin/f60542a9b76754b78fe8d373160dc1a3044376ec/LICENSE",
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+      "bytes": 11358,
+      "inspected_on": "2026-11-13"
+    }
+  },
+  "release_url": "https://github.com/open-policy-agent/opa-envoy-plugin/releases/tag/v1.22.3-envoy"
+}
