@@ -61,6 +61,9 @@ test("real authenticated inventory, evidence, assessment, guardrail and tenant i
     .getByRole("row")
     .filter({ hasText: `Test evidence ${suffix}` });
   await expect(row).toBeVisible();
+  const originalDownload = page.waitForEvent("download");
+  await row.getByRole("button", { name: "Download", exact: true }).click();
+  expect((await originalDownload).suggestedFilename()).toMatch(/^evidence-/);
   await row.getByRole("button", { name: "Verify", exact: true }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.getByRole("button", { name: "Close dialog" }).click();
@@ -120,6 +123,17 @@ test("real authenticated inventory, evidence, assessment, guardrail and tenant i
     await expect(
       page.getByRole("dialog").getByText("implemented", { exact: true }),
     ).toBeVisible();
+    await page.getByRole("button", { name: "Assessment history" }).click();
+    await expect(page.getByRole("dialog").last()).toContainText("revision");
+    await page.getByRole("button", { name: "Close dialog" }).last().click();
+    const exported = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Export assessment" }).click();
+    expect((await exported).suggestedFilename()).toMatch(/^assessment-/);
+    await page.getByRole("button", { name: "Complete assessment" }).click();
+    await expect(
+      page.getByRole("button", { name: "Reopen assessment" }),
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Reopen assessment" }).click();
     await page.getByRole("button", { name: "Close dialog" }).click();
   }
   await page.getByRole("link", { name: "LLM guardrails", exact: true }).click();

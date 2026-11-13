@@ -1,0 +1,7 @@
+{
+  "disk_location": "D:/DockerData/DockerDesktopWSL/disk/docker_data.vhdx",
+  "all_prior_volumes_present": true,
+  "missing_volumes": [],
+  "note": "Original full inventory is preserved in the private resume checkpoint; unrelated service details omitted from public report.",
+  "current_verification": "environment.json"
+}

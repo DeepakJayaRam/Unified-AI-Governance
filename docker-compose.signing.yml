@@ -1,0 +1,10 @@
+# Create the key first: python -m uag.cli keygen --path secrets/evidence-signing.pem
+services:
+  api:
+    environment:
+      SIGNING_KEY_PATH: /run/secrets/evidence-signing.pem
+    volumes: [./secrets/evidence-signing.pem:/run/secrets/evidence-signing.pem:ro]
+  worker:
+    environment:
+      SIGNING_KEY_PATH: /run/secrets/evidence-signing.pem
+    volumes: [./secrets/evidence-signing.pem:/run/secrets/evidence-signing.pem:ro]

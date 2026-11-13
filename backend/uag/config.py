@@ -11,6 +11,7 @@ class Settings:
     cors_origins: tuple[str, ...] = tuple(os.getenv("CORS_ORIGINS", "http://127.0.0.1:3100,http://localhost:3100").split(","))
     session_hours: int = int(os.getenv("SESSION_HOURS", "8"))
     signing_key_path: str = os.getenv("SIGNING_KEY_PATH", "")
+    trusted_signing_keys_dir: str = os.getenv('TRUSTED_SIGNING_KEYS_DIR', '')
     secure_environment: bool = os.getenv("ENVIRONMENT", "development") == "production"
 
     def __post_init__(self):

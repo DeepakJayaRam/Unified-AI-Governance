@@ -120,6 +120,13 @@ def test_real_opa_pinned_policy(monkeypatch):
         assert result.status == 'succeeded', result
         assert result.normalized['action'] == expected
 
+    # A genuine OPA compile error must leave the pinned policy usable.
+    import httpx
+    with httpx.Client(base_url=os.environ['TEST_OPA_URL'], trust_env=False, timeout=5) as service:
+        response = service.put('/v1/policies/uag-release-invalid', content='package broken\n this is not valid rego {{{')
+        assert response.status_code == 400
+    assert adapter.execute({'risk_level': 'minimal', 'contains_pii': False}, {}).normalized['action'] == 'allow'
+
 
 def test_evidence_sign_download_verify_and_isolation(client, headers, key_file, monkeypatch):
     import uag.evidence

@@ -9,7 +9,7 @@ class Strict(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
 
-Role = Literal["organisation_admin", "governance_manager", "security_engineer", "auditor", "viewer"]
+Role = Literal["organisation_admin", "governance_manager", "security_engineer", "contributor", "auditor", "viewer"]
 
 
 class Login(Strict):
@@ -72,11 +72,23 @@ class ControlUpdate(Strict):
     owner: str = Field(default="", max_length=254)
     due_date: str | None = None
 
+    @field_validator('due_date')
+    @classmethod
+    def valid_date(cls, value):
+        return date.fromisoformat(value).isoformat() if value else None
+
 
 class PolicyConfig(Strict):
     pii_action: Literal["allow", "block", "sanitize", "review"] = "sanitize"
     blocked_terms: list[str] = Field(default_factory=list, max_length=100)
     error_action: Literal["block", "review"] = "block"
+    checks: list[Literal['native','presidio','opa']] = Field(default_factory=lambda:['native'],min_length=1,max_length=3)
+    @field_validator('checks')
+    @classmethod
+    def unique_checks(cls, value):
+        if len(set(value)) != len(value):
+            raise ValueError('Select each control only once')
+        return value
     @field_validator("blocked_terms")
     @classmethod
     def term_bounds(cls, value):
@@ -94,6 +106,8 @@ class PolicyCreate(Strict):
 class GuardrailRequest(Strict):
     text: PreservedText = Field(min_length=1, max_length=32000)
     policy_id: str | None = None
+    system_id: str | None = None
+    direction: Literal['input','output'] = 'input'
 
 
 class IntegrationConfig(Strict):

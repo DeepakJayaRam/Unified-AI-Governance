@@ -1,0 +1,124 @@
+{
+  "scope": "Actual Compose API, PostgreSQL, Redis worker, OPA and Presidio; synthetic tenants only",
+  "tests": {
+    "five_tenant_concurrent_api_isolation": "passed",
+    "evidence_sign_verify_original_download_package": "passed",
+    "three_framework_assessment_history_evidence_and_records": "passed",
+    "cdxgen_health": {
+      "status": "Connected",
+      "detail": "cdxgen 13.7.0; v24.22.3"
+    },
+    "opa_health": {
+      "status": "Connected",
+      "detail": "OPA HTTP health passed; deployment must pin 1.22.4"
+    },
+    "presidio_health": {
+      "status": "Connected",
+      "detail": "Analyzer and anonymizer health passed; model coverage is deployment-specific"
+    },
+    "compliance-trestle_health": {
+      "status": "Connected",
+      "detail": "compliance-trestle 5.2.1"
+    },
+    "in-toto_health": {
+      "status": "Connected",
+      "detail": "Local Statement v1 generator; signing is a separate evidence operation"
+    },
+    "redis_worker_real_cdxgen_and_concurrent_idempotency": {
+      "status": "passed",
+      "job_id": "137625f8-58eb-4ba1-8dfb-52f7f33852ab",
+      "provenance": {
+        "tool": "cdxgen",
+        "version": "13.7.0",
+        "elapsed_ms": 1873.892,
+        "input_sha256": "f97a6370843d094c4c9a0bd4064dae8cc80123675bceffdd88bf89b615e3c2e6",
+        "artifact_sha256": "273364364e916dbd3ea8c4679ad0ca9b5e44b1c23c780e7c18735455fcd0e363",
+        "execution_mode": "restricted npm lockfile; Node permissions; no child processes; no dependency installation",
+        "command": [
+          "node",
+          "--permission",
+          "--allow-fs-read=<tooling>",
+          "--allow-fs-read=<staging>",
+          "--allow-fs-write=<staging>",
+          "<tooling>/node_modules/@cdxgen/cdxgen/bin/cdxgen-secure.js",
+          "-t",
+          "js",
+          "--no-install-deps",
+          "--no-babel",
+          "--no-recurse",
+          "--no-rust",
+          "--no-include-formulation",
+          "--no-cache",
+          "--spec-version",
+          "1.6",
+          "--output",
+          "<staging>/bom.json",
+          "<staging>"
+        ],
+        "configuration": {
+          "timeout_seconds": 60
+        }
+      }
+    }
+  },
+  "benchmarks": {
+    "native": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 31.56665000005887,
+        "p95_ms": 44.09809999924619,
+        "p99_ms": 51.66730000019015
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 0.05588749991147779,
+        "p95_ms": 0.08442899979854701,
+        "p99_ms": 0.16477000008308096
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    },
+    "presidio": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 103.49219999989145,
+        "p95_ms": 217.70290000131354,
+        "p99_ms": 262.15420000153244
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 48.549840500072605,
+        "p95_ms": 110.58021999997436,
+        "p99_ms": 154.6825320001517
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    },
+    "opa": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 94.95299999980489,
+        "p95_ms": 254.21770000139077,
+        "p99_ms": 462.66909999940253
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 25.59146449993932,
+        "p95_ms": 65.10477699976036,
+        "p99_ms": 85.80832000006922
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    }
+  },
+  "status": "failed",
+  "environment": {
+    "client": "Windows-11-10.0.26300-SP0",
+    "cpu": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+    "logical_cpus": 16
+  },
+  "error": "POST /guardrails/evaluate returned 429"
+}

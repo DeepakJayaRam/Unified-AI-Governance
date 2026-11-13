@@ -2,7 +2,7 @@
   --bg: #f4f6f8;
   --surface: #fff;
   --ink: #182a37;
-  --muted: #6f7d88;
+  --muted: #5f6d78;
   --border: #e3e9ed;
   --nav: #102a35;
   --nav-muted: #93aab3;
@@ -185,7 +185,7 @@ small {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #70919e;
+  color: #9db4bf;
   margin: 0 13px 9px;
 }
 .nav-item {
@@ -278,7 +278,7 @@ small {
 }
 .breadcrumb {
   font-size: 11px;
-  color: #88959f;
+  color: #586b77;
 }
 .breadcrumb span {
   margin: 0 13px;
@@ -304,7 +304,7 @@ small {
 }
 .tenant-boundary {
   font-size: 9px;
-  color: #6c9290;
+  color: #586b77;
   border-left: 1px solid var(--border);
   padding-left: 13px;
   white-space: nowrap;
@@ -331,7 +331,7 @@ small {
   max-width: 620px;
 }
 .page-heading .eyebrow {
-  color: #74938f;
+  color: #586b77;
   font-size: 9px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
@@ -461,7 +461,7 @@ small {
 .count {
   font-size: 10px;
   background: #eff3f5;
-  color: #748893;
+  color: #586b77;
   border-radius: 5px;
   padding: 3px 7px;
 }
@@ -598,7 +598,7 @@ small {
   max-width: 340px;
   margin: 0;
   line-height: 1.8;
-  color: #8b9da6;
+  color: #586b77;
 }
 .table-scroll {
   overflow: auto;
@@ -614,7 +614,7 @@ th {
   text-transform: uppercase;
   letter-spacing: 0.65px;
   font-weight: 500;
-  color: #8b9aa4;
+  color: #586b77;
   background: #fbfcfd;
   text-align: left;
   padding: 13px 22px;
@@ -623,7 +623,7 @@ th {
 td {
   padding: 17px 22px;
   border-bottom: 1px solid #edf1f3;
-  color: #73838e;
+  color: #586b77;
   max-width: 290px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -664,19 +664,19 @@ tbody tr:hover {
 }
 .badge.good {
   background: #eaf6ef;
-  color: #398568;
+  color: #27654d;
 }
 .badge.danger {
   background: #fcf0ef;
-  color: #ad5651;
+  color: #923f3b;
 }
 .badge.warn {
   background: #fcf5e9;
-  color: #a78645;
+  color: #795b22;
 }
 .badge.neutral {
   background: #edf2f5;
-  color: #7a8e9c;
+  color: #586b77;
 }
 .notice {
   padding: 13px 16px;
@@ -738,7 +738,7 @@ tbody tr:hover {
   display: flex;
   justify-content: space-between;
   font-size: 9px;
-  color: #9aa9b2;
+  color: #586b77;
   border-top: 1px solid var(--border);
   padding-top: 21px;
   margin-top: 36px;
@@ -923,7 +923,7 @@ textarea {
 .context-note p {
   font-size: 11px;
   line-height: 1.7;
-  color: #6b8491;
+  color: #586b77;
   margin: 0;
 }
 .catalog-toolbar {
@@ -1090,7 +1090,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   font-size: 9px;
-  color: #6d9289;
+  color: #4c6e65;
   border: 1px solid #dbe8e3;
   padding: 5px 8px;
   border-radius: 5px;
@@ -1147,7 +1147,7 @@ textarea {
 }
 .policy-card pre {
   font-size: 10px;
-  color: #7a929d;
+  color: #586b77;
   line-height: 1.5;
   overflow: auto;
 }
@@ -1155,7 +1155,7 @@ textarea {
   padding: 18px 23px;
   font-size: 10px;
   line-height: 1.8;
-  color: #91a2a9;
+  color: #586b77;
   background: #f9fbfc;
   border-top: 1px solid var(--border);
 }
@@ -1179,7 +1179,7 @@ textarea {
   margin-bottom: 28px;
 }
 .key-values dt {
-  color: #8b9da6;
+  color: #586b77;
 }
 .key-values dd {
   margin: 0;
@@ -1379,7 +1379,7 @@ textarea {
   font-size: 10px;
   line-height: 1.8;
   margin: 0;
-  color: #8b9ea6;
+  color: #60727a;
 }
 .login-form-area footer {
   position: absolute;
@@ -1389,7 +1389,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   font-size: 8px;
-  color: #a0afb5;
+  color: #60727a;
 }
 .mobile-menu {
   display: none;

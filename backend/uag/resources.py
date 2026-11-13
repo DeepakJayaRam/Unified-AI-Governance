@@ -3,23 +3,42 @@ import hashlib
 import json
 from datetime import timezone
 from fastapi import HTTPException
-from sqlalchemy import select, text
+from sqlalchemy import select, text, func
 from .db import Audit, Record, now, uid
 
 
-def listed(db, ctx, kind):
-    return db.scalars(select(Record).where(Record.tenant_id == ctx["tenant_id"], Record.kind == kind).order_by(Record.created_at.desc()).limit(1000)).all()
+def listed(db, ctx, kind, *, limit=None, offset=0):
+    query = select(Record).where(Record.tenant_id == ctx["tenant_id"], Record.kind == kind).order_by(Record.created_at.desc(), Record.id.desc())
+    if limit is not None:
+        query = query.limit(limit).offset(offset)
+    return db.scalars(query).all()
 
 
-def get_record(db, ctx, kind, identifier):
-    item = db.scalar(select(Record).where(Record.tenant_id == ctx["tenant_id"], Record.kind == kind, Record.id == identifier))
+def page(db, ctx, kind, response, limit=100, offset=0):
+    response.headers['X-Total-Count'] = str(db.scalar(select(func.count()).select_from(Record).where(Record.tenant_id == ctx['tenant_id'], Record.kind == kind)))
+    response.headers['X-Page-Limit'] = str(limit)
+    response.headers['X-Page-Offset'] = str(offset)
+    return listed(db, ctx, kind, limit=limit, offset=offset)
+
+
+def lock_tenant(db, ctx):
+    # Serialize quota, singleton and membership decisions across API/worker processes.
+    if db.bind.dialect.name == 'postgresql':
+        db.execute(text("SELECT pg_advisory_xact_lock(hashtextextended(:tenant, 1))"), {'tenant':ctx['tenant_id']})
+
+
+def get_record(db, ctx, kind, identifier, *, for_update=False):
+    query = select(Record).where(Record.tenant_id == ctx["tenant_id"], Record.kind == kind, Record.id == identifier)
+    if for_update:
+        query = query.with_for_update()
+    item = db.scalar(query)
     if not item:
         raise HTTPException(404, "Resource not found")
     return item
 
 
 def public(record):
-    return {**record.data, "id": record.id, "created_at": record.created_at.replace(tzinfo=timezone.utc).isoformat(), "updated_at": record.updated_at.replace(tzinfo=timezone.utc).isoformat()}
+    return {**record.data, "id": record.id, "version": record.version, "created_at": record.created_at.replace(tzinfo=timezone.utc).isoformat(), "updated_at": record.updated_at.replace(tzinfo=timezone.utc).isoformat()}
 
 
 def references(db, ctx, data):
@@ -42,11 +61,12 @@ def audit(db, ctx, action, resource_id, details=None):
     return row
 
 
-def create_record(db, ctx, kind, data):
+def create_record(db, ctx, kind, data, *, resource_key=None, commit=True):
     references(db, ctx, data)
-    record = Record(tenant_id=ctx["tenant_id"], kind=kind, data=data)
+    record = Record(tenant_id=ctx["tenant_id"], kind=kind, data=data, resource_key=resource_key)
     db.add(record)
     db.flush()
     audit(db, ctx, kind + ".created", record.id)
-    db.commit()
+    if commit:
+        db.commit()
     return record

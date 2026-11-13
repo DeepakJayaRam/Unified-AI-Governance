@@ -220,6 +220,15 @@ export function Table({
                           : { timeStyle: "short" as const }),
                       })}
                     </time>
+                  ) : typeof row[c.key] === "string" &&
+                    ![
+                      "kind",
+                      "framework",
+                      "status",
+                      "role",
+                      "resolution",
+                    ].includes(c.key) ? (
+                    String(row[c.key])
                   ) : (
                     label(row[c.key])
                   )}
@@ -242,6 +251,7 @@ export type Field = {
     | "email"
     | "textarea"
     | "select"
+    | "multi-select"
     | "json"
     | "date"
     | "checkbox"
@@ -352,7 +362,7 @@ export function Form({
         f.name,
         initial[f.name] ??
           f.defaultValue ??
-          (f.type === "checkbox" ? false : ""),
+          (f.type === "checkbox" ? false : f.type === "multi-select" ? [] : ""),
       ]),
     ),
   );
@@ -375,7 +385,13 @@ export function Form({
                   : values[f.name];
             if (f.type === "number") payload[f.name] = Number(values[f.name]);
             if (
-              ["system_id", "finding_id", "due_date"].includes(f.name) &&
+              [
+                "system_id",
+                "finding_id",
+                "assessment_id",
+                "risk_id",
+                "due_date",
+              ].includes(f.name) &&
               !payload[f.name]
             )
               payload[f.name] = null;
@@ -413,6 +429,32 @@ export function Form({
                 setValues({ ...values, [field.name]: e.target.value })
               }
             />
+          ) : field.type === "multi-select" ? (
+            <select
+              multiple
+              aria-label={field.label}
+              required={field.required}
+              value={
+                Array.isArray(values[field.name])
+                  ? (values[field.name] as string[])
+                  : []
+              }
+              onChange={(e) =>
+                setValues({
+                  ...values,
+                  [field.name]: Array.from(
+                    e.target.selectedOptions,
+                    (option) => option.value,
+                  ),
+                })
+              }
+            >
+              {field.options?.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           ) : field.type === "select" ? (
             <select
               aria-label={field.label}

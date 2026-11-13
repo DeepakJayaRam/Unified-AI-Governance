@@ -1,0 +1,168 @@
+{
+  "host": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.2",
+  "cpu": "AMD Ryzen 7 5700U",
+  "logical_cpus": 16,
+  "browser": "Microsoft Edge Chromium 157.0.4341.46",
+  "docker_data_disk": "D:/DockerData/DockerDesktopWSL/disk/docker_data.vhdx",
+  "disk_present": true,
+  "free_gib": {
+    "C:/": 16.17,
+    "D:/": 170.03
+  },
+  "services": {
+    "api": {
+      "image_id": "sha256:720b6d82880a20d2766af1b8a48952da7d2f737d7cb3ef183270c3d05485a96d",
+      "configured_image": "unified-ai-governance-security-api",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "10001",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "published_ports": {
+        "8000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8100"
+          }
+        ]
+      },
+      "volumes": []
+    },
+    "frontend": {
+      "image_id": "sha256:89d451cbfce8b84cca4ea3ad17e4540033eda8796046692e1e216c94892ebb9d",
+      "configured_image": "unified-ai-governance-security-frontend",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "appuser",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "published_ports": {
+        "3000/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "3100"
+          }
+        ]
+      },
+      "volumes": []
+    },
+    "migrate": {
+      "image_id": "sha256:b61756cd3f7a4fb530b0a635b89bc2cfe3ee9ffa846f9d5d6e7477f6e533f46d",
+      "configured_image": "unified-ai-governance-security-migrate",
+      "state": "exited",
+      "exit_code": 0,
+      "health": "not applicable",
+      "configured_user": "10001",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "published_ports": {},
+      "volumes": []
+    },
+    "opa": {
+      "image_id": "sha256:ff50f50332ff9e722ffafe2658c195ced1f9b6d4f3064000c2ecfa8cdf7acccf",
+      "configured_image": "openpolicyagent/opa@sha256:ff50f50332ff9e722ffafe2658c195ced1f9b6d4f3064000c2ecfa8cdf7acccf",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "1000:1000",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "published_ports": {},
+      "volumes": []
+    },
+    "postgres": {
+      "image_id": "sha256:12cea0af9642e4c099741c44ee405e1d8f8b0ecb044601812e957f46d2667689",
+      "configured_image": "unified-ai-governance-security-postgres",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "",
+      "read_only": false,
+      "cap_drop": null,
+      "security_options": null,
+      "published_ports": {
+        "5432/tcp": null
+      },
+      "volumes": [
+        "unified-ai-governance-security_pgdata"
+      ]
+    },
+    "presidio": {
+      "image_id": "sha256:ed9bbd15343e07d554a98a182aab71c0996b09b07768136a6ce3306dd9ab5e1f",
+      "configured_image": "unified-ai-governance-security-presidio",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "10002:10002",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "published_ports": {},
+      "volumes": []
+    },
+    "redis": {
+      "image_id": "sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3",
+      "configured_image": "redis@sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "",
+      "read_only": false,
+      "cap_drop": null,
+      "security_options": null,
+      "published_ports": {
+        "6379/tcp": null
+      },
+      "volumes": [
+        "unified-ai-governance-security_redisdata"
+      ]
+    },
+    "worker": {
+      "image_id": "sha256:e2c1cd26eb2cc3b9d0347dc00cd43a505f97a6c12e2e195fe552b3e676422c1c",
+      "configured_image": "unified-ai-governance-security-worker",
+      "state": "running",
+      "exit_code": 0,
+      "health": "healthy",
+      "configured_user": "10001",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "published_ports": {
+        "8000/tcp": null
+      },
+      "volumes": []
+    }
+  },
+  "verified_at": "2026-11-13T10:28:57.574358+00:00"
+}

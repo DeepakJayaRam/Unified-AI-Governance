@@ -3,12 +3,24 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import json
 from sqlalchemy import text
+from sqlalchemy.orm.exc import StaleDataError
+from sqlalchemy.exc import IntegrityError
 from .config import settings
 from .db import engine
-from . import auth, governance, runtime, jobs, evidence
+from . import auth, governance, runtime, jobs, evidence, workspaces
 
-app = FastAPI(title="Unified AI Governance & Security", version="0.1.0", openapi_url="/api/v1/openapi.json", docs_url="/api/v1/docs", redoc_url=None)
-app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins), allow_credentials=False, allow_methods=["GET", "POST", "PUT", "PATCH"], allow_headers=["Authorization", "Content-Type", "X-Tenant-ID"], expose_headers=["Content-Disposition"])
+app = FastAPI(title="Unified AI Governance & Security", version="0.2.0", openapi_url="/api/v1/openapi.json", docs_url="/api/v1/docs", redoc_url=None)
+app.add_middleware(CORSMiddleware, allow_origins=list(settings.cors_origins), allow_credentials=False, allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"], allow_headers=["Authorization", "Content-Type", "X-Tenant-ID", "Idempotency-Key", "If-Match"], expose_headers=["Content-Disposition", "X-Total-Count", "X-Page-Limit", "X-Page-Offset"])
+
+
+@app.exception_handler(StaleDataError)
+async def stale_write(request, error):
+    return JSONResponse({'detail':'Resource changed concurrently; reload before retrying'}, status_code=409)
+
+
+@app.exception_handler(IntegrityError)
+async def conflicting_write(request, error):
+    return JSONResponse({'detail':'Conflicting resource or identity; reload before retrying'}, status_code=409)
 
 
 @app.middleware("http")
@@ -56,10 +68,10 @@ def health():
     try:
         with engine.connect() as db:
             db.execute(text("SELECT 1"))
-        return {"status": "ok", "version": "0.1.0", "execution_mode": settings.execution_mode}
+        return {"status": "ok", "version": "0.2.0", "execution_mode": settings.execution_mode}
     except Exception:
         return JSONResponse({"status": "unavailable"}, status_code=503)
 
 
-for router in (auth.router, governance.router, runtime.router, jobs.router, evidence.router):
+for router in (auth.router, governance.router, runtime.router, jobs.router, evidence.router, workspaces.router):
     app.include_router(router, prefix="/api/v1")

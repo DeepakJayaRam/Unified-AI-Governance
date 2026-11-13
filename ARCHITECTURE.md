@@ -30,3 +30,9 @@ Fast local checks produce explicit allow/block/sanitize/review decisions and mea
 ## Deployment and future consumers
 
 Compose separates frontend, API, worker, PostgreSQL and Redis. TLS terminates at a configured ingress. API tokens remain tenant scoped through membership, so future consumers can use the same OpenAPI contract without internal database access. Cloud operators must supply TLS, secret storage, backups, network policy and monitoring. Future Guardrail Sovereign integration requires a separate request.
+
+## v0.2 concurrency and review
+
+PostgreSQL advisory locks serialize tenant quotas, idempotency and the audit chain. Record versions and If-Match prevent lost edits. Policy and assessment history save prior snapshots; rollback produces another version. Governance records link decisions to systems, framework assessments, risks and evidence. Human reviews contain decision metadata and operator notes, without retained synchronous prompts or automatic replay.
+
+Native, Presidio and OPA checks compose in a fixed order. Presidio receives prior sanitized text; the adapter validates the returned replacement spans. Synchronous timing ends before event/audit persistence, so it is explicitly distinct from measured HTTP roundtrip latency. Async Presidio inputs are temporarily persisted until terminal state and then removed. Redis notification loss is recovered from PostgreSQL; expired running leases require manual retry.

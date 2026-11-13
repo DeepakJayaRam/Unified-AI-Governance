@@ -1,3 +1,5 @@
+> Historical source investigation. Current executable status and service verification are in INTEGRATION_REGISTER.md and docs/release/VERIFICATION.md.
+
 # Evidence, runtime and guardrail upstream verification
 
 Verified 2026-11-13 against official sources at recorded revisions. Classification describes the proposed technical boundary; execution status is separate. A verified interface is not an executed integration test.

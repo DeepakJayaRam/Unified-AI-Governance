@@ -4,8 +4,6 @@ import platform
 import statistics
 import time
 from pathlib import Path
-from uag.runtime import evaluate
-from uag.schemas import PolicyConfig
 
 
 def distribution(values):
@@ -14,6 +12,8 @@ def distribution(values):
 
 
 def main():
+    from uag.runtime import evaluate
+    from uag.schemas import PolicyConfig
     config = PolicyConfig(blocked_terms=["restricted phrase"])
     cases = {"short_safe": "Summarise the approved operating procedure.", "pii": "Email person@example.invalid; candidate identifier 123-45-6789.", "maximum_input": "A" * 31960 + " contact person@example.invalid"}
     report = {"environment": {"python": platform.python_version(), "platform": platform.platform(), "processor": platform.processor()}, "scope": "Native deterministic checks only, in-process; excludes HTTP, auth, DB, proxy, Presidio and model services", "cases": {}}

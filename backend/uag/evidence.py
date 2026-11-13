@@ -5,7 +5,7 @@ import json
 import zipfile
 
 from defusedxml import ElementTree
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import Response
 from sqlalchemy.orm import Session
 
@@ -13,7 +13,7 @@ from integrations.evidence_oscal import OSCAL_MODELS, canonical_json, sign_state
 from .auth import context, require_write
 from .config import settings
 from .db import get_db, now
-from .resources import audit, create_record, get_record, listed, public
+from .resources import audit, create_record, get_record, listed, public, page
 from .schemas import EvidenceCreate, EvidenceResponse
 
 router = APIRouter()
@@ -26,8 +26,8 @@ def metadata(record):
 
 
 @router.get('/evidence', response_model=list[EvidenceResponse])
-def evidence_list(ctx=Depends(context), db: Session = Depends(get_db)):
-    return [metadata(item) for item in listed(db, ctx, 'evidence')]
+def evidence_list(response:Response,limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0,le=1000000),ctx=Depends(context), db: Session = Depends(get_db)):
+    return [metadata(item) for item in page(db, ctx, 'evidence',response,limit,offset)]
 
 
 @router.post('/evidence', status_code=201, response_model=EvidenceResponse)
@@ -104,7 +104,7 @@ def verify(identifier: str, ctx=Depends(context), db: Session = Depends(get_db))
     checks = []
     for record in listed(db, ctx, 'attestations'):
         if record.data.get('evidence_id') == item.id:
-            check = verify_envelope(record.data['envelope'], settings.signing_key_path, digest, item.id)
+            check = verify_envelope(record.data['envelope'], settings.signing_key_path, digest, item.id, getattr(settings,'trusted_signing_keys_dir',''))
             check.pop('statement', None)
             checks.append({'attestation_id': record.id, **check})
     result = {'evidence_id': item.id, 'sha256': digest, 'integrity_valid': digest == item.data['sha256'],

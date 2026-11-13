@@ -1,0 +1,141 @@
+{
+  "scope": "Actual Compose API, PostgreSQL, Redis worker, OPA and Presidio; synthetic tenants only",
+  "tests": {
+    "five_tenant_concurrent_api_isolation": "passed",
+    "evidence_sign_verify_original_download_package": "passed",
+    "three_framework_assessment_history_evidence_and_records": "passed",
+    "cdxgen_health": {
+      "status": "Connected",
+      "detail": "cdxgen 13.7.0; v24.22.3"
+    },
+    "opa_health": {
+      "status": "Connected",
+      "detail": "OPA HTTP health passed; deployment must pin 1.22.4"
+    },
+    "presidio_health": {
+      "status": "Connected",
+      "detail": "Analyzer and anonymizer health passed; model coverage is deployment-specific"
+    },
+    "compliance-trestle_health": {
+      "status": "Connected",
+      "detail": "compliance-trestle 5.2.1"
+    },
+    "in-toto_health": {
+      "status": "Connected",
+      "detail": "Local Statement v1 generator; signing is a separate evidence operation"
+    },
+    "redis_worker_real_cdxgen_and_concurrent_idempotency": {
+      "status": "passed",
+      "job_id": "f09778d6-c8f4-44f0-ba4a-ccf58fe3e51c",
+      "provenance": {
+        "tool": "cdxgen",
+        "version": "13.7.0",
+        "elapsed_ms": 1353.852,
+        "input_sha256": "f97a6370843d094c4c9a0bd4064dae8cc80123675bceffdd88bf89b615e3c2e6",
+        "artifact_sha256": "40cf723f34e9644993aea1512572dff976e77e5edc1646d6272a5b5e949354fb",
+        "execution_mode": "restricted npm lockfile; Node permissions; no child processes; no dependency installation",
+        "command": [
+          "node",
+          "--permission",
+          "--allow-fs-read=<tooling>",
+          "--allow-fs-read=<staging>",
+          "--allow-fs-write=<staging>",
+          "<tooling>/node_modules/@cdxgen/cdxgen/bin/cdxgen-secure.js",
+          "-t",
+          "js",
+          "--no-install-deps",
+          "--no-babel",
+          "--no-recurse",
+          "--no-rust",
+          "--no-include-formulation",
+          "--no-cache",
+          "--spec-version",
+          "1.6",
+          "--output",
+          "<staging>/bom.json",
+          "<staging>"
+        ],
+        "configuration": {
+          "timeout_seconds": 60
+        }
+      }
+    },
+    "audit_chain_and_report": "passed"
+  },
+  "benchmarks": {
+    "native": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 29.991850000442355,
+        "p95_ms": 48.789899999974295,
+        "p99_ms": 57.97130000064499
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 0.0565725003980333,
+        "p95_ms": 0.1022830001602415,
+        "p99_ms": 0.1359509997200803
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    },
+    "presidio": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 50.303700000768,
+        "p95_ms": 73.05790000100387,
+        "p99_ms": 85.27510000021721
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 16.072541499852377,
+        "p95_ms": 29.538101000071038,
+        "p99_ms": 32.27627400065103
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    },
+    "opa": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 42.77619999993476,
+        "p95_ms": 68.62730000102601,
+        "p99_ms": 81.58560000083526
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 4.645342000003438,
+        "p95_ms": 9.157862000392925,
+        "p99_ms": 10.124784000254294
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    },
+    "pipeline": {
+      "http_roundtrip": {
+        "samples": 100,
+        "p50_ms": 51.13739999978861,
+        "p95_ms": 83.77389999986917,
+        "p99_ms": 95.48359999826062
+      },
+      "pipeline_before_persistence": {
+        "samples": 100,
+        "p50_ms": 16.878821500085905,
+        "p95_ms": 30.57721400000446,
+        "p99_ms": 39.22459000023082
+      },
+      "sample_size": 100,
+      "warmup": 5,
+      "includes": "Bearer auth, membership, Redis rate limit, PostgreSQL RLS, selected checks, audit/event persistence, loopback HTTP; excludes external ingress"
+    }
+  },
+  "status": "passed",
+  "environment": {
+    "client": "Windows-11-10.0.26300-SP0",
+    "cpu": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+    "logical_cpus": 16
+  }
+}

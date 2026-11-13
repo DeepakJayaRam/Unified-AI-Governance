@@ -1,17 +1,36 @@
 # Third-party integration operations
 
-Read [INTEGRATION_REGISTER.md](INTEGRATION_REGISTER.md) for all25 entries and all linked source records. Selection labels describe recommended mechanisms; executable availability is separately calculated from actual registered adapters and deployment configuration.
+The [25-entry register](INTEGRATION_REGISTER.md) distinguishes five tested
+executable entries, five references, eleven deferred entries and four entries
+restricted pending licence review. Presence in the catalogue never enables a tool.
 
-| Adapter | Actual implemented scope | Configuration / limits |
+| Adapter | Verified scope | Configuration |
 |---|---|---|
-| cdxgen13.7.0 | Real CLI generates CycloneDX1.6 from staged npm manifest + v3 lockfile; raw BOM preserved | `timeout_seconds`1–120; operator Node>=24.15; scripts, local paths, external dependency installation denied |
-| Compliance Trestle5.2.1 | Real package model validation of supported OSCAL JSON | JSON document input; no claim that arbitrary JSON/XML is OSCAL |
-| in-toto statement/DSSE | Statement generation, Ed25519 signing and trusted-key verification | Private key via SIGNING_KEY_PATH; unsigned statement is not represented as a signature |
-| OPA1.22.4 | HTTP policy evaluation of deployment-owned Rego | Operator OPA_URL; no tenant Rego or arbitrary endpoint; HTTP execution test requires service |
-| Presidio | HTTP analyze/anonymize orchestration when deployed | Operator service URLs; language/entity limits; unconfigured by default and not claimed tested without service |
+| cdxgen 13.7.0 | Actual CLI creates CycloneDX 1.6 from npm manifest + v3 lockfile | Node 24.22.3 tested; minimum 24.15; timeout_seconds 1?120; no-space staging; no scripts/local/git dependencies |
+| Compliance Trestle 5.2.1 | Actual OSCAL package models accept valid catalogues and reject invalid/unknown fields | JSON document; other model types are not individually fixture-tested |
+| in-toto / DSSE | Application-owned Statement v1 and actual Ed25519 signing, trust verification and tampering rejection | SIGNING_KEY_PATH; optional TRUSTED_SIGNING_KEYS_DIR; no Cosign interoperability claim |
+| OPA 1.22.4 | Real private HTTP allow/block/review, invalid compilation rejection and adapter failure handling | OPA_URL, optional OPA_TOKEN; pinned application Rego; no tenant Rego/URLs |
+| Presidio 2.2.366 | Real analyzer/anonymizer HTTP, English model, replacement validation and prior-redaction preservation | PRESIDIO_ANALYZER_URL, PRESIDIO_ANONYMIZER_URL, optional corresponding _TOKEN variables |
 
-Evidence hashing and the native deterministic guardrail checks are original application functionality; they are never branded as upstream services. OSCAL Compass, official NIST resources and curated references are not executed. AI Verify, VerifyWise, NeMo, Llama Guard, Envoy and other unimplemented resources remain visibly deferred/restricted/reference entries according to their actual evidence. The OPA-Envoy plugin is researched under the same numbered entry as OPA, but proxy enforcement is not claimed from OPA alone.
+Use docker-compose.presidio.yml for the optional private bridge. spaCy 3.8.18 and
+en_core_web_sm 3.8.0 are pinned; the model wheel is SHA256-verified. Read the MIT
+model licence and training-source notices in docs/third-party. English-only
+recognizers have false negatives/positives and are not comprehensive protection.
+URLs/tokens/keys are deployment-controlled; tenant forms accept only validated
+adapter options. No model weights or upstream trees are vendored.
 
-No upstream trees are vendored. The npm discovery tool is installed in an isolated pinned tooling directory with reviewed overrides; retain its package licences and notices when distributing the built image. Python package dependencies and their transitive inventory are pinned in requirements.lock. Container images are pinned by inspected registry digest. Original app code is Apache-2.0; third-party code is not relicensed.
+Cosign, Envoy and NeMo have no executable adapter in this release. OPA-Envoy is
+deferred within OPA's numbered entry. VerifyWise VCEL requires separate written
+commercial authorization. OpenComplAI AGPL obligations require review before
+network service/source integration. The unlicensed EU toolkit cannot be copied;
+Llama Guard requires exact model-specific licence review. ISO text is not included.
 
-Upgrade procedure: verify official source/release/licence, update exact dependency/image pin, refresh source evidence, run isolated adapter negative tests and a genuine execution, preserve the command/result record, rerun vulnerability audits, update catalogue status and regenerate the readable register using scripts/build_register.py. If infrastructure is unavailable, record awaiting configuration instead of a successful execution.
+Native patterns, evidence hashes and governance checklists are original app
+functionality. They are not branded as execution of reference tools. Optional
+integration unavailability does not break unrelated native workflows; policies
+that select unavailable controls explicitly block or request review.
+
+Upgrade by verifying official source/release/licence, updating exact pins,
+running genuine execution plus negative tests, retaining outputs, rerunning
+audits, and updating docs/research JSON before scripts/build_register.py.
+See docs/release/SECURITY_REVIEW.md for residual OS/OPA findings and expiry.

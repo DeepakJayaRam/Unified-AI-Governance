@@ -1,6 +1,15 @@
 "use client";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
+import { useRemote, RemoteMore } from "./remote";
+import { GovernanceRecords } from "./governance-records";
+import {
+  PolicyHistory,
+  ReviewQueue,
+  AccountSecurity,
+  MembershipActions,
+  AssessmentActions,
+} from "./workflow-controls";
 import {
   API_URL,
   downloadJson,
@@ -23,31 +32,6 @@ import {
   Table,
 } from "./ui";
 
-function useRemote(path: string, poll = false) {
-  const { api } = useSession();
-  const [data, setData] = useState<unknown>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const refresh = useCallback(async () => {
-    try {
-      const result = await api(path);
-      setData(result);
-      setError("");
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Unable to load data");
-    } finally {
-      setLoading(false);
-    }
-  }, [api, path]);
-  useEffect(() => {
-    setLoading(true);
-    setData(null);
-    void refresh();
-    const timer = poll ? setInterval(() => void refresh(), 5000) : undefined;
-    return () => clearInterval(timer);
-  }, [refresh, poll]);
-  return { data, loading, error, refresh, rows: listOf(data) };
-}
 export function PageHeader({
   eyebrow,
   title,
@@ -279,6 +263,7 @@ export function ResourcePage({ kind }: { kind: string }) {
             )}
           />
         )}
+        <RemoteMore remote={remote} />
       </section>
       {editing && (
         <Modal
@@ -294,6 +279,10 @@ export function ResourcePage({ kind }: { kind: string }) {
                 def.path + (editing === "new" ? "" : `/${editing.id}`),
                 {
                   method: editing === "new" ? "POST" : "PATCH",
+                  headers:
+                    editing === "new"
+                      ? {}
+                      : { "If-Match": String(editing.version) },
                   body: JSON.stringify(values),
                 },
               );
@@ -670,6 +659,7 @@ export function BomPage() {
             Import a CycloneDX document or run a configured discovery adapter.
           </Empty>
         )}
+        <RemoteMore remote={remote} />
       </section>
       {open && (
         <Modal title="Import inventory document" close={() => setOpen(false)}>
@@ -822,7 +812,9 @@ export function FrameworkPage({ kind }: { kind: string }) {
             and attach evidence.
           </Empty>
         )}
+        <RemoteMore remote={remote} />
       </section>
+      <GovernanceRecords framework={info.key} />
       {creating && (
         <Modal title="Create assessment" close={() => setCreating(false)}>
           <Form
@@ -861,6 +853,16 @@ export function FrameworkPage({ kind }: { kind: string }) {
             Review each control, record supporting evidence and assign follow-up
             work.
           </p>
+          <AssessmentActions
+            record={detail}
+            refresh={async () => {
+              const latest = await api<RecordData>(`/assessments/${detail.id}`);
+              setDetail((current) =>
+                current?.id === latest.id ? latest : current,
+              );
+              await remote.refresh();
+            }}
+          />
           <div className="control-list">
             {listOf(detail.controls).map((c) => (
               <div className="control-row" key={c.id}>
@@ -1064,6 +1066,7 @@ export function EvidencePage({ oscal = false }: { oscal?: boolean }) {
             Add an artifact to record its provenance and integrity hash.
           </Empty>
         )}
+        <RemoteMore remote={remote} />
       </section>
       {creating && (
         <Modal title="Add evidence" close={() => setCreating(false)}>
@@ -1132,7 +1135,7 @@ function IntegrationRunModal({
   return (
     <Modal title={`Run ${integration.name || integration.id}`} close={close}>
       <p className="modal-intro">
-        Submit the adapter?s documented input. Execution runs in the background
+        Submit the adapter's documented input. Execution runs in the background
         and preserves status, raw output and provenance.
       </p>
       <Form
@@ -1485,6 +1488,23 @@ export function ExecutionsPage() {
                     Cancel
                   </button>
                 )}
+                {["failed", "cancelled"].includes(String(row.status)) && (
+                  <button
+                    className="text-button"
+                    onClick={async () => {
+                      try {
+                        await api(`/executions/${row.id}/retry`, {
+                          method: "POST",
+                        });
+                        await remote.refresh();
+                      } catch (e) {
+                        setError(String(e));
+                      }
+                    }}
+                  >
+                    Retry execution
+                  </button>
+                )}
               </>
             )}
           />
@@ -1494,6 +1514,7 @@ export function ExecutionsPage() {
             execution history.
           </Empty>
         )}
+        <RemoteMore remote={remote} />
       </section>
       {detail !== null && (
         <Detail
@@ -1507,6 +1528,7 @@ export function ExecutionsPage() {
 }
 export function GuardrailsPage() {
   const policies = useRemote("/policies");
+  const systems = useRemote("/systems");
   const { api } = useSession();
   const [creating, setCreating] = useState(false);
   const [editing, setEditing] = useState<RecordData | null>(null);
@@ -1550,6 +1572,23 @@ export function GuardrailsPage() {
                 required: true,
                 placeholder: "Enter a test message to evaluate…",
                 help: "Use synthetic data when testing. Request content is not stored in the audit log.",
+              },
+              {
+                name: "system_id",
+                label: "AI system for OPA classification",
+                type: "select",
+                options: systems.rows.map((s) => ({
+                  value: s.id,
+                  label: String(s.name),
+                })),
+              },
+              {
+                name: "direction",
+                label: "Request direction",
+                type: "select",
+                defaultValue: "input",
+                required: true,
+                options: statuses(["input", "output"]),
               },
             ]}
             onSubmit={async (values) =>
@@ -1603,6 +1642,7 @@ export function GuardrailsPage() {
                   <button className="text-button" onClick={() => setEditing(p)}>
                     Edit policy
                   </button>
+                  <PolicyHistory policy={p} refresh={policies.refresh} />
                 </div>
               ))}
             </div>
@@ -1652,8 +1692,9 @@ export function GuardrailsPage() {
                   pii_action: "sanitize",
                   blocked_terms: [],
                   error_action: "block",
+                  checks: ["native"],
                 },
-                help: "pii_action: sanitize, block, review or allow. error_action: block or review. blocked_terms is an array of strings. Deterministic checks do not replace model-based safety evaluation.",
+                help: "checks: native, presidio and/or opa. External controls require administrator-enabled integrations. pii_action: sanitize, block, review or allow. error_action: block or review. Native patterns do not provide comprehensive PII or prompt-injection protection.",
               },
             ]}
             onCancel={() => {
@@ -1663,6 +1704,7 @@ export function GuardrailsPage() {
             onSubmit={async (values) => {
               await api(editing ? `/policies/${editing.id}` : "/policies", {
                 method: editing ? "PATCH" : "POST",
+                headers: editing ? { "If-Match": String(editing.version) } : {},
                 body: JSON.stringify(values),
               });
               setCreating(false);
@@ -1722,7 +1764,9 @@ export function RuntimePage() {
             timings will appear here.
           </Empty>
         )}
+        <RemoteMore remote={remote} />
       </section>
+      <ReviewQueue />
       <div className="context-note">
         <Icon name="pulse" size={18} />
         <p>
@@ -1788,6 +1832,7 @@ export function AuditPage() {
         ) : (
           <Empty title="No audit events returned" />
         )}
+        <RemoteMore remote={remote} />
       </section>
       {detail !== null && (
         <Detail
@@ -1895,7 +1940,7 @@ export function ReportsPage() {
 }
 export function OrganisationPage() {
   const remote = useRemote("/memberships");
-  const { api, data } = useSession();
+  const { api, data, refreshIdentity } = useSession();
   const [creating, setCreating] = useState(false);
   const [newTenant, setNewTenant] = useState(false);
   const [message, setMessage] = useState("");
@@ -1931,6 +1976,9 @@ export function OrganisationPage() {
               { key: "name", title: "Name" },
               { key: "role", title: "Role", badge: true },
             ]}
+            actions={(row) => (
+              <MembershipActions member={row} refresh={remote.refresh} />
+            )}
           />
         ) : (
           <Empty title="No memberships returned" />
@@ -1975,6 +2023,7 @@ export function OrganisationPage() {
                   "organisation_admin",
                   "governance_manager",
                   "security_engineer",
+                  "contributor",
                   "auditor",
                   "viewer",
                 ]),
@@ -2008,8 +2057,9 @@ export function OrganisationPage() {
                 body: JSON.stringify(values),
               });
               setNewTenant(false);
+              await refreshIdentity();
               setMessage(
-                "Organisation created. Sign out and sign in to refresh available memberships.",
+                "Organisation created. It is now available in the workspace selector.",
               );
             }}
           />
@@ -2031,6 +2081,7 @@ export function SettingsPage() {
       />
       {remote.error && <Notice error>{remote.error}</Notice>}
       {saved && <Notice>Workspace settings saved.</Notice>}
+      <AccountSecurity />
       <div className="two-column">
         <section className="panel padded">
           <h2>Workspace configuration</h2>

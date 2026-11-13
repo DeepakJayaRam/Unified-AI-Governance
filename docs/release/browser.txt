@@ -1,0 +1,20 @@
+
+> unified-ai-governance-frontend@0.2.0 test:e2e
+> playwright test
+
+
+Running 9 tests using 1 worker
+
+(node:6076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › tests\e2e\accessibility.spec.ts:4:1 › login and all seven workspaces pass automated accessibility checks (13.3s)
+  ok 2 [chromium] › tests\e2e\hardening.spec.ts:3:1 › governance decisions, policy rollback and human review use persisted APIs (6.6s)
+  ok 3 [chromium] › tests\e2e\layout.spec.tsx:8:1 › mobile inventory table contains horizontal overflow and keeps actions reachable (776ms)
+  ok 4 [chromium] › tests\e2e\operations.spec.ts:14:1 › integration enablement, health, real worker failure and retry are operable (3.8s)
+  ok 5 [chromium] › tests\e2e\operations.spec.ts:74:1 › membership roles, password rotation, denied writes and removal work through forms (6.4s)
+  ok 6 [chromium] › tests\e2e\records.spec.ts:3:1 › risk, finding, corrective action, settings and discovery forms persist (11.2s)
+  ok 7 [chromium] › tests\e2e\workflow.spec.ts:2:1 › login page renders with accessible authentication fields (570ms)
+  ok 8 [chromium] › tests\e2e\workflow.spec.ts:21:1 › real authenticated inventory, evidence, assessment, guardrail and tenant isolation workflow (12.2s)
+  ok 9 [chromium] › tests\e2e\workflow.spec.ts:225:1 › every workspace page loads real data without browser or API errors (7.1s)
+
+  9 passed (1.1m)

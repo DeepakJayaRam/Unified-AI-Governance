@@ -126,18 +126,33 @@ def sign_statement(value: dict, path: str) -> dict:
             'signatures': [{'keyid': key_id(key), 'sig': base64.b64encode(key.sign(pae(PAYLOAD_TYPE, payload))).decode('ascii')}]}
 
 
-def verify_envelope(envelope: dict, path: str, expected_digest: str, expected_name: str | None = None) -> dict:
+def verify_envelope(envelope: dict, path: str, expected_digest: str, expected_name: str | None = None, trusted_keys_dir: str = '') -> dict:
     """Verify against deployment-configured trust, never an envelope-supplied key."""
     try:
-        key = signing_key(path)
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+        trusted = {}
+        if path:
+            key = signing_key(path)
+            trusted[key_id(key)] = key.public_key()
+        if trusted_keys_dir:
+            files=list(Path(trusted_keys_dir).glob('*.pub'))
+            if len(files)>100: raise ValueError('Too many trusted public keys')
+            for file in files:
+                if file.is_symlink() or file.stat().st_size>8192:
+                    raise ValueError('Invalid public key file')
+                public_key=serialization.load_pem_public_key(file.read_bytes())
+                if not isinstance(public_key,Ed25519PublicKey): raise ValueError('Ed25519 public key required')
+                fingerprint=hashlib.sha256(public_key.public_bytes(serialization.Encoding.Raw,serialization.PublicFormat.Raw)).hexdigest()
+                trusted[fingerprint]=public_key
         if set(envelope) != {'payloadType', 'payload', 'signatures'} or envelope['payloadType'] != PAYLOAD_TYPE:
             raise ValueError('Invalid envelope')
         payload = base64.b64decode(envelope['payload'], validate=True)
         if len(payload) > 2_000_000 or len(envelope['signatures']) != 1:
             raise ValueError('Invalid envelope size or signatures')
         signature = envelope['signatures'][0]
-        if signature['keyid'] != key_id(key): raise ValueError('Untrusted signing key')
-        key.public_key().verify(base64.b64decode(signature['sig'], validate=True), pae(PAYLOAD_TYPE, payload))
+        public_key=trusted.get(signature['keyid'])
+        if public_key is None: raise ValueError('Untrusted signing key')
+        public_key.verify(base64.b64decode(signature['sig'], validate=True), pae(PAYLOAD_TYPE, payload))
         decoded = json.loads(payload)
         if decoded['_type'] != STATEMENT_TYPE or decoded['predicateType'] != PREDICATE_TYPE:
             raise ValueError('Unexpected statement/predicate')
@@ -146,7 +161,7 @@ def verify_envelope(envelope: dict, path: str, expected_digest: str, expected_na
             raise ValueError('Subject digest does not match evidence')
         if expected_name is not None and subjects[0]['name'] != expected_name:
             raise ValueError('Subject identity does not match evidence')
-        return {'valid': True, 'key_id': key_id(key), 'algorithm': 'Ed25519', 'statement': decoded}
+        return {'valid': True, 'key_id': signature['keyid'], 'algorithm': 'Ed25519', 'statement': decoded}
     except (ValueError, TypeError, KeyError, OSError, InvalidSignature, json.JSONDecodeError):
         return {'valid': False, 'reason': 'Signature, trusted key or evidence binding verification failed'}
 

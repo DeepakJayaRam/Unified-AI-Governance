@@ -2,7 +2,7 @@
 
 An independent, API-first governance application with seven connected workspaces: discovery, EU AI Act assessment support, ISO/IEC 42001 management workflows, NIST AI RMF, evidence/OSCAL, runtime policy, and LLM guardrails.
 
-This repository contains a working FastAPI/Next.js application, not copies of 25 upstream projects. Every supplied entry is researched in the [integration register](INTEGRATION_REGISTER.md). Executable adapters, external services, reference resources, deferred integrations and licence restrictions are distinguished in the interface. See [implementation status](IMPLEMENTATION_STATUS.md) for exact test results and release blockers.
+This repository contains a working FastAPI/Next.js application, not copies of 25 upstream projects. Every supplied entry is researched in the [integration register](INTEGRATION_REGISTER.md). Executable adapters, external services, reference resources, deferred integrations and licence restrictions are distinguished in the interface. **v0.2.0** adds version history/rollback, human review, governance records, membership administration and worker recovery. See [release verification](docs/release/VERIFICATION.md) for observed results and limitations.
 
 ## Run locally on Windows
 
@@ -45,7 +45,7 @@ cdxgen secure mode requires a staging path **without spaces**. If your Windows T
 
 Compliance Trestle validates actual supported OSCAL JSON models. in-toto workflows generate statements and optionally DSSE signatures. Provision a key with `uag keygen --path secrets/evidence-signing.pem` and set `SIGNING_KEY_PATH` before starting the API/worker. Restrict Windows ACLs to the service identity. Signing is unavailable until configured; ordinary evidence hashing works without a key.
 
-OPA and Presidio connect only to operator-configured service URLs. Tenant forms cannot set arbitrary URLs, commands or tokens. NeMo, Llama Guard, Cosign and other entries without tested adapters remain clearly marked as awaiting integration/configuration or reference-only. Read [integration operations](THIRD_PARTY_INTEGRATIONS.md) and the [licence audit](LICENCE_AUDIT.md), especially before using VerifyWise or OpenComplAI.
+OPA and Presidio connect only to operator-configured service URLs. Tenant forms cannot set arbitrary URLs, commands or tokens. NeMo and Cosign are deferred; Llama models require a separate licence review. No executable adapter is claimed for them. Read [integration operations](THIRD_PARTY_INTEGRATIONS.md) and the [licence audit](LICENCE_AUDIT.md), especially before using VerifyWise or OpenComplAI.
 
 ## Working workflows
 
@@ -53,7 +53,7 @@ OPA and Presidio connect only to operator-configured service URLs. Tenant forms 
 - Import CycloneDX inventory and compare component identities between imports; or queue a restricted cdxgen scan, inspect raw output/provenance and view the generated BOM.
 - Add validated text/JSON/XML/CSV evidence, download original content, attest with a configured key, verify integrity/signatures and export an evidence package.
 - Create an explicit policy; evaluate an input; observe allow/block/sanitize/review results and per-check latency. Runtime history stores decision metadata without the prompt or sanitised text.
-- Create additional tenant workspaces as platform administrator and add tenant members with explicit roles. Auditors and viewers are read-only.
+- Create additional tenant workspaces as platform administrator; add members, change roles or remove access. Password changes revoke all sessions. Auditors/viewers are read-only; contributors cannot approve governance records or resolve human reviews.
 
 The framework checklists are original application support material. They do not reproduce the ISO standard, determine legal compliance, or guarantee certification. The legal references include the current sources recorded in `docs/research`; no unverified regulatory deadline is hardcoded.
 
@@ -67,4 +67,12 @@ The framework checklists are original application support material. They do not 
 
 Real adapter and browser tests have additional setup described in `docs/validation` and `frontend/README.md`. Synthetic test workspaces are isolated from application data. Benchmark results identify their environment and measured scope; the sub-50 ms end-to-end target is not assumed.
 
-Docker/cloud instructions, migrations, key handling, backups and troubleshooting: [DEPLOYMENT.md](DEPLOYMENT.md). API consumer contract for future independent integration: [docs/API.md](docs/API.md). Security limits and reporting: [SECURITY.md](SECURITY.md). No Guardrail Sovereign integration or GitHub publication has been performed.
+Docker/cloud instructions, migrations, key handling, backups and troubleshooting: [DEPLOYMENT.md](DEPLOYMENT.md). API consumer contract for future independent integration: [docs/API.md](docs/API.md). Security limits and reporting: [SECURITY.md](SECURITY.md). No Guardrail Sovereign integration or public application hosting is included.
+
+## v0.2 operations
+
+Policies preserve prior versions and roll back by creating a new version. Use an `If-Match` version when editing to reject stale saves. Human review records a decision without replaying the original prompt. Governance records support explicit rationale, owner, due date and links to assessments, risks and evidence. Lists are paginated; search filters loaded records.
+
+The optional [Presidio overlay](docker-compose.presidio.yml) runs genuine analyzer/anonymizer SDKs with a checksum-pinned English spaCy model. It has no host port or runtime download dependency. The base application works without it; a policy that explicitly selects an unavailable service applies its configured block/review action.
+
+Native setup on Linux/macOS uses `python3.14 -m venv .venv`, `.venv/bin/python -m pip install -r requirements.lock`, `.venv/bin/python -m pip install --no-deps -e .`, then `.venv/bin/python -m alembic upgrade head`. Run the bootstrap and uvicorn commands above with `.venv/bin/python`; use `export NEXT_PUBLIC_API_URL=http://127.0.0.1:8100/api/v1` before starting the frontend. The optional Presidio image lock targets Linux amd64; Apple Silicon requires `--platform linux/amd64` emulation or a separately resolved and verified native lock.

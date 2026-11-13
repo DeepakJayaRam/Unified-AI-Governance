@@ -10,7 +10,8 @@ from sqlalchemy import delete, select
 from sqlalchemy.orm import Session
 from .config import settings
 from .db import AuthSession, Membership, Tenant, User, get_db, now, set_tenant
-from .schemas import IdentityResponse, Login, LoginResponse, Member, TenantCreate
+from .schemas import IdentityResponse, Login, LoginResponse, Member, TenantCreate, Strict, PreservedText, Role
+from pydantic import Field
 
 router = APIRouter()
 hasher = PasswordHasher()
@@ -29,9 +30,7 @@ def rate_limit(key: str, limit: int, window: int = 60):
         try:
             client = Redis.from_url(settings.redis_url, socket_timeout=2)
             bucket = "rate:" + token_hash(key)
-            count = client.incr(bucket)
-            if count == 1:
-                client.expire(bucket, window)
+            count = client.eval("local n=redis.call('INCR',KEYS[1]); if n==1 then redis.call('EXPIRE',KEYS[1],ARGV[1]) end; return n", 1, bucket, window)
             if count > limit:
                 raise HTTPException(429, "Rate limit exceeded")
             return
@@ -73,7 +72,7 @@ def context(x_tenant_id: str = Header(default=""), user: User = Depends(current_
 
 
 def require_write(ctx=Depends(context)):
-    if ctx["role"] not in {"organisation_admin", "governance_manager", "security_engineer"}:
+    if ctx["role"] not in {"organisation_admin", "governance_manager", "security_engineer", "contributor"}:
         raise HTTPException(403, "This role is read-only")
     return ctx
 
@@ -148,3 +147,61 @@ def add_tenant(body: TenantCreate, user=Depends(current_user), db: Session = Dep
     db.add(Membership(user_id=user.id, tenant_id=tenant.id, role="organisation_admin"))
     db.commit()
     return {"id": tenant.id, "name": tenant.name}
+
+
+class PasswordChange(Strict):
+    current_password: PreservedText = Field(min_length=1, max_length=1024)
+    new_password: PreservedText = Field(min_length=12, max_length=1024)
+
+
+@router.post('/auth/password', status_code=204)
+def change_password(body: PasswordChange, user=Depends(current_user), db: Session=Depends(get_db)):
+    rate_limit('password:'+user.id, 5, 300)
+    try:
+        hasher.verify(user.password_hash, body.current_password)
+    except VerificationError:
+        raise HTTPException(403, 'Current password is incorrect')
+    user.password_hash = hasher.hash(body.new_password)
+    db.execute(delete(AuthSession).where(AuthSession.user_id == user.id))
+    db.commit()
+
+
+class MembershipChange(Strict):
+    role: Role
+
+
+def membership_target(db, ctx, identifier):
+    from .resources import lock_tenant
+    lock_tenant(db, ctx)
+    member = db.get(Membership, (identifier, ctx['tenant_id']))
+    if not member:
+        raise HTTPException(404, 'Membership not found')
+    return member
+
+
+def protect_last_admin(db, ctx, member, new_role=None):
+    if member.role == 'organisation_admin' and new_role != 'organisation_admin':
+        administrators = list(db.scalars(select(Membership).where(Membership.tenant_id == ctx['tenant_id'], Membership.role == 'organisation_admin')))
+        if len(administrators) <= 1:
+            raise HTTPException(409, 'Keep at least one organisation administrator')
+
+
+@router.patch('/memberships/{identifier}')
+def change_membership(identifier: str, body: MembershipChange, ctx=Depends(require_admin), db: Session=Depends(get_db)):
+    from .resources import audit
+    member = membership_target(db, ctx, identifier)
+    protect_last_admin(db, ctx, member, body.role)
+    member.role = body.role
+    audit(db, ctx, 'membership.role_changed', identifier, {'role':body.role})
+    db.commit()
+    return {'id':identifier, 'role':body.role}
+
+
+@router.delete('/memberships/{identifier}', status_code=204)
+def remove_membership(identifier: str, ctx=Depends(require_admin), db: Session=Depends(get_db)):
+    from .resources import audit
+    member = membership_target(db, ctx, identifier)
+    protect_last_admin(db, ctx, member)
+    db.delete(member)
+    audit(db, ctx, 'membership.removed', identifier)
+    db.commit()

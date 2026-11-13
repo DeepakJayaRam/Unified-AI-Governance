@@ -1,6 +1,6 @@
 # Implementation plan
 
-Independent application; no Guardrail Sovereign source or database dependency. Publishing requires separate approval.
+Independent application; no Guardrail Sovereign source or database dependency. The owner authorized v0.2 publication in the continuation directive. Execution status and evidence are in docs/release/VERIFICATION.md; this table records the original sequence.
 
 | Phase | Deliverable | Verification gate |
 |---|---|---|
@@ -15,7 +15,7 @@ Independent application; no Guardrail Sovereign source or database dependency. P
 | 8 | Assessment, risk, evidence and audit workflows | End-to-end API workflow |
 | 9 | Explicit runtime policies and guardrails | Error decisions and latency tests |
 | 10 | Security, frontend, API and performance tests | Recorded outputs; no false pass claims |
-| 11 | Docker Compose, PostgreSQL, Redis and workers | Compose validation/start when daemon available |
+| 11 | Docker Compose, PostgreSQL, Redis and workers | Compose validation/start against the running Docker stack |
 | 12 | Independent cloud deployment and operations docs | Configuration review |
 | 13 | Acceptance review, remaining blockers and release checklist | Status report with measured evidence |
 

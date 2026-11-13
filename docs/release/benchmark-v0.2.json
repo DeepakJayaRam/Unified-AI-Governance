@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "started_at": "2026-11-13T09:28:21.061867+00:00",
+  "environment": {
+    "client": "Windows-11-10.0.26300-SP0",
+    "cpu": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+    "logical_cpus": 16,
+    "deployment": "Docker Desktop Linux amd64 on Windows; loopback ports 8100/3100; existing unrelated services remain running"
+  },
+  "includes": "HTTP roundtrip, bearer authentication, membership, Redis rate limiting, PostgreSQL RLS, selected controls, runtime event and audit persistence",
+  "excludes": "TLS, public ingress, WAN, cloud hardware; pacing is outside timed samples",
+  "execution": "Sequential isolated benchmark; dedicated identity, no browser suite; 5 warmups and 100 measured samples per case",
+  "cases": {
+    "native/short_safe": {
+      "input_characters": 26,
+      "decision": "allow",
+      "http": {
+        "samples": 100,
+        "p50_ms": 30.41134999875794,
+        "p95_ms": 44.754499998816755,
+        "p99_ms": 66.09480000042822
+      },
+      "controls_before_persistence": {
+        "samples": 100,
+        "p50_ms": 0.04321550113672856,
+        "p95_ms": 0.07643099888809957,
+        "p99_ms": 0.10549900071055163
+      }
+    },
+    "native/short_pii": {
+      "input_characters": 26,
+      "decision": "sanitize",
+      "http": {
+        "samples": 100,
+        "p50_ms": 30.786299999817857,
+        "p95_ms": 42.33939999903669,
+        "p99_ms": 49.93319999994128
+      },
+      "controls_before_persistence": {
+        "samples": 100,
+        "p50_ms": 0.050359500164631754,
+        "p95_ms": 0.09527800102659967,
+        "p99_ms": 0.13036800010013394
+      }
+    },
+    "native/near_limit": {
+      "input_characters": 31993,
+      "decision": "sanitize",
+      "http": {
+        "samples": 100,
+        "p50_ms": 34.51850000055856,
+        "p95_ms": 48.117599999386584,
+        "p99_ms": 52.770300000702264
+      },
+      "controls_before_persistence": {
+        "samples": 100,
+        "p50_ms": 3.089347000241105,
+        "p95_ms": 4.442016999746556,
+        "p99_ms": 4.902624999886029
+      }
+    },
+    "complete/short_safe": {
+      "input_characters": 26,
+      "decision": "allow",
+      "http": {
+        "samples": 100,
+        "p50_ms": 47.51955000028829,
+        "p95_ms": 63.7174999974377,
+        "p99_ms": 85.83480000015697
+      },
+      "controls_before_persistence": {
+        "samples": 100,
+        "p50_ms": 16.28621399959229,
+        "p95_ms": 23.73913200062816,
+        "p99_ms": 37.33861499858904
+      }
+    },
+    "complete/short_pii": {
+      "input_characters": 26,
+      "decision": "block",
+      "http": {
+        "samples": 100,
+        "p50_ms": 46.69994999858318,
+        "p95_ms": 75.96919999923557,
+        "p99_ms": 91.56590000202414
+      },
+      "controls_before_persistence": {
+        "samples": 100,
+        "p50_ms": 16.05234649923659,
+        "p95_ms": 25.570976999006234,
+        "p99_ms": 38.765082999816514
+      }
+    },
+    "complete/near_limit": {
+      "input_characters": 31993,
+      "decision": "block",
+      "http": {
+        "samples": 100,
+        "p50_ms": 659.3705499999487,
+        "p95_ms": 834.5359999984794,
+        "p99_ms": 879.9223999994865
+      },
+      "controls_before_persistence": {
+        "samples": 100,
+        "p50_ms": 627.9761344994768,
+        "p95_ms": 800.2171130010538,
+        "p99_ms": 852.106577000086
+      }
+    }
+  }
+}

@@ -73,7 +73,9 @@
         "status": 200,
         "sha256": "7797aa6aa2470908058486e591b455d74a7f2a87498e74632a3a5e816a73a641"
       }
-    ]
+    ],
+    "release_classification": "Tested executable integration",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 2,
@@ -142,7 +144,9 @@
         "url": "https://raw.githubusercontent.com/GenAI-Security-Project/aibom-generator/45851cb96dbe16209f29c88fc3f5b9d9d19ecf7e/requirements.txt",
         "sha256": "6a6b0ad95f3e6bed6d2f54b69d353138f868efdb9fd3ef582475a90f7f30e581"
       }
-    ]
+    ],
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 3,
@@ -233,7 +237,9 @@
         "status": 200,
         "sha256": "15b75997b217412d37464416edb6a306cd0c9d0815e2cdce8f3b871b21d3ff4c"
       }
-    ]
+    ],
+    "release_classification": "Licence-restricted",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 4,
@@ -307,7 +313,9 @@
         "status": 200,
         "sha256": "d68910d80399f4d577c730d8f04f6dac936027a7bed94d2e344774b7d3a7ffda"
       }
-    ]
+    ],
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 5,
@@ -388,7 +396,9 @@
         "url": "https://registry.npmjs.org/@eu-ai-act%2fcli/latest",
         "error": "HTTP Error 404: Not Found"
       }
-    ]
+    ],
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 6,
@@ -461,7 +471,9 @@
         "status": 200,
         "sha256": "7452a729bf40a2066d833ab3a30d96787bc4f2e3db67f7894e4227570b784dae"
       }
-    ]
+    ],
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 7,
@@ -529,7 +541,9 @@
         "url": "https://raw.githubusercontent.com/compl-ai/compl-ai/c359f0a61112f8316715ea1c6e140983f0c50a40/pyproject.toml",
         "sha256": "d8991b39c1605bbb621d8ea172ef270c251de547cdddd262eacbb57c12864929"
       }
-    ]
+    ],
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 8,
@@ -571,7 +585,9 @@
         "url": "https://raw.githubusercontent.com/morganrcu/awesome-eu-ai-act/d46c0492aecea2e8b1e3496a1b8eb331c60193cb/README.md",
         "sha256": "18e2fb32cd2edc71be1ce6f3d72202fe23a108d7bdf49c7c76e64309299d9ad2"
       }
-    ]
+    ],
+    "release_classification": "Reference-only",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 9,
@@ -638,7 +654,9 @@
         "url": "https://raw.githubusercontent.com/Ankit-Uniyal/iso-42001-ai-governance-toolkit/803b62da4c66f6b6ab601c87cb298597a497eebd/15-SCRIPTS/aims_soa_tracker.py",
         "sha256": "e7497c2ac74ef893a34a244191de208461b1a448978adc6b18c433944131c140"
       }
-    ]
+    ],
+    "release_classification": "Reference-only",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 10,
@@ -646,7 +664,7 @@
     "name": "EU AI Act Compliance Toolkit (Ankit Uniyal)",
     "layer": 3,
     "source_url": "https://github.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit",
-    "classification": "DEFERRED",
+    "classification": "BLOCKED_BY_LICENCE",
     "version": "README heading 3.5.0; footer 3.4.0; pyproject classifier 2.1.0; README script 2.2; commit is authoritative identifier",
     "inspected_commit": "8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7",
     "verified_at": "2026-11-13",
@@ -704,7 +722,9 @@
         "url": "https://raw.githubusercontent.com/Ankit-Uniyal/eu-ai-act-compliance-toolkit/8c57fa493d53d2b62b1b1ef82d3d4dedea41a7e7/scripts/README.md",
         "sha256": "20b5e42231267d82e072a37b6a829b0449996baf66df794d2c0c21607cc89530"
       }
-    ]
+    ],
+    "release_classification": "Licence-restricted",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 11,
@@ -778,7 +798,9 @@
         "status": 200,
         "sha256": "c1e47bc9264a642631b2c4b89efa7a189024604d493200206ae4636fd0642472"
       }
-    ]
+    ],
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 12,
@@ -824,7 +846,9 @@
         "status": 200,
         "sha256": "7adb4408f2e0bffc8ed3d8d5cbb6eb9ba5150dded28bf1586b69b195f48d39cf"
       }
-    ]
+    ],
+    "release_classification": "Reference-only",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "number": 13,
@@ -881,6 +905,8 @@
         "status": 200,
         "sha256": "7c5b31d839ae5023484c596cea87eaf23a96a1dac086a160ddc3f409e628f854"
       }
-    ]
+    ],
+    "release_classification": "Reference-only",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   }
 ]

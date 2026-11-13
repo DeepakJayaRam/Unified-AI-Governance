@@ -1,0 +1,30 @@
+{
+  "repository": "https://github.com/DeepakJayaRam/Unified-AI-Governance",
+  "credential_available": true,
+  "authenticated_login": "DeepakJayaRam",
+  "public": true,
+  "default_branch": "main",
+  "permissions": {
+    "admin": true,
+    "maintain": true,
+    "push": true,
+    "triage": true,
+    "pull": true
+  },
+  "branches": [
+    {
+      "name": "main",
+      "sha": "06679f0b65d250579afd2c83cb90010b9c135dae",
+      "protected": false
+    }
+  ],
+  "ci_runs": [
+    {
+      "id": 43378547231,
+      "sha": "06679f0b65d250579afd2c83cb90010b9c135dae",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/DeepakJayaRam/Unified-AI-Governance/actions/runs/43378547231"
+    }
+  ]
+}

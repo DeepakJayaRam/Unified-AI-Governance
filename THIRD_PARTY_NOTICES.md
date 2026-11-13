@@ -27,3 +27,11 @@ No upstream source trees are vendored. Research records contain attribution, sou
 - **Presidio (originally Microsoft Presidio)** — https://github.com/microsoft/presidio. MIT for Presidio code; NLP model licences and external service terms need separate review.
 - **NVIDIA NeMo Guardrails** — https://github.com/NVIDIA/NeMo-Guardrails. Apache-2.0 code; model/provider and optional integration licences separate.
 - **Meta Purple Llama / Llama Guard** — https://github.com/meta-llama/PurpleLlama. Mixed licences: MIT evals/benchmarks/Code Shield; Llama models use model-specific Llama Community licences, not MIT. Current root LICENSE is Llama3.2 Community Agreement with attribution, acceptable-use and >700M monthly active user terms. README model/link inconsistencies mean recheck exact model repository licence before use.
+
+## Optional English NLP model
+
+Presidio and spaCy are MIT. en_core_web_sm 3.8.0 is distributed under its MIT model licence. Its source notices identify OntoNotes 5 (commercial training-data licence held by Explosion), WordNet and other attributions; no training corpus is redistributed here. Model weights are downloaded from the official release only during the optional image build, with a pinned SHA256. See [model licence](docs/third-party/spacy-en_core_web_sm-LICENSE.txt) and [source notices](docs/third-party/spacy-en_core_web_sm-LICENSES_SOURCES.txt). This licence does not grant access to the original training corpus.
+
+Installed distributions retain their own bundled licence files. Python inventory: docs/dependency-inventory.json; optional service inventory: docs/release/presidio-dependencies.json; npm inventories: both package-lock.json files. Base image OS packages retain Debian/Alpine licences and notices.
+
+PostgreSQL's derived image uses Alpine su-exec 0.3-r0 (MIT, https://github.com/ncopa/su-exec) in place of gosu. Its package licence metadata remains in the image. No source is copied into this repository.

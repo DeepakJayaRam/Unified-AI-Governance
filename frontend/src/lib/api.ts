@@ -1,6 +1,12 @@
 export const API_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:8100/api/v1";
 export type RecordData = Record<string, unknown> & { id: string };
+export type PageInfo = { total: number; limit: number; offset: number };
+export function pageInfo(data: unknown): PageInfo | undefined {
+  return data && typeof data === "object"
+    ? (data as { __page?: PageInfo }).__page
+    : undefined;
+}
 export class ApiError extends Error {
   constructor(
     public status: number,
@@ -48,7 +54,17 @@ export function makeApi(token: string, tenant: string, expired?: () => void) {
       );
     }
     if (response.status === 204) return undefined as T;
-    return response.json() as Promise<T>;
+    const payload = await response.json();
+    if (Array.isArray(payload) && response.headers.has("X-Total-Count")) {
+      Object.defineProperty(payload, "__page", {
+        value: {
+          total: Number(response.headers.get("X-Total-Count")),
+          limit: Number(response.headers.get("X-Page-Limit")),
+          offset: Number(response.headers.get("X-Page-Offset")),
+        },
+      });
+    }
+    return payload as T;
   };
 }
 export function label(value: unknown): string {

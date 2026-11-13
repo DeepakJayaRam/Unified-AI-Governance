@@ -24,7 +24,7 @@ x-backend: &backend
 
 services:
   opa:
-    image: openpolicyagent/opa@sha256:12cecac5a174368f7d3f09d3a19d040ebe0c91d576e520335ae7a985a26e39d3
+    image: openpolicyagent/opa@sha256:ff50f50332ff9e722ffafe2658c195ced1f9b6d4f3064000c2ecfa8cdf7acccf
     command: [run, --server, --addr=0.0.0.0:8181, /policies/governance.rego]
     volumes: [./integrations/policies/governance.rego:/policies/governance.rego:ro]
     read_only: true
@@ -32,8 +32,17 @@ services:
     security_opt: [no-new-privileges:true]
     networks: [internal]
     mem_limit: 256m
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, /opa, eval, --fail, 'http.send({"method":"get","url":"http://127.0.0.1:8181/health"}).status_code == 200']
+      interval: 10s
+      timeout: 3s
+      retries: 10
   postgres:
-    image: postgres@sha256:1018733457011bf88d81db98cf43aac6d5150afc18787dbe204771fedf80ff95
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: docker/postgres.Dockerfile
     environment:
       POSTGRES_USER: uag_owner
       POSTGRES_DB: uag
@@ -49,6 +58,7 @@ services:
     networks: [internal]
     mem_limit: 768m
   redis:
+    restart: unless-stopped
     image: redis@sha256:7958cfbb9d152f87dadfbc89f1b0b15938f0b81ff8982feb327476f4911935c3
     command: [redis-server, --appendonly, "yes", --maxmemory, 128mb, --maxmemory-policy, noeviction]
     volumes: [redisdata:/data]
@@ -60,6 +70,7 @@ services:
     mem_limit: 256m
   migrate:
     <<: *backend
+    healthcheck: {disable: true}
     networks: [internal]
     environment:
       <<: *api-env
@@ -69,6 +80,7 @@ services:
       postgres: {condition: service_healthy}
   api:
     <<: *backend
+    restart: unless-stopped
     command: [python, -m, uvicorn, uag.main:app, --host, 0.0.0.0, --port, "8000", --no-access-log]
     ports: ["127.0.0.1:8100:8000"]
     healthcheck:
@@ -80,12 +92,19 @@ services:
       redis: {condition: service_healthy}
   worker:
     <<: *backend
+    restart: unless-stopped
     networks: [internal]
     command: [python, -m, uag.cli, worker]
+    healthcheck:
+      test: [CMD, python, -c, "import os,socket,redis; assert redis.Redis.from_url(os.environ['REDIS_URL'],socket_timeout=2).exists('uag:worker:heartbeat:'+socket.gethostname())"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
     depends_on:
       migrate: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
   frontend:
+    restart: unless-stopped
     build:
       context: ./frontend
       args:

@@ -2,7 +2,9 @@
 import hashlib
 import math
 import os
+import re
 import time
+from functools import lru_cache
 from urllib.parse import urlsplit
 
 import httpx
@@ -20,21 +22,31 @@ def endpoint(variable):
     return value
 
 
+@lru_cache(maxsize=4)
+def service_client(timeout):
+    # HTTPX clients are thread-safe; pooled internal connections avoid rebuilding
+    # TLS/proxy transports on every synchronous policy check. No tenant headers.
+    return httpx.Client(timeout=httpx.Timeout(timeout),follow_redirects=False,trust_env=False,
+                        limits=httpx.Limits(max_connections=16,max_keepalive_connections=16))
+
+
 def request_json(variable, method, path, *, data=None, timeout=3, health=False):
+    deadline=time.monotonic()+10
     headers = {}
     # Optional bearer credential is deployment-only and never returned/logged.
     token = os.environ.get(variable.replace('_URL', '_TOKEN'))
     if token: headers['Authorization'] = 'Bearer ' + token
-    with httpx.Client(timeout=httpx.Timeout(timeout), follow_redirects=False, trust_env=False) as client:
-        with client.stream(method, endpoint(variable) + path, json=data, headers=headers) as response:
-            response.raise_for_status()
-            raw = bytearray()
-            for chunk in response.iter_bytes():
-                raw.extend(chunk)
-                if len(raw) > 1_000_000: raise ValueError('Integration response exceeds limit')
-            if not raw or health: return {}
-            import json
-            return json.loads(raw)
+    with service_client(timeout).stream(method, endpoint(variable) + path, json=data, headers=headers) as response:
+        response.raise_for_status()
+        raw = bytearray()
+        for chunk in response.iter_bytes():
+            if time.monotonic()>deadline:
+                raise TimeoutError('Integration response deadline exceeded')
+            raw.extend(chunk)
+            if len(raw) > 1_000_000: raise ValueError('Integration response exceeds limit')
+        if not raw or health: return {}
+        import json
+        return json.loads(raw)
 
 
 class OpaConfig(BaseModel):
@@ -84,7 +96,7 @@ class PresidioConfig(BaseModel):
     model_config = ConfigDict(extra='forbid')
     language: str = Field(default='en', pattern='^[a-z]{2}$')
     score_threshold: float = Field(default=0.5, ge=0, le=1)
-    action: str = Field(default='sanitize', pattern='^(block|sanitize|review)$')
+    action: str = Field(default='sanitize', pattern='^(allow|block|sanitize|review)$')
     error_action: str = Field(default='block', pattern='^(block|review)$')
 
 
@@ -130,6 +142,21 @@ class PresidioAdapter:
                 anonymized = request_json('PRESIDIO_ANONYMIZER_URL', 'POST', '/anonymize', data={'text': text, 'analyzer_results': clean, 'anonymizers': {'DEFAULT': {'type': 'replace', 'new_value': '[REDACTED]'}}})
                 output = anonymized['text']
                 if not isinstance(output, str) or len(output) > 64000: raise ValueError('Invalid anonymizer result')
+                # Accept only replacements of detected ranges. A malformed service
+                # must not insert text or restore content removed by earlier checks.
+                ranges = []
+                for span in sorted(clean, key=lambda item: (item['start'], item['end'])):
+                    if ranges and span['start'] <= ranges[-1][1]:
+                        ranges[-1][1] = max(ranges[-1][1], span['end'])
+                    else:
+                        ranges.append([span['start'], span['end']])
+                pieces, cursor = [], 0
+                for start, end in ranges:
+                    pieces.extend([re.escape(text[cursor:start]), r'(?:\[REDACTED\])+'])
+                    cursor = end
+                pieces.append(re.escape(text[cursor:]))
+                if re.fullmatch(''.join(pieces), output) is None:
+                    raise ValueError('Anonymizer changed text outside validated redactions')
             return AdapterResult(status='succeeded', raw_output={'analyzer_results': clean},
                                  normalized={'action': action, 'entities': clean, 'sanitized_text': output,
                                              'latency_ms': round((time.perf_counter()-started)*1000, 3)},

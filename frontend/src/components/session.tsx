@@ -23,6 +23,7 @@ type Session = {
   setTenant: (id: string) => void;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  refreshIdentity: () => Promise<void>;
   api: ReturnType<typeof makeApi>;
 };
 const Context = createContext<Session | null>(null);
@@ -52,8 +53,16 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       expire();
     }
   };
+  const refreshIdentity = async () => {
+    const identity = await api<Omit<LoginData, "access_token">>("/auth/me");
+    setData((current) => (current ? { ...current, ...identity } : null));
+    if (!identity.memberships.some((m) => m.tenant_id === tenant))
+      setTenant(identity.memberships[0]?.tenant_id || "");
+  };
   return (
-    <Context.Provider value={{ data, tenant, setTenant, login, logout, api }}>
+    <Context.Provider
+      value={{ data, tenant, setTenant, login, logout, api, refreshIdentity }}
+    >
       {children}
     </Context.Provider>
   );

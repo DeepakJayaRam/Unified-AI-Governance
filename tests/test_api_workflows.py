@@ -49,6 +49,6 @@ def test_bom_import_comparison(client, headers):
 
 def test_openapi_contract(client):
     schema = client.get(API + "/openapi.json").json()
-    assert schema["info"]["version"] == "0.1.0"
+    assert schema["info"]["version"] == "0.2.0"
     assert "/api/v1/systems" in schema["paths"]
     assert "SystemCreate" in schema["components"]["schemas"]

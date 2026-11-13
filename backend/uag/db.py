@@ -52,10 +52,13 @@ class Record(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
     tenant_id: Mapped[str] = mapped_column(ForeignKey("tenants.id"), nullable=False)
     kind: Mapped[str] = mapped_column(String(40), nullable=False)
+    resource_key: Mapped[str | None] = mapped_column(String(160), nullable=True)
+    version: Mapped[int] = mapped_column(default=1, nullable=False)
     data: Mapped[dict] = mapped_column(JSON, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now, onupdate=now)
-    __table_args__ = (Index("ix_records_tenant_kind", "tenant_id", "kind"),)
+    __table_args__ = (Index("ix_records_tenant_kind", "tenant_id", "kind"), UniqueConstraint("tenant_id", "kind", "resource_key", name="uq_resource_key"))
+    __mapper_args__ = {"version_id_col": version}
 
 
 class Audit(Base):

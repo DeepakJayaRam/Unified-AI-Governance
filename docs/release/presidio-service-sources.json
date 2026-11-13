@@ -1,0 +1,10 @@
+{
+  "presidio_analyzer_api": {
+    "url": "https://raw.githubusercontent.com/data-privacy-stack/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-analyzer/app.py",
+    "sha256": "b6cc79eccbade1e6886a6eb5b79c307872e3e32f2e674cebc34e458c47185ca5"
+  },
+  "presidio_anonymizer_api": {
+    "url": "https://raw.githubusercontent.com/data-privacy-stack/presidio/aa77b9f98f2c3a2de0f16974e7b540702938707e/presidio-anonymizer/app.py",
+    "sha256": "3ba503daa59a91851ab39721087c7df1ece3a6237d10fc057e1314212106b759"
+  }
+}

@@ -1,6 +1,6 @@
 # Security
 
-Report suspected vulnerabilities privately to the repository owner's security contact (configure a GitHub private vulnerability reporting channel before publication). Do not put tenant data, prompts, tokens or signing keys in public issues.
+Report suspected vulnerabilities through the repository Security tab and private vulnerability reporting. Do not put tenant data, prompts, tokens or signing keys in public issues.
 
 Security controls implemented: Argon2id passwords, revocable hashed bearer sessions, role checks, tenant-qualified resource queries, PostgreSQL FORCE RLS for tenant records and audit events, validated cross-resource references, bounded request/evidence/adapter input, deny-by-default adapter configuration, shared Redis production rate limits, output encoding, CORS allowlist, CSP/security headers, non-root resource-limited containers and explicitly configured guardrail error decisions.
 
@@ -12,4 +12,7 @@ Evidence content and raw tool results can contain confidential information. Limi
 
 The subprocess wrapper bounds output/time and does not invoke a shell. cdxgen additionally uses Node's permission model and rejects package scripts/local paths. These are defence layers, not a kernel sandbox. Use isolated worker containers with restricted egress and resource limits. Do not run arbitrary source repositories or install scripts through a tenant request.
 
-Dependency procedure: pinned direct dependencies, transitive Python/npm locks and image digests; CI audits Python/npm and rebuilds containers. Review advisories weekly, update in a branch, re-run tenant/migration/adapter/browser tests and record actual changed upstream licences. Never override an advisory without a documented exploitability analysis and expiry date. Production release additionally requires independent penetration testing, restore drill, operational alerting, trusted key lifecycle and load/concurrency tests against the target workload.
+Dependency procedure: pinned direct dependencies, transitive Python/npm locks and image digests; CI audits Python/npm and rebuilds containers. Review advisories weekly, update in a branch, re-run tenant/migration/adapter/browser tests and record actual changed upstream licences. Never override an advisory without a documented exploitability analysis and expiry date. Production deployment readiness additionally requires independent penetration testing, restore drill, operational alerting, trusted key lifecycle and load/concurrency tests against the target workload.
+
+
+The release container audit and explicit exploitability review are in [SECURITY_REVIEW.md](docs/release/SECURITY_REVIEW.md). Findings are preserved without scanner suppression. Unfixed Debian packages and OPA HTML-parser code remain visible; re-evaluate by 2026-12-13 or before changing policy, privileges, mounts or network exposure. Public source publication is not production certification.

@@ -1,0 +1,6 @@
+
+> unified-ai-governance-frontend@0.2.0 format:check
+> prettier --check src tests *.ts package.json tsconfig.json README.md VERIFICATION.md
+
+Checking formatting...
+All matched files use Prettier code style!

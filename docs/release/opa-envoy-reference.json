@@ -1,0 +1,8 @@
+{
+  "classification": "Deferred; reference/source inspection only",
+  "repository": "https://github.com/open-policy-agent/opa-envoy-plugin",
+  "head": "f60542a9b76754b78fe8d373160dc1a3044376ec",
+  "license_spdx": "Apache-2.0",
+  "licence_url": "https://github.com/open-policy-agent/opa-envoy-plugin/blob/main/LICENSE",
+  "archived": false
+}

@@ -19,7 +19,20 @@ def main():
     commands.add_parser("drain")
     key = commands.add_parser("keygen")
     key.add_argument("--path", required=True)
+    public_key = commands.add_parser('export-public-key')
+    public_key.add_argument('--key-path', required=True)
+    public_key.add_argument('--output', required=True)
     args = parser.parse_args()
+    if args.command == 'export-public-key':
+        from integrations.evidence_oscal import signing_key
+        from cryptography.hazmat.primitives import serialization
+        key = signing_key(args.key_path)
+        target = Path(args.output)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open('xb') as handle:
+            handle.write(key.public_key().public_bytes(serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo))
+        print('Exported public verification key; no private key material exported.')
+        return
     if args.command == "drain":
         from .jobs import reconcile
         reconcile()

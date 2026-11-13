@@ -1,0 +1,22 @@
+Processing d:\unified ai governance
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: unified-ai-governance-security
+  Building wheel for unified-ai-governance-security (pyproject.toml): started
+  Building wheel for unified-ai-governance-security (pyproject.toml): finished with status 'done'
+  Created wheel for unified-ai-governance-security: filename=unified_ai_governance_security-0.2.0-py3-none-any.whl size=72747 sha256=2c44337d3e2aca37a1af8e2a15988b76279cf60fdceff63cf641afa962b5ba77
+  Stored in directory: C:\Users\acer\AppData\Local\Temp\pip-ephem-wheel-cache-unktkc8q\wheels\e8\0e\fb\64039a6832229306d11e597fd62b88f98892858af7692f6a3b
+Successfully built unified-ai-governance-security
+.venv/Scripts/python.exe :
+At line:2 char:99
++ ... nitial.txt; .venv/Scripts/python.exe -m pip wheel --no-deps . --wheel ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+[notice] A new release of pip is available: 25.3 -> 26.3
+[notice] To update, run: D:\Unified AI Governance\.venv\Scripts\python.exe -m pip install --upgrade pip

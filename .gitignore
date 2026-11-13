@@ -49,3 +49,4 @@ backups/
 *.egg-info/
 frontend/test-results/
 frontend/playwright-report/
+*.tsbuildinfo

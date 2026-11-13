@@ -1,0 +1,29 @@
+# Optional genuine Presidio SDK service. No host port or model download at runtime.
+services:
+  presidio:
+    build: ./services/presidio
+    init: true
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    restart: unless-stopped
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    user: "10002:10002"
+    mem_limit: 1g
+    cpus: 2
+    pids_limit: 128
+    networks: [internal]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health',timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      start_period: 40s
+      retries: 10
+  api:
+    environment:
+      PRESIDIO_ANALYZER_URL: http://presidio:8000
+      PRESIDIO_ANONYMIZER_URL: http://presidio:8000
+  worker:
+    environment:
+      PRESIDIO_ANALYZER_URL: http://presidio:8000
+      PRESIDIO_ANONYMIZER_URL: http://presidio:8000

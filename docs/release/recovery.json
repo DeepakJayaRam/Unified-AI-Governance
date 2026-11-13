@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "tests": {
+    "deployed_postgres_role_rls_migration": {
+      "role": {
+        "name": "uag_app",
+        "rolsuper": false,
+        "rolbypassrls": false
+      },
+      "unscoped_records": 0,
+      "migration": "0002",
+      "foreign_rows": 0
+    },
+    "real_http_atomic_identity_rate_limit": {
+      "statuses": {
+        "200": 600,
+        "429": 20
+      },
+      "independent_identity": 200,
+      "limit": "600 per 60 seconds per identity across its tenants"
+    },
+    "recovery_fault_setup": {
+      "lost_notification": 1,
+      "stale_lease": "synthetic running state; expiry advanced 11 minutes"
+    },
+    "restart_persistence_signatures_redis_audit": "passed",
+    "queued_reconciliation_cancel_retry_and_expired_lease": "passed"
+  },
+  "scope": "Actual UAG Compose services and synthetic tenant; no unrelated services or volumes modified"
+}

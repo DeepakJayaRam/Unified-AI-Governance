@@ -42,8 +42,10 @@
     "security_risks": [
       "Do not treat umbrella documentation as executable or claim all components are installed."
     ],
-    "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "integration_test_status": "REFERENCE ONLY: umbrella ecosystem; Compliance Trestle is the separately tested executable entry.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Reference-only",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "compliance-trestle",
@@ -102,7 +104,9 @@
       "Reject oversized/deep input and external references; validation proves schema conformance only, not control effectiveness."
     ],
     "integration_test_status": "EXECUTED: compliance-trestle5.2.1 accepted a valid OSCAL1.2.1 catalogue and rejected missing metadata/unknown fields via upstream models; raw JSON/hash preserved. Other supported model types are available but not individually fixture-tested.",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Tested executable integration",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "cosign",
@@ -150,7 +154,7 @@
     ],
     "licence": "Apache-2.0; preserve notices. Public transparency log terms and identity publication require deliberate operator choice.",
     "maintenance_status": "v3.1.4 latest release resolved; README says most recent release and last v2 release actively supported.",
-    "classification": "CLI_INTEGRATION",
+    "classification": "DEFERRED",
     "recommended_integration": "Controlled CLI with explicit server-side signing configuration. Start with local key blob signing/verification; never trigger public transparency publication implicitly.",
     "security_risks": [
       "Private key exposure",
@@ -159,7 +163,9 @@
       "Image tags are mutable; use digests"
     ],
     "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "in-toto",
@@ -218,7 +224,9 @@
       "Subject digest must bind exact bytes"
     ],
     "integration_test_status": "EXECUTED: application-owned Statement v1 and Ed25519 DSSE signing/verification; tampered payload, digest, subject identity and unavailable key rejected. This is not a Cosign or Sigstore interoperability claim.",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Tested executable integration",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "aigrc",
@@ -278,7 +286,9 @@
       "Upstream mappings are claims, not legal compliance verification"
     ],
     "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "opa",
@@ -335,7 +345,7 @@
       "Decision logs can disclose prompts",
       "Unprotected data/policy APIs permit control-plane tampering"
     ],
-    "integration_test_status": "PARTIAL: official v1.22.4 Windows binary SHA256 verified; version and pinned Rego check exited0. HTTP adapter service test skipped. Docker image pulled but container startup failed (daemon filesystem read-only); background service launch rejected by automatic policy. OPA-Envoy untested.",
+    "integration_test_status": "REAL HTTP: OPA 1.22.4 official image/executable; allow, block, review, rejected policy compilation and fail-closed HTTP adapter tested in docs/release/backend-services.txt. OPA-Envoy is deferred.",
     "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
     "secondary_sources": [
       {
@@ -348,7 +358,9 @@
           "https://raw.githubusercontent.com/open-policy-agent/opa-envoy-plugin/f60542a9b76754b78fe8d373160dc1a3044376ec/LICENSE"
         ]
       }
-    ]
+    ],
+    "release_classification": "Tested executable integration",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "envoy",
@@ -396,7 +408,7 @@
     ],
     "licence": "Apache-2.0; preserve notices and audit image dependencies.",
     "maintenance_status": "v1.40.2 latest release resolved; supported platform/security policy is upstream-specific.",
-    "classification": "CONTAINER_SERVICE",
+    "classification": "DEFERRED",
     "recommended_integration": "Optional separately deployed ingress with OPA-Envoy ext_authz; keep proxy admin port private and explicitly configure failure_mode_allow.",
     "security_risks": [
       "Exposed admin interface",
@@ -405,7 +417,9 @@
       "Logging sensitive bodies"
     ],
     "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "ai-verify",
@@ -463,7 +477,9 @@
       "Metrics do not prove bias-free or safe operation"
     ],
     "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "verifywise",
@@ -519,7 +535,9 @@
       "Multi-service sensitive data and credentials"
     ],
     "integration_test_status": "BLOCKED_BY_LICENCE: source/licence inspected only; no install, deployment or execution.",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Licence-restricted",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "presidio",
@@ -581,8 +599,10 @@
       "PII in logs",
       "Latency varies by model/text length and requires measurement"
     ],
-    "integration_test_status": "AWAITING_CONFIGURATION: HTTP adapter implemented from verified app.py contract; missing service/error-action and configuration rejection tests pass. No Presidio service/model installed or end-to-end PII coverage/latency measured.",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "integration_test_status": "REAL HTTP: Presidio analyzer/anonymizer 2.2.366; spaCy 3.8.18, en_core_web_sm 3.8.0 with SHA256-verified wheel; English detection/redaction and prior-redaction preservation. Real service and separate HTTP fault injection tests: docs/release/backend-services.txt.",
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Tested executable integration",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "nemo-guardrails",
@@ -634,7 +654,7 @@
     ],
     "licence": "Apache-2.0 code; model/provider and optional integration licences separate.",
     "maintenance_status": "Stable0.24.1; HEAD release candidate inspected. Do not conflate stable and HEAD compatibility.",
-    "classification": "API_SERVICE",
+    "classification": "DEFERRED",
     "recommended_integration": "Allowlisted separately managed service; expensive model checks async/review path until measured. Do not accept arbitrary Python actions or configs from tenant input.",
     "security_risks": [
       "Configuration Python code execution",
@@ -643,7 +663,9 @@
       "No rails configured means requests forwarded without guardrails"
     ],
     "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Deferred",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   },
   {
     "id": "purple-llama",
@@ -704,6 +726,8 @@
       "Prompt Guard and content-safety Llama Guard have different purposes"
     ],
     "integration_test_status": "RESEARCH_VERIFIED; execution not yet tested",
-    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit."
+    "verification_method": "Official commit-pinned README, licence and listed source files; git ls-remote HEAD; GitHub latest release redirect and PyPI metadata when applicable. GitHub REST API unavailable due to shared anonymous rate limit.",
+    "release_classification": "Licence-restricted",
+    "release_evidence": "docs/release/VERIFICATION.md; docs/release/upstream-reverification.json"
   }
 ]
